@@ -663,12 +663,6 @@ table tr:nth-child(2n), thead {
     color: #34495e;
 }
 
-#tags .chip-active {
-    color: #FFF !important;
-    background-color: #1e7de9 !important;
-    box-shadow: 2px 5px 10px #aaa !important;
-}
-
 #tags .chip {
     margin: 10px 10px;
     padding: 0 16px;
@@ -681,8 +675,15 @@ table tr:nth-child(2n), thead {
     border-radius: 5px;
     word-wrap: break-word;
     cursor: pointer;
-    background-color: #62d6e69f; 
+    background-color: #97eaf59f !important; 
     box-shadow: 0 3px 5px rgba(0, 0, 0, .12);
+}
+
+
+#tags .chip-active {
+    color: #FFF !important;
+    background-color: #1e7de9 !important;
+    box-shadow: 2px 5px 10px #aaa !important;
 }
 
 .chip .tag-length {
