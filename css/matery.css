@@ -1,19 +1,19 @@
-/*全局基础样式*/
-/*小屏幕下(手机类)的样式*/
+/*全局基�?�样式*/
+/*小屏幕下(手机�?)的样�?*/
 @media only screen and (max-width: 601px) {
     .container {
         width: 95%;
     }
 }
 
-/*中等屏幕下(平板类)的样式*/
+/*�?等屏幕下(平板�?)的样�?*/
 @media only screen and (min-width: 600px) and (max-width: 992px) {
     .container {
         width: 85%;
     }
 }
 
-/*大屏幕下(桌面类)的样式*/
+/*大屏幕下(桌面�?)的样�?*/
 @media only screen and (min-width: 993px) {
     .container {
         width: 80%;
@@ -162,7 +162,7 @@ mark {
     color: #2076c7 !important;
 }
 
-/*头部导航栏样式*/
+/*头部导航栏样�?*/
 @media only screen and (max-width: 600px) {
     header nav .brand-logo {
         left: 80px;
@@ -279,7 +279,7 @@ header .go-back i {
     line-height: 56px;
 }
 
-/* 背景图效果. */
+/* 背景图效�?. */
 .bg-cover {
     position: relative;
     display: flex;
@@ -363,7 +363,7 @@ header .go-back i {
     margin-top: -10px;
 }
 
-/*文章列表卡片各样式*/
+/*文章列表卡片各样�?*/
 #articles {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -681,6 +681,7 @@ table tr:nth-child(2n), thead {
     border-radius: 5px;
     word-wrap: break-word;
     cursor: pointer;
+    background-color: #62d6e69f;
     box-shadow: 0 3px 5px rgba(0, 0, 0, .12);
 }
 
@@ -691,7 +692,7 @@ table tr:nth-child(2n), thead {
 }
 
 .chip-default .tag-length {
-    color: #47d5e78c;
+    color: #020483c0;
 }
 
 .chip-active .tag-length {
@@ -1026,7 +1027,7 @@ footer .copy-right {
     color: #d5d5d5;
 }
 
-/*搜索层样式*/
+/*搜索层样�?*/
 #searchModal {
     min-height: 500px;
     width: 80%;
@@ -1067,7 +1068,7 @@ footer .copy-right {
     white-space: pre-wrap;
 }
 
-/*主题颜色设置面板样式*/
+/*主�?��?�色设置面板样式*/
 #theme-change {
     position: fixed;
     padding: 15px;
