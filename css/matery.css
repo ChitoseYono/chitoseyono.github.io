@@ -681,7 +681,7 @@ table tr:nth-child(2n), thead {
     border-radius: 5px;
     word-wrap: break-word;
     cursor: pointer;
-    background-color: #62d6e69f !important; 
+    background-color: #62d6e69f; 
     box-shadow: 0 3px 5px rgba(0, 0, 0, .12);
 }
 
