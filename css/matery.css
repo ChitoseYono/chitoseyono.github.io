@@ -693,7 +693,7 @@ table tr:nth-child(2n), thead {
 }
 
 .chip-default .tag-length {
-    color: #020483c0;
+    color: #000000c0;
 }
 
 .chip-active .tag-length {
