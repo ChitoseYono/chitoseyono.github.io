@@ -1337,3 +1337,9 @@ footer .copy-right {
 .toc-article ul {
   margin: 10px 0;
 }
+@font-face {
+    font-family: 'MATURASC';
+    src: url('../fonts/MATURASC.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+ }
