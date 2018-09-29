@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "MATURASC";
+  src: url("MATURASC.woff2") format("woff2"),
+       url("MATURASC.woff") format("woff"),
+       url("MATURASC.ttf") format("truetype"),
+       url("MATURASC.eot") format("embedded-opentype"),
+       url("MATURASC.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}

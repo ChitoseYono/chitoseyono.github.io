@@ -1339,8 +1339,10 @@ footer .copy-right {
   margin: 10px 0;
 }
 @font-face {
-    font-family: 'Matura MT Script Capitals';
-    src: url('./font/MATURASC.TTF') format('truetype');
-    font-weight: normal;
-    font-style: normal;
- }
+    font-family: "MATURASC";
+    src: url("MATURASC.woff2") format("woff2"),
+         url("MATURASC.woff") format("woff"),
+         url("MATURASC.ttf") format("truetype"),
+         url("MATURASC.eot") format("embedded-opentype"),
+         url("MATURASC.svg") format("svg");
+  }
