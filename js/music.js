@@ -2,7 +2,7 @@ const ap = new APlayer({
     container: document.getElementById('aplayer'),
     listFolded: true,
     fixed: true,
-    autoplay: true,
+    autoplay: false,
     audio: [
       {
         name: "toki",
