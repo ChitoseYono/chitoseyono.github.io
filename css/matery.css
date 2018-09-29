@@ -1180,7 +1180,7 @@ footer .copy-right {
 }
 .toc-article .toc .toc-text:hover {
   text-decoration: underline;
-  color: #2a6496;
+  color: #2a7d96;
 }
 .toc-article li {
   list-style-type: none;
@@ -1297,7 +1297,7 @@ footer .copy-right {
   min-height: 14px;
   overflow: hidden;
   padding: 4px 6px 8px 5px;
-  border: 1px solid #ddd;
+  border: 1px solid rgb(221, 221, 221);
   border-right: none;
   position: fixed;
   right: 40px;
@@ -1326,7 +1326,7 @@ footer .copy-right {
 }
 .show-toc-btn:hover .btn-text {
   font-size: 12px;
-  color: #ea8010;
+  color: #10acea;
 }
 
 .toc-article li ol,
