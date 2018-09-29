@@ -98,7 +98,7 @@ pre {
 code {
   padding: 1px 5px;
   font-size: 0.91rem;
-  color: #e96900;
+  color: #00e1e9;
   background-color: #f8f8f8;
   border-radius: 2px;
 }
@@ -1066,7 +1066,7 @@ footer .copy-right {
   padding: 1px 5px 1px 4px;
   border-radius: 2px;
   background-color: #f2f2f2;
-  color: #e96900;
+  color: #00bae9;
   font-size: 0.9rem;
   white-space: pre-wrap;
 }
@@ -1309,7 +1309,7 @@ footer .copy-right {
   display: block;
   width: 16px;
   height: 14px;
-  background: url(http://7xtawy.com1.z0.glb.clouddn.com/show.png) no-repeat;
+  background: url(/source/medias/show.png) no-repeat;
   -webkit-background-size: 100%;
   -moz-background-size: 100%;
   background-size: 100%;
