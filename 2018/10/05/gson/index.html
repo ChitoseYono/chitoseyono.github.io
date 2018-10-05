@@ -190,7 +190,7 @@
             <hr>
             <div class="card-content article-card-content">
                 <div id="articleContent">
-                    <script src="/assets/js/APlayer.min.js"> </script><p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式，易于人阅读和编写，同时也易于机器解析和生成，广泛应用于各种数据的交互中，尤其是服务器与客户端的交互。<br>Gson（又称Google Json）是Google公司发布的一个开放源代码的Java库，主要用途为序列化Java对象为JSON字符串，或反序列化JSON字符串成Java对象。</p>
+                    <script src="/assets/js/APlayer.min.js"> </script><p>&nbsp;&nbsp;&nbsp;&nbsp;JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式，易于人阅读和编写，同时也易于机器解析和生成，广泛应用于各种数据的交互中，尤其是服务器与客户端的交互。<br>&nbsp;&nbsp;&nbsp;&nbsp;Gson（又称Google Json）是Google公司发布的一个开放源代码的Java库，主要用途为序列化Java对象为JSON字符串，或反序列化JSON字符串成Java对象。</p>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>&nbsp;&nbsp;&nbsp;&nbsp;对于Json的使用大部分人都会知道的一个轻量级库：<a href="https://github.com/stleary/JSON-java" target="_blank" rel="noopener">org.json</a>，现在仍旧有不少人用，不过他对于json格式到bean格式的转换设计的有缺陷而且麻烦（例如复杂类型转换），对于简单的Json序列化操作时如此<strong>轻量级</strong>的类库是个不错的选择。（毕竟轻量级且五脏俱全）<br>&nbsp;&nbsp;&nbsp;&nbsp;如今对于Json的类库比较广为人知的有<a href="http://json-lib.sourceforge.net/index.html" target="_blank" rel="noopener">json-lib</a>、Jackson、阿里巴巴的 <a href="https://github.com/alibaba/fastjson" target="_blank" rel="noopener">FastJson</a>、谷歌的 <a href="https://github.com/google/gson" target="_blank" rel="noopener">Gson</a>，json-lib依赖的包太多速度也慢就不提了，虽然FastJson在parseJson有算法上的先进性以至能大大提高其速度运作，而Jackson在速度上也相差不多，但Gson在对于复杂的类型转换上有更强的性能，对于标准化的类库来说，Gson更能被称为Json的神器，那么在本篇我会写关于org.json的简单使用与Gson的常见使用来比较两者的用途与用法。<br>&nbsp;&nbsp;&nbsp;&nbsp;本章代码已上传到<a href="https://github.com/ChitoseYono/JsonTest" target="_blank" rel="noopener">github</a>，可以查看代码自己研究。</p>
 <hr>
 <h2 id="添加类库依赖"><a href="#添加类库依赖" class="headerlink" title="添加类库依赖"></a><strong>添加类库依赖</strong></h2><h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a><strong>Maven</strong></h3><h4 id="org-json"><a href="#org-json" class="headerlink" title="org.json:"></a>org.json:</h4><pre><code>&lt;dependency&gt;
@@ -466,7 +466,7 @@ gitment.render('gitment-content');
                     </div>
 
                     <div class="card-content article-content">
-                        <div class="summary"> JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式，易于人阅读和编写，同时也易于机器解析和生成，广泛应用于各种数据的交互中，尤其是服务器与客户端的交互。Gson（又称Google Json）是Go</div>
+                        <div class="summary"> &nbsp;&nbsp;&nbsp;&nbsp;JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式，易于人阅读和编写，同时也易于机器解析和生成，广泛应用于各种数据的交互中，尤其是服务器与客户端的交</div>
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-calendar fa-fw"></i>2018-10-05
