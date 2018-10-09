@@ -5,14 +5,8 @@ const ap = new APlayer({
     autoplay: false,
     audio: [
       {
-        name: "toki",
-        artist: 'hideyuki hashimoto',
-        url: 'http://music.163.com/song/media/outer/url?id=28679443.mp3',
-        cover: 'http://p2.music.126.net/J1K37kRTg8GNQ6cCYhvuWQ==/5899979394913533.jpg',
-      },
-      {
         name: "rain",
-        artist: 'nekoboro',
+        artist: 'sasanomaly',
         url: 'http://music.163.com/song/media/outer/url?id=29713218.mp3',
         cover: 'http://p1.music.126.net/XQ0apoeD66MvCdhpcBtByg==/3239161255748471.jpg',
       },
@@ -27,6 +21,12 @@ const ap = new APlayer({
         artist: 'haruka nakamura',
         url: 'http://music.163.com/song/media/outer/url?id=4904298.mp3',
         cover: 'http://p2.music.126.net/sM0gbClGYFr4r6NXy_77_Q==/857619069688801.jpg',
+      },
+      {
+        name: "toki",
+        artist: 'hideyuki hashimoto',
+        url: 'http://music.163.com/song/media/outer/url?id=28679443.mp3',
+        cover: 'http://p2.music.126.net/J1K37kRTg8GNQ6cCYhvuWQ==/5899979394913533.jpg',
       },
       {
         name: "alone,,again",
