@@ -168,7 +168,117 @@
             <hr>
             <div class="card-content article-card-content">
                 <div id="articleContent">
-                    <script src="/assets/js/APlayer.min.js"> </script><p><em>这一篇将会用来写Java中从浅至深线程相关的东西,不断更新中。</em></p>
+                    <script src="/assets/js/APlayer.min.js"> </script><p><em>这一篇博客将会用来写Java中从浅至深线程相关的东西,现在更新中。</em></p>
+<hr>
+<h1 id="线程的创建"><a href="#线程的创建" class="headerlink" title="线程的创建"></a>线程的创建</h1><p>除了众所周知的直接继承于Thread和实现Runnable的方法以外，还有Java 5后提供的Future+Callable，先分别写写他们创建线程的方式与区别。</p>
+<h2 id="Thread"><a href="#Thread" class="headerlink" title="Thread"></a>Thread</h2><p>直接通过继承于Thread的方式来创建：</p>
+<ol>
+<li>需要一个继承于Thread的类，并重写其中的run()方法</li>
+<li>新建该类的对象</li>
+<li><p>通过该对象的start()启动线程</p>
+<pre><code>public class TestThread extends Thread{
+    private int i ;
+    @Override
+    public void run() {
+        for( ; i &lt;100 ; i++){
+            System.out.println(getName()+&quot; &quot;+i);
+        }
+    }
+    public static void main(String[] args) {
+        new TestThread().start();
+        new TestThread().start();
+        for(int i = 0 ; i &lt; 100 ; i ++){
+            System.out.println(Thread.currentThread().getName()+&quot; &quot;+i);
+        }
+    }
+}
+</code></pre></li>
+</ol>
+<p>此时输出的效果部分如下：</p>
+<blockquote>
+<p>main 69<br>Thread-1 42<br>main 70<br>Thread-0 66<br>Thread-0 67<br>main 71<br>Thread-1 43<br>Thread-1 44<br>main 72<br>Thread-0 68<br>main 73<br>Thread-1 45<br>main 74<br>Thread-0 69</p>
+</blockquote>
+<p>可以看见，三个线程都混杂在一起，谁也不能影响到谁的变量i，这是以继承的方式。</p>
+<h2 id="Runnable"><a href="#Runnable" class="headerlink" title="Runnable"></a>Runnable</h2><p>Runnable的创建线程的方式：</p>
+<ol>
+<li>需要一个实现Runnable的类，并实现其中的run()方法</li>
+<li>创建这个类的实例，作为参数创建一个新的Thread对象</li>
+<li><p>通过该对象的start()启动线程</p>
+<pre><code>public class TestRunnable implements Runnable{
+
+    private int i;
+
+    public void run() {
+        for (; i &lt; 100; i++) {
+            System.out.println(Thread.currentThread().getName() + &quot; &quot; + i);
+        }
+    }
+    public static void main(String[] args) {
+        TestRunnable tr = new TestRunnable();
+        new Thread(tr,&quot;Runnable-Thread1&quot;).start();
+        new Thread(tr,&quot;Runnable-Thread2&quot;).start();
+        for (int i = 0; i &lt; 100; i++) {
+            System.out.println(Thread.currentThread().getName() + &quot; &quot; + i);
+        }
+    }
+}
+</code></pre><p>此时输出的效果部分如下：</p>
+<blockquote>
+<p>Runnable-Thread1 33<br>main 50<br>Runnable-Thread2 34<br>main 51<br>Runnable-Thread1 35<br>main 52<br>main 53<br>Runnable-Thread2 36<br>Runnable-Thread2 38<br>Runnable-Thread2 39<br>Runnable-Thread2 40<br>Runnable-Thread2 41<br>main 54<br>Runnable-Thread1 37</p>
+</blockquote>
+</li>
+</ol>
+<p>虽然主线程和我们创建的线程的变量还是互不干扰，但Thread1和Thread2明显共用了同一个属性，可见，当两个两个线程同时以同一个Runnable的实现类作为参数的时候，他们能共用那个runnable的属性。（当然要是你创建两个Runnable实例效果会跟Thread一样，但是那样就没用Runnable的意义了）<br>但因为getName()是Thread类里的方法，所以必须用Thread.currentThread()先获得当前线程对象才能调用getName()。</p>
+<h2 id="Callable"><a href="#Callable" class="headerlink" title="Callable"></a>Callable</h2><p>Callable创建线程的方式跟Runnable很类似：</p>
+<ol>
+<li>需要一个实现Callable的类，并实现其中的call()方法</li>
+<li>创建这个类的实例，作为参数包装成一个新的FutureTask对象</li>
+<li>FutureTask作为参数创建一个新的Thread对象</li>
+<li>通过该对象的start()启动线程</li>
+</ol>
+<pre><code>    public class TestCallable implements Callable&lt;Integer&gt; {
+
+        private int i;
+
+        @Override
+        public Integer call(){
+            for(; i &lt; 100 ; i++){
+                System.out.println(Thread.currentThread().getName()+&quot; &quot;+i);
+            }
+            return i;
+        }
+
+        public static void main(String[] args) throws ExecutionException, InterruptedException {
+            TestCallable tc = new TestCallable();
+            FutureTask&lt;Integer&gt; task = new FutureTask&lt;&gt;(tc);
+            new Thread(task,&quot;Callable-Thread&quot;).start();
+            for(int i = 0 ; i &lt;100 ; i++){
+                System.out.println(Thread.currentThread().getName()+&quot; &quot;+i);
+            }
+            try {
+                System.out.println(&quot;返回值&quot;+task.get());
+            } catch (Exception e) {
+                e.printStackTrace();
+            } 
+        }
+    }
+</code></pre><p>部分输出效果：</p>
+<blockquote>
+<p>main 92<br>main 93<br>main 94<br>Callable-Thread 95<br>Callable-Thread 96<br>main 95<br>main 96<br>main 97<br>Callable-Thread 97<br>Callable-Thread 98<br>main 98<br>Callable-Thread 99<br>main 99<br>返回值100</p>
+</blockquote>
+<p>虽然用Callable创建起来比Runnable要复杂，但从这里可以看出来了：利用Callable不仅可以抛出异常，而且可以通过get()方法获得线程执行返回的信息。</p>
+<p>其次要注意的是，这里我没有创建两个线程，只有一个主线程和一个Callable的线程，是因为使用同一个FutureTask来创建线程会被认为是“不安全的”，在Callable的线程体call()执行一次之后会将status改成不再是NEW，而不是NEW的callable将直接退出，无法执行线程体：</p>
+<pre><code>public void run() {
+    if (state != NEW ||
+        !UNSAFE.compareAndSwapObject(this, runnerOffset,null, Thread.currentThread()))
+    return;
+</code></pre><p>所以如果用像前面Runnable那样用一个target创建两个线程的话，第二个线程将会在执行线程体之前就挂掉。</p>
+<h2 id="三者比较"><a href="#三者比较" class="headerlink" title="三者比较"></a>三者比较</h2><p>用实现Runnable的方法创建多线程的优势：</p>
+<p> <strong>1.能继承与实现更多的类</strong><br> <strong>2.能通过共用target来进行贡献资源</strong></p>
+<p>用实现Callable的方法创建多线程的优势：</p>
+<p> <strong>1.能继承与实现更多的类</strong><br> <strong>2.能捕获异常进行处理</strong><br> <strong>3.能获得线程执行的返回值，在编程上能有更多空间</strong></p>
+<p>用Thread的方法创建多线程：</p>
+<p><strong>编程简单，像获得当前线程直接通过实例的方法即可。</strong></p>
 
                 </div>
                 <hr/>
@@ -237,8 +347,9 @@ gitment.render('gitment-content');
                     </div>
 
                     <div class="card-content article-content">
-                        <div class="summary"> 这一篇将会用来写Java中从浅至深线程相关的东西,不断更新中。
-</div>
+                        <div class="summary"> 这一篇博客将会用来写Java中从浅至深线程相关的东西,现在更新中。
+
+线程的创建除了众所周知的直接继承于Thread和实现Runnable的方法以外，还有Java 5后提供的Future+Callable，先分别写写他们创建线程的方式与区</div>
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-calendar fa-fw"></i>2018-10-21
