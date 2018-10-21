@@ -3,6 +3,25 @@
   
     
     <entry>
+      <title>Java的线程</title>
+      <link href="/2018/10/21/thread/"/>
+      <url>/2018/10/21/thread/</url>
+      
+        <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p><em>这一篇将会用来写Java中从浅至深线程相关的东西,不断更新中。</em></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 线程 </tag>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>HttpURLConnection和HttpClient简单上手</title>
       <link href="/2018/10/14/http-easy/"/>
       <url>/2018/10/14/http-easy/</url>
