@@ -170,7 +170,7 @@
                 <div id="articleContent">
                     <script src="/assets/js/APlayer.min.js"> </script><p><em>传统的多线程其实不少方法或者类已经被废弃，但是有一些还保留使用，剩下这些由于他们简单易懂也容易上手，便有了他们保留的意义。那么，就简单写一写传统的多线程操作吧，在之后再写一篇关于那些Java5以后提供的新方法。</em></p>
 <hr>
-<h1 id="线程简介"><a href="#线程简介" class="headerlink" title="线程简介"></a>线程简介</h1><p>先放一张随处可见的线程状态转换图：<br><img src="/2018/10/21/thread/images/status.jpg" alt="Thread stauts"><br>所以啥是线程？<br>平时我们用的程序他运行起来了，他就叫进程（运行中的程序），是一个动态的概念，<br>而进程内部可能包含很多顺序执行任务，那这每一个任务就是一个线程。<br>进程和线程很类似，但又区别很大：</p>
+<h1 id="线程简介"><a href="#线程简介" class="headerlink" title="线程简介"></a>线程简介</h1><p>先放一张随处可见的线程状态转换图：<br><img src="/2018/10/21/thread/images/status.jpg" alt="Thread status"><br>所以啥是线程？<br>平时我们用的程序他运行起来了，他就叫进程（运行中的程序），是一个动态的概念，<br>而进程内部可能包含很多顺序执行任务，那这每一个任务就是一个线程。<br>进程和线程很类似，但又区别很大：</p>
 <p>相同点：</p>
 <ul>
 <li><strong>进程的存在是为了让操作系统同时运行多个程序；线程的存在是为了让进程同时执行多个任务。</strong></li>
@@ -187,64 +187,141 @@
 <li><strong>创建线程代价比创建进程要小得多，所以用多线程来实现多任务并发比多进程效率要高。</strong></li>
 </ul>
 <hr>
-<h1 id="线程的创建"><a href="#线程的创建" class="headerlink" title="线程的创建"></a>线程的创建</h1><p>除了众所周知的直接继承于Thread和实现Runnable的方法以外，还有Java 5后提供的Future+Callable和线程池，在这里先写前两种的方式与区别。</p>
+<h1 id="线程的创建"><a href="#线程的创建" class="headerlink" title="线程的创建"></a>线程的创建</h1><p>除了众所周知的直接继承于Thread和实现Runnable的方法以外，还有Java 5后提供的Future+Callable和线程池，在这里写一下他们的方式与区别。</p>
 <h2 id="Thread"><a href="#Thread" class="headerlink" title="Thread"></a>Thread</h2><p>直接通过继承于Thread的方式来创建：</p>
 <ol>
 <li>需要一个继承于Thread的类，并重写其中的run()方法</li>
 <li>新建该类的对象</li>
-<li><p>通过该对象的start()启动线程</p>
-<pre><code>public class TestThread extends Thread{
-    private int i ;
-    @Override
-    public void run() {
-        for( ; i &lt;100 ; i++){
-            System.out.println(getName()+&quot; &quot;+i);
-        }
-    }
-    public static void main(String[] args) {
-        new TestThread().start();
-        new TestThread().start();
+<li>通过该对象的start()启动线程<pre><code>public class TestThread extends Thread{
+private int i ;
+//线程体
+@Override
+public void run() {
+    for( ; i &lt;100 ; i++){
+       System.out.println(getName()+&quot; &quot;+i);
     }
 }
-</code></pre></li>
-</ol>
-<p>此时输出的效果部分如下：</p>
-<blockquote>
+public static void main(String[] args) {
+    new TestThread().start();
+    new TestThread().start();
+}
+}
+</code></pre>此时输出的效果部分如下：<blockquote>
 <p>Thread-1 42<br>Thread-0 66<br>Thread-0 67<br>Thread-1 43<br>Thread-1 44<br>Thread-0 68<br>Thread-1 45<br>Thread-0 69</p>
 </blockquote>
+</li>
+</ol>
 <p>可以看见，两个线程都混杂在一起，谁也不能影响到谁的变量i，这是以继承的方式。</p>
 <h2 id="Runnable"><a href="#Runnable" class="headerlink" title="Runnable"></a>Runnable</h2><p>Runnable的创建线程的方式：</p>
 <ol>
 <li>需要一个实现Runnable的类，并实现其中的run()方法</li>
 <li>创建这个类的实例，作为参数创建一个新的Thread对象</li>
-<li><p>通过该对象的start()启动线程</p>
-<pre><code>public class TestRunnable implements Runnable{
-
-    private int i;
-
-    public void run() {
-        for (; i &lt; 100; i++) {
-            System.out.println(Thread.currentThread().getName() + &quot; &quot; + i);
-        }
-    }
-    public static void main(String[] args) {
-        TestRunnable tr = new TestRunnable();
-        new Thread(tr,&quot;Runnable-Thread1&quot;).start();
-        new Thread(tr,&quot;Runnable-Thread2&quot;).start();
+<li>通过该对象的start()启动线程<pre><code>public class TestRunnable implements Runnable{
+//共用的成语属性
+private int i;
+//实现Runnable的run方法，线程体
+public void run() {
+    for (; i &lt; 100; i++) {
+        System.out.println(Thread.currentThread().getName() + &quot; &quot; + i);
     }
 }
-</code></pre></li>
-</ol>
-<p>此时输出的效果部分如下：</p>
-<blockquote>
+public static void main(String[] args) {
+    TestRunnable tr = new TestRunnable();       //创建Runnable实例
+    new Thread(tr,&quot;Runnable-Thread1&quot;).start();  //传参构建Thread
+    new Thread(tr,&quot;Runnable-Thread2&quot;).start();
+}
+}
+</code></pre>部分输出效果：<blockquote>
 <p>Runnable-Thread1 33<br>Runnable-Thread2 34<br>Runnable-Thread1 35<br>Runnable-Thread2 36<br>Runnable-Thread2 38<br>Runnable-Thread2 39<br>Runnable-Thread2 40<br>Runnable-Thread2 41<br>Runnable-Thread1 37</p>
 </blockquote>
-<p>显然Thread1和Thread2明显共用了属性i，可见，当两个两个线程同时以同一个Runnable的实现类作为参数的时候，他们能共用那个Runnable的属性。（当然要是你创建两个Runnable实例效果会跟Thread一样，但是那样就没用Runnable的意义了）<br>但因为getName()是Thread类里的方法，所以必须用Thread.currentThread()先获得当前线程对象才能调用getName()。</p>
-<h2 id="二者比较"><a href="#二者比较" class="headerlink" title="二者比较"></a>二者比较</h2><p>用实现Runnable的方法创建多线程的优势：</p>
-<p> <strong>1.能继承与实现更多的类</strong><br> <strong>2.能通过共用target来进行贡献资源</strong></p>
-<p>用Thread的方法创建多线程：</p>
-<p><strong>编程简单，像获得当前线程直接通过实例的方法即可。</strong></p>
+</li>
+</ol>
+<p>显然Thread1和Thread2明显共用了属性i，可见，当两个两个线程同时以同一个Runnable的实现类作为参数的时候，他们能共用那个Runnable的属性。（当然要是你创建两个Runnable实例效果会跟Thread一样，但是那样就没用Runnable的意义了）<br>但因为getName()是Thread类里的方法，所以必须用Thread的静态方法Thread.currentThread()先获得当前线程对象才能调用getName()。</p>
+<h2 id="Callable"><a href="#Callable" class="headerlink" title="Callable"></a>Callable</h2><p>Callable创建线程的方式跟Runnable很类似，虽然Thread的构造方法参数没有Callable类参数，但FutureTask实现了Runnable接口：</p>
+<ol>
+<li>需要一个实现Callable的类，并实现其中的call()方法</li>
+<li>创建这个类的实例，作为参数包装成一个新的FutureTask对象</li>
+<li>FutureTask作为参数创建一个新的Thread对象</li>
+<li><p>通过该对象的start()启动线程</p>
+<pre><code>public class TestCallable implements Callable&lt;Integer&gt; {
 
+private int i;
+//线程体
+@Override
+public Integer call(){
+    for(; i &lt; 100 ; i++){
+        System.out.println(Thread.currentThread().getName()+&quot; &quot;+i);
+    }
+    return i;
+}
+
+public static void main(String[] args) {
+    TestCallable tc = new TestCallable();       //创建Callable实例
+    FutureTask&lt;Integer&gt; task = new FutureTask&lt;&gt;(tc);        //包装成FutureTask
+    new Thread(task,&quot;Callable-Thread&quot;).start();             //当target传参进去
+    try {
+        System.out.println(&quot;返回值：&quot;+task.get());
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+}
+</code></pre><p>部分输出效果：</p>
+<blockquote>
+<p>Callable-Thread 96<br>Callable-Thread 97<br>Callable-Thread 98<br>Callable-Thread 99<br>返回值：100</p>
+</blockquote>
+</li>
+</ol>
+<p>虽然用Callable创建起来比Runnable要复杂，但从这里可以看出来了：利用Callable不仅可以抛出异常，而且可以通过get()方法获得线程执行返回的信息。<br>其次要注意的是，这里我没有创建两个线程，只有一个主线程和一个Callable的线程，是因为使用同一个FutureTask来创建线程会被认为是“不安全的”，在Callable的线程体call()执行一次之后会将status改成不再是NEW，而不是NEW的callable将直接退出，无法执行线程体：</p>
+<pre><code>public void run() {
+    if (state != NEW ||
+        !UNSAFE.compareAndSwapObject(this, runnerOffset,null, Thread.currentThread()))
+    return;
+</code></pre><p>所以如果用像前面Runnable那样用一个target创建两个线程的话，第二个线程将会在执行线程体之前就挂掉。</p>
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><p>线程池Java5在之前只能自己手动去创建，现在已经有了多种方法如Executors工厂，ForkJoinPool，在这里先写Executors工厂类吧，利用线程池的方式：</p>
+<ol>
+<li>先调用Executors静态工厂方法创建一个ExecutorService或ScheduledExecutorService线程池对象</li>
+<li>创建Runnable/Callable实例，利用线程池对象的submit()或者schedule()来传入线程池并执行</li>
+<li>当任务完成后，执行shutdown()来关闭线程池</li>
+</ol>
+<p>关于第一点：</p>
+<blockquote>
+<p>其中newCacheThreadPool(), newFixedThreadPool(int nThreads), newSingleThreadExecutor()是ExecutorService对象，而newScheduledThreadPool(int corePoolSize), newSingleScheduledThreadPool()为ScheduledExecutorService对象</p>
+</blockquote>
+<p>做一个简单的例子：</p>
+<pre><code>    public class PoolTest {
+        static class PoolRunnable implements Runnable{
+            private int i;
+            public void run() {
+                for (; i &lt; 100; i++) {
+                    System.out.println(Thread.currentThread().getName() + &quot; &quot; + i);
+                }
+            }
+        }
+
+        public static void main(String[] args) {
+            ExecutorService executorService = Executors.newFixedThreadPool(3);
+            PoolRunnable p = new PoolRunnable();
+            executorService.submit(p);
+            executorService.submit(p);
+            executorService.shutdown();
+        }
+    }
+</code></pre><p>部分输出效果：</p>
+<blockquote>
+<p>pool-1-thread-1 41<br>pool-1-thread-2 45<br>pool-1-thread-1 46<br>pool-1-thread-2 47<br>pool-1-thread-2 49<br>pool-1-thread-2 50<br>pool-1-thread-2 51<br>pool-1-thread-2 52<br>pool-1-thread-1 48<br>pool-1-thread-2 53<br>pool-1-thread-1 54</p>
+</blockquote>
+<p>可见与用Runnable的方式效果相差无几，只是方式不一样了而已。</p>
+<h2 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h2><p>用Thread的方式创建多线程的优势：</p>
+<p><strong>编程简单，像获得当前线程直接通过实例的方法即可。</strong></p>
+<p>用实现Runnable的方式创建多线程的优势：</p>
+<p> <strong>1.能继承与实现更多的类</strong><br> <strong>2.能通过共用target来进行共享资源</strong></p>
+<p>用实现Callable的方式创建多线程的优势：</p>
+<p> <strong>1.能继承与实现更多的类</strong><br> <strong>2.能捕获异常进行处理</strong><br> <strong>3.能获得线程执行的返回值，在编程上能有更多空间</strong></p>
+<p>用线程池的方式的优势：</p>
+<p><strong>1.target通过submit()或schedule()传入线程池后，线程池会启用一个线程来执行target里的run()或call(),但执行结束后不会死亡，将进入空闲状态保留在线程池中，等待下一个target时使用。这样在创建大量的短暂线程的时候可以不用浪费资源重新创建，直接从线程池中使用。</strong><br><strong>2.可以通过控制线程池的最大线程数来控制系统并发线程数，防止线程创建过多导致的JVM崩溃</strong><br><strong>3.利用ScheduledExecutorService能指定延迟或周期性的执行线程任务</strong><br><strong>4.集合Runnable和Callable的优点——能共享资源，能处理返回值等</strong></p>
+<hr>
+<h1 id="线程的控制"><a href="#线程的控制" class="headerlink" title="线程的控制"></a>线程的控制</h1>
                 </div>
                 <hr/>
 
