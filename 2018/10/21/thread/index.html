@@ -133,7 +133,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        <font size="6">Java的传统线程</font>
+                        <font size="6">Java的线程入门</font>
                     </div>
                 </div>
             </div>
@@ -192,86 +192,87 @@
 <ol>
 <li>需要一个继承于Thread的类，并重写其中的run()方法</li>
 <li>新建该类的对象</li>
-<li>通过该对象的start()启动线程<pre><code>public class TestThread extends Thread{
-private int i ;
-//线程体
-@Override
-public void run() {
-    for( ; i &lt;100 ; i++){
-       System.out.println(getName()+&quot; &quot;+i);
+<li>通过该对象的start()启动线程</li>
+</ol>
+<pre><code>public class TestThread extends Thread{
+    private int i ;
+    //线程体
+    @Override
+    public void run() {
+        for( ; i &lt;100 ; i++){
+           System.out.println(getName()+&quot; &quot;+i);
+        }
+    }
+    public static void main(String[] args) {
+        new TestThread().start();
+        new TestThread().start();
     }
 }
-public static void main(String[] args) {
-    new TestThread().start();
-    new TestThread().start();
-}
-}
-</code></pre>此时输出的效果部分如下：<blockquote>
+</code></pre><p>此时输出的效果部分如下：</p>
+<blockquote>
 <p>Thread-1 42<br>Thread-0 66<br>Thread-0 67<br>Thread-1 43<br>Thread-1 44<br>Thread-0 68<br>Thread-1 45<br>Thread-0 69</p>
 </blockquote>
-</li>
-</ol>
 <p>可以看见，两个线程都混杂在一起，谁也不能影响到谁的变量i，这是以继承的方式。</p>
 <h2 id="Runnable"><a href="#Runnable" class="headerlink" title="Runnable"></a>Runnable</h2><p>Runnable的创建线程的方式：</p>
 <ol>
 <li>需要一个实现Runnable的类，并实现其中的run()方法</li>
 <li>创建这个类的实例，作为参数创建一个新的Thread对象</li>
-<li>通过该对象的start()启动线程<pre><code>public class TestRunnable implements Runnable{
-//共用的成语属性
-private int i;
-//实现Runnable的run方法，线程体
-public void run() {
-    for (; i &lt; 100; i++) {
-        System.out.println(Thread.currentThread().getName() + &quot; &quot; + i);
+<li>通过该对象的start()启动线程</li>
+</ol>
+<pre><code>public class TestRunnable implements Runnable{
+    //共用的成语属性
+    private int i;
+    //实现Runnable的run方法，线程体
+    public void run() {
+        for (; i &lt; 100; i++) {
+            System.out.println(Thread.currentThread().getName() + &quot; &quot; + i);
+        }
+    }
+    public static void main(String[] args) {
+        TestRunnable tr = new TestRunnable();       //创建Runnable实例
+        new Thread(tr,&quot;Runnable-Thread1&quot;).start();  //传参构建Thread
+        new Thread(tr,&quot;Runnable-Thread2&quot;).start();
     }
 }
-public static void main(String[] args) {
-    TestRunnable tr = new TestRunnable();       //创建Runnable实例
-    new Thread(tr,&quot;Runnable-Thread1&quot;).start();  //传参构建Thread
-    new Thread(tr,&quot;Runnable-Thread2&quot;).start();
-}
-}
-</code></pre>部分输出效果：<blockquote>
+</code></pre><p>部分输出效果：</p>
+<blockquote>
 <p>Runnable-Thread1 33<br>Runnable-Thread2 34<br>Runnable-Thread1 35<br>Runnable-Thread2 36<br>Runnable-Thread2 38<br>Runnable-Thread2 39<br>Runnable-Thread2 40<br>Runnable-Thread2 41<br>Runnable-Thread1 37</p>
 </blockquote>
-</li>
-</ol>
 <p>显然Thread1和Thread2明显共用了属性i，可见，当两个两个线程同时以同一个Runnable的实现类作为参数的时候，他们能共用那个Runnable的属性。（当然要是你创建两个Runnable实例效果会跟Thread一样，但是那样就没用Runnable的意义了）<br>但因为getName()是Thread类里的方法，所以必须用Thread的静态方法Thread.currentThread()先获得当前线程对象才能调用getName()。</p>
 <h2 id="Callable"><a href="#Callable" class="headerlink" title="Callable"></a>Callable</h2><p>Callable创建线程的方式跟Runnable很类似，虽然Thread的构造方法参数没有Callable类参数，但FutureTask实现了Runnable接口：</p>
 <ol>
 <li>需要一个实现Callable的类，并实现其中的call()方法</li>
 <li>创建这个类的实例，作为参数包装成一个新的FutureTask对象</li>
 <li>FutureTask作为参数创建一个新的Thread对象</li>
-<li><p>通过该对象的start()启动线程</p>
+<li>通过该对象的start()启动线程</li>
+</ol>
 <pre><code>public class TestCallable implements Callable&lt;Integer&gt; {
 
-private int i;
-//线程体
-@Override
-public Integer call(){
-    for(; i &lt; 100 ; i++){
-        System.out.println(Thread.currentThread().getName()+&quot; &quot;+i);
+    private int i;
+    //线程体
+    @Override
+    public Integer call(){
+        for(; i &lt; 100 ; i++){
+            System.out.println(Thread.currentThread().getName()+&quot; &quot;+i);
+        }
+        return i;
     }
-    return i;
-}
 
-public static void main(String[] args) {
-    TestCallable tc = new TestCallable();       //创建Callable实例
-    FutureTask&lt;Integer&gt; task = new FutureTask&lt;&gt;(tc);        //包装成FutureTask
-    new Thread(task,&quot;Callable-Thread&quot;).start();             //当target传参进去
-    try {
-        System.out.println(&quot;返回值：&quot;+task.get());
-    } catch (Exception e) {
-        e.printStackTrace();
+    public static void main(String[] args) {
+        TestCallable tc = new TestCallable();       //创建Callable实例
+        FutureTask&lt;Integer&gt; task = new FutureTask&lt;&gt;(tc);        //包装成FutureTask
+        new Thread(task,&quot;Callable-Thread&quot;).start();             //当target传参进去
+        try {
+            System.out.println(&quot;返回值：&quot;+task.get());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-}
 }
 </code></pre><p>部分输出效果：</p>
 <blockquote>
 <p>Callable-Thread 96<br>Callable-Thread 97<br>Callable-Thread 98<br>Callable-Thread 99<br>返回值：100</p>
 </blockquote>
-</li>
-</ol>
 <p>虽然用Callable创建起来比Runnable要复杂，但从这里可以看出来了：利用Callable不仅可以抛出异常，而且可以通过get()方法获得线程执行返回的信息。<br>其次要注意的是，这里我没有创建两个线程，只有一个主线程和一个Callable的线程，是因为使用同一个FutureTask来创建线程会被认为是“不安全的”，在Callable的线程体call()执行一次之后会将status改成不再是NEW，而不是NEW的callable将直接退出，无法执行线程体：</p>
 <pre><code>public void run() {
     if (state != NEW ||
@@ -340,7 +341,7 @@ public static void main(String[] args) {
                         <span class="reprint-tip">Reprint please specify: </span>
                         <a href="https://chitoseyono.com" class="b-link-green">White Noise -Chitose Yono Offical Blog-</a>
                         <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                        <a href="/2018/10/21/thread/" class="b-link-green">Java的传统线程</a>
+                        <a href="/2018/10/21/thread/" class="b-link-green">Java的线程入门</a>
                     </p>
                 </div>
             </div>
@@ -383,9 +384,9 @@ gitment.render('gitment-content');
                 <a href="/2018/10/21/thread/">
                     <div class="card-image">
                         
-                        <img src="/medias/images/thread.jpg" class="responsive-img" alt="Java的传统线程">
+                        <img src="/medias/images/thread.jpg" class="responsive-img" alt="Java的线程入门">
                         
-                        <span class="card-title">Java的传统线程</span>
+                        <span class="card-title">Java的线程入门</span>
                     </div>
 
                     <div class="card-content article-content">
