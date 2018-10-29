@@ -133,7 +133,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        <font size="6">Java线程㈠——线程的介绍与创建</font>
+                        <font size="6">Java线程（一）——线程的介绍与创建</font>
                     </div>
                 </div>
             </div>
@@ -168,7 +168,7 @@
             <hr>
             <div class="card-content article-card-content">
                 <div id="articleContent">
-                    <script src="/assets/js/APlayer.min.js"> </script><p><em>10.28已更新：Executor线程池</em><br><em>这一篇作为Java线程系列的开篇吧，简单的介绍一下线程和线程的创建方式。</em></p>
+                    <script src="/assets/js/APlayer.min.js"> </script><p><em>10.29已更新：ThreadFactory</em><br><em>这一篇作为Java线程系列的开篇吧，简单的介绍一下线程和线程的创建方式。</em></p>
 <hr>
 <h1 id="线程简介"><a href="#线程简介" class="headerlink" title="线程简介"></a>线程简介</h1><p>先放一张随处可见的线程状态转换图：<br><img src="/2018/10/21/thread/images/status.jpg" alt="Thread status"><br>所以啥是线程？<br>平时我们用的程序他运行起来了，他就叫进程（运行中的程序），是一个动态的概念，<br>而进程内部可能包含很多顺序执行任务，那这每一个任务就是一个线程。<br>进程和线程很类似，但又区别很大：</p>
 <p>相同点：</p>
@@ -212,7 +212,7 @@ public static void main(String[] args) {
 </li>
 </ol>
 <p>可以看见，两个线程都混杂在一起，谁也不能影响到谁的变量i，这是以继承的方式。</p>
-<h2 id="Runnable"><a href="#Runnable" class="headerlink" title="Runnable"></a>Runnable</h2><p>Runnable的创建线程的方式：</p>
+<h2 id="Runnable"><a href="#Runnable" class="headerlink" title="Runnable"></a>Runnable</h2><p>Runnable的定义可以理解为该方法的反型封装，即它执行能做的事情。Runnable的创建线程的方式：</p>
 <ol>
 <li>需要一个实现Runnable的类，并实现其中的run()方法</li>
 <li>创建这个类的实例，作为参数创建一个新的Thread对象</li>
@@ -281,15 +281,14 @@ public static void main(String[] args) {
 </code></pre><p>所以如果用像前面Runnable那样用一个target创建两个线程的话，第二个线程将会在执行线程体之前就挂掉。</p>
 <h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><p>线程池Java5在之前只能自己手动去创建，现在已经有了多种方法如Executors工厂，ForkJoinPool，在这里先写Executors工厂类吧，利用线程池的方式：</p>
 <ol>
-<li>先调用Executors静态工厂方法创建一个ExecutorService或ScheduledExecutorService线程池对象</li>
+<li>先调用Executors静态工厂方法创建一个ExecutorService或ScheduledExecutorService线程池对象（创建时可传入ThreadFactory来进行规定创建线程，下面CacheThreadPool会有例子）</li>
 <li>创建Runnable/Callable实例，利用线程池对象的execute()和submit()或者schedule()来传入线程池并执行（callable必须用submit())</li>
 <li>当任务完成后，执行shutdown()来关闭线程池</li>
 </ol>
-<p>关于第一点：</p>
 <blockquote>
-<p>其中newCacheThreadPool(), newFixedThreadPool(int nThreads), newSingleThreadExecutor()是ExecutorService对象，而newScheduledThreadPool(int corePoolSize), newSingleScheduledThreadPool()为ScheduledExecutorService对象</p>
+<p>其中newCacheThreadPool(), newFixedThreadPool(int nThreads), newSingleThreadExecutor()是ExecutorService对象，而newScheduledThreadPool(int corePoolSize), newSingleScheduledThreadPool()为ScheduledExecutorService对象，下面我会为前三个常用的做简单的例子。</p>
 </blockquote>
-<p>做一个简单的例子：</p>
+<p>###<strong>FixedThreadPool</strong>：</p>
 <pre><code>    public class PoolTest {
         static class PoolRunnable implements Runnable{
             private int i;
@@ -316,7 +315,7 @@ public static void main(String[] args) {
 <blockquote>
 <p>CachedThreadPool在程序执行过程中通常会创建与所需数量相同的线程，然后在它回收旧线程的时候停止创建新线程，因此它是合理的Executor首选。只有在这种方式会引发问题的时候，才需要用到FixedThreadPool。<br>FixedThreadPool可以一次性预先执行代价高昂的线程分配，然后限制现成的数量不用每个任务都要付出创建线程的开销，直接从池中获取线程，且不会滥用可获得的资源。<br>SingleThreadExecutor就像是数量为1的FixedThreadPool，如果向它提交了多个任务，这些任务都将排队，所有任务将使用同一个进程。（但还是有区别，他提供了一种重要的并发保证，保证不会有两个线程被并发调用）</p>
 </blockquote>
-<p>对于SingleThreadExecutord的话再写一个例子吧，这也是书上的一道题：</p>
+<p>###<strong>SingleThreadExecutord</strong>：</p>
 <pre><code>public class PoolTest2 {
     static class PoolRunnable2 implements Runnable{
         public void run() {
@@ -345,6 +344,68 @@ public static void main(String[] args) {
 <p>我是pool-1-thread-1, 我先睡6秒<br>pool-1-thread-1已经溜了<br>我是pool-1-thread-1, 我先睡6秒<br>pool-1-thread-1已经溜了<br>我是pool-1-thread-1, 我先睡7秒<br>pool-1-thread-1已经溜了<br>我是pool-1-thread-1, 我先睡6秒<br>pool-1-thread-1已经溜了<br>我是pool-1-thread-1, 我先睡5秒<br>pool-1-thread-1已经溜了</p>
 </blockquote>
 <p>可见该线程池中始终只有一个线程，一直使用的也是那一个线程。</p>
+<p>###<strong>CacheThreadPool</strong><br>在利用线程池创建线程的时候我们很容易发现，几种创建线程池的方式都可以传入类型为ThreadFactory的参数，实际上线程池默认会有一个ThreadFactory的成员属性，当我们不传这个参数时默认为Executors.defaultThreadFactory()，里面包含了他所规定的创建线程时的操作：</p>
+<pre><code>    static class DefaultThreadFactory implements ThreadFactory {
+        private static final AtomicInteger poolNumber = new AtomicInteger(1);
+        private final ThreadGroup group;
+        private final AtomicInteger threadNumber = new AtomicInteger(1);
+        private final String namePrefix;
+
+        DefaultThreadFactory() {
+            SecurityManager s = System.getSecurityManager();
+            group = (s != null) ? s.getThreadGroup() :
+                                  Thread.currentThread().getThreadGroup();
+            namePrefix = &quot;pool-&quot; +
+                          poolNumber.getAndIncrement() +
+                         &quot;-thread-&quot;;
+        }
+
+        public Thread newThread(Runnable r) {
+            Thread t = new Thread(group, r,
+                                  namePrefix + threadNumber.getAndIncrement(),
+                                  0);
+            if (t.isDaemon())
+                t.setDaemon(false);
+            if (t.getPriority() != Thread.NORM_PRIORITY)
+                t.setPriority(Thread.NORM_PRIORITY);
+            return t;
+        }
+    }
+</code></pre><p>那么我们实际上也可以定义一个自己的ThreadFactory来<strong>定义线程池在创建线程时候的操作（这就是ThreadFactory的作用）</strong>。<br>在这里既然讲到了ThreadFactory，那么也顺带讲一讲线程的异常捕获吧。线程的异常由于线程的本质特性，使得不能捕获到线程中逃逸的异常（你大可以尝试在run中抛出一个异常，然后在main中尝试去捕获它），在Java SE5以前只能使用线程组进行捕获<del>（而线程组已被Sun公司的架构师表示——“最好把线程组看成是一次不成功的尝试，你只要忽略它就行了”）</del>，而Java SE5线程池的出现已经能完美的解决这一问题。<br>我们通过前面所提到的ThreadFactory能修改线程池生产线程的方式——在生产时候为每个Thread对象附上一个异常处理器UncaughtExceptionHandler，那么在抛出异常的时候便会通过处理器进行捕获处理：</p>
+<pre><code>public class PoolTest3 {
+    static class ExecptionThread implements Runnable{
+        @Override
+        public void run() {
+            throw new RuntimeException();
+        }
+    }
+
+    static class EHThreadFactory implements ThreadFactory{
+
+        @Override
+        public Thread newThread(Runnable r) {
+            Thread t = new Thread(r);
+            t.setUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
+                @Override
+                public void uncaughtException(Thread t, Throwable e) {
+                    System.out.println(&quot;catch &quot; + e);
+                }
+            });//你也可以创建一个类继承于Thread.UncaughtExceptionHandler来进行使用而不使用匿名类
+            return t;
+        }
+    }
+
+    public static void main(String[] args) {
+        ExecutorService executorService = Executors.newCachedThreadPool(new EHThreadFactory());
+        executorService.execute(new ExecptionThread());
+        executorService.shutdown();
+    }
+}
+</code></pre><p>效果如下</p>
+<blockquote>
+<p>catch java.lang.RuntimeException</p>
+</blockquote>
+<p>你甚至可以调用静态设置Thread.setDefaultUncaughtExceptionHandler()来让所有没有设置未捕获异常处理器的线程调用默认的未捕获异常处理器。</p>
 <h2 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h2><p>用Thread的方式创建多线程的优势：</p>
 <p><strong>编程简单，像获得当前线程直接通过实例的方法即可。</strong></p>
 <p>用实现Runnable的方式创建多线程的优势：</p>
@@ -352,7 +413,7 @@ public static void main(String[] args) {
 <p>用实现Callable的方式创建多线程的优势：</p>
 <p> <strong>1.能继承与实现更多的类</strong><br> <strong>2.能捕获异常进行处理</strong><br> <strong>3.能获得线程执行的返回值，在编程上能有更多空间</strong></p>
 <p>用线程池的方式的优势：</p>
-<p><strong>1.target通过submit()或schedule()传入线程池后，线程池会启用一个线程来执行target里的run()或call(),但执行结束后不会死亡，将进入空闲状态保留在线程池中，等待下一个target时使用。这样在创建大量的短暂线程的时候可以不用浪费资源重新创建，直接从线程池中使用。</strong><br><strong>2.可以通过控制线程池的最大线程数来控制系统并发线程数，防止线程创建过多导致的JVM崩溃</strong><br><strong>3.利用ScheduledExecutorService能指定延迟或周期性的执行线程任务</strong><br><strong>4.集合Runnable和Callable的优点——能共享资源，能处理返回值等</strong></p>
+<p><strong>1.target通过submit()或schedule()传入线程池后，线程池会启用一个线程来执行target里的run()或call(),但执行结束后不会死亡，将进入空闲状态保留在线程池中，等待下一个target时使用。这样在创建大量的短暂线程的时候可以不用浪费资源重新创建，直接从线程池中使用。</strong><br><strong>2.可以通过控制线程池的最大线程数来控制系统并发线程数，防止线程创建过多导致的JVM崩溃</strong><br><strong>3.利用ScheduledExecutorService能指定延迟或周期性的执行线程任务</strong><br><strong>4.集合Runnable和Callable的优点——能共享资源，能处理返回值等</strong><br><strong>5.使用Executor能明显感到线程与任务是不同的概念，因为它甚至替你创建与管理线程，当然你也可以通过ThreadFactory来自定义线程池中线程的创建方式</strong></p>
 <hr>
 <p><em>本篇还未更新完，下一篇会写线程的控制相关</em></p>
 
@@ -374,7 +435,7 @@ public static void main(String[] args) {
                         <span class="reprint-tip">Reprint please specify: </span>
                         <a href="https://chitoseyono.com" class="b-link-green">White Noise -Chitose Yono Offical Blog-</a>
                         <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                        <a href="/2018/10/21/thread/" class="b-link-green">Java线程㈠——线程的介绍与创建</a>
+                        <a href="/2018/10/21/thread/" class="b-link-green">Java线程（一）——线程的介绍与创建</a>
                     </p>
                 </div>
             </div>
@@ -417,15 +478,15 @@ gitment.render('gitment-content');
                 <a href="/2018/10/21/thread/">
                     <div class="card-image">
                         
-                        <img src="/medias/images/thread.jpg" class="responsive-img" alt="Java线程㈠——线程的介绍与创建">
+                        <img src="/medias/images/thread.jpg" class="responsive-img" alt="Java线程（一）——线程的介绍与创建">
                         
-                        <span class="card-title">Java线程㈠——线程的介绍与创建</span>
+                        <span class="card-title">Java线程（一）——线程的介绍与创建</span>
                     </div>
 
                     <div class="card-content article-content">
-                        <div class="summary"> 10.28已更新：Executor线程池这一篇作为Java线程系列的开篇吧，简单的介绍一下线程和线程的创建方式。
+                        <div class="summary"> 10.29已更新：ThreadFactory这一篇作为Java线程系列的开篇吧，简单的介绍一下线程和线程的创建方式。
 
-线程简介先放一张随处可见的线程状态转换图：所以啥是线程？平时我们用的程序他运行起来了，他就叫进程（运行中的程序），是一个动</div>
+线程简介先放一张随处可见的线程状态转换图：所以啥是线程？平时我们用的程序他运行起来了，他就叫进程（运行中的程序），是一</div>
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-calendar fa-fw"></i>2018-10-21
