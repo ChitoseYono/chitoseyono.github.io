@@ -1,0 +1,543 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw,en,default">
+<head>
+    <head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="java | android | music | art | emotion | Chitose Yono | vomit machine, hexo-theme-matery">
+    <meta name="description" content="我所追寻的自己，可能不存在梦里">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>White Noise -Chitose Yono Offical Blog-</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span"></span>
+                    </a>
+                </div>
+
+                <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">Index</a>
+    </li>
+    
+    
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">Tags</a>
+    </li>
+    
+    
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">Archives</a>
+    </li>
+    
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/sublogo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">White Noise</div>
+        <div class="logo-desc">
+            
+            我所追寻的自己，可能不存在梦里
+            
+        </div>
+    </div>
+    <ul class="menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                <i class="fa fa-link fa-lg fa-fw"></i>Index
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                <i class="fa fa-link fa-lg fa-fw"></i>Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                <i class="fa fa-link fa-lg fa-fw"></i>Archives
+            </a>
+        </li>
+        
+    </ul>
+    <div class="social-link">
+        <a href="https://github.com/chitoseyono" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub"
+           data-position="top" data-delay="50">
+            <i class="fa fa-github fa-lg"></i>
+        </a>
+        <a href="mailto:chitoseyono@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我"
+           data-position="top" data-delay="50">
+            <i class="fa fa-envelope fa-lg"></i>
+        </a>
+        <a href="https://weibo.com/2818513061/profile" class="tooltipped" data-tooltip="访问我的微博"
+           data-position="top" data-delay="50">
+            <i class="fa fa-weibo fa-lg"></i>
+        </a>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/images/http.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        <font size="6">HttpURLConnection和HttpClient简单上手</font>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="content">
+
+    <!-- 目录内容 -->
+    
+        <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none"></p>
+        </p>
+        <div id="toc-article" class="toc-article">
+            <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+            <strong class="toc-title">Navigator</strong>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HttpURLConnection"><span class="toc-number">2.</span> <span class="toc-text">HttpURLConnection</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单GET请求"><span class="toc-number">2.1.</span> <span class="toc-text">简单GET请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进行上传文件"><span class="toc-number">2.2.</span> <span class="toc-text">进行上传文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HttpClient"><span class="toc-number">3.</span> <span class="toc-text">HttpClient</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Maven"><span class="toc-number">3.1.</span> <span class="toc-text">Maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gradle"><span class="toc-number">3.2.</span> <span class="toc-text">Gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#简单的GET请求"><span class="toc-number">3.3.</span> <span class="toc-text">简单的GET请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#简单的POST请求"><span class="toc-number">3.4.</span> <span class="toc-text">简单的POST请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件上传"><span class="toc-number">3.5.</span> <span class="toc-text">文件上传</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小结"><span class="toc-number">4.</span> <span class="toc-text">小结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-number">5.</span> <span class="toc-text">参考链接</span></a></li></ol>
+       </div>
+       <script type="text/javascript">
+        function showToc(){
+            var toc_article = document.getElementById("toc-article");
+            var show_toc_btn = document.getElementById("show-toc-btn");
+            toc_article.setAttribute("style","display:block");
+            show_toc_btn.setAttribute("style","display:none");
+            };
+        function showBtn(){
+            var toc_article = document.getElementById("toc-article");
+            var show_toc_btn = document.getElementById("show-toc-btn");
+            toc_article.setAttribute("style","display:none");
+            show_toc_btn.setAttribute("style","display:block");
+            };
+       </script>
+         
+
+    <!-- 文章内容详情 -->
+    <div id="artDetail" class="container">
+        <div class="card">
+            <div class="card-content article-info">
+                
+                <div class="article-tag">
+                    
+                    <a href="https://chitoseyono.com/tags/Java/" target="_blank"><span class="chip bg-color">Java</span></a>
+                    
+                </div>
+                
+                <div class="author-info">
+                    <span>
+                        <i class="fa fa-calendar fa-fw"></i>2018-09-28
+                    </span>
+                </div>
+            </div>
+            <hr>
+            <div class="card-content article-card-content">
+                <div id="articleContent">
+                    <script src="/assets/js/APlayer.min.js"> </script><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;最近做项目过程中要搞HTTP请求的时候总是只能用以前写好的URLUtil，略是僵硬，想起之前做安卓有用过okhttp和httpclient，试着在Java里用一用并对比一下他们的效果吧。本章代码已上传<a href="https://github.com/ChitoseYono/HttpUtil" target="_blank" rel="noopener">github</a>。</p>
+<hr>
+<h2 id="HttpURLConnection"><a href="#HttpURLConnection" class="headerlink" title="HttpURLConnection"></a>HttpURLConnection</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;原生Java自带的http请求方式，抽象类URLConnection是表示应用程序和URL之间的通信链接的所有类的超类。 该类的实例可以用于从URL引用的资源中读取和写入。而HttpURLConnection是最常用于进行Http链接的他的子类。<br>请求方式一般步骤（参考JDK文档）：</p>
+<ol>
+<li>通过在URL上调用openConnection方法创建连接对象。</li>
+<li>设置参数和一般请求属性。 </li>
+<li>使用connect方法实现与远程对象的实际连接。</li>
+<li>远程对象变得可用。 可以访问头字段和远程对象的内容。</li>
+</ol>
+<h3 id="简单GET请求"><a href="#简单GET请求" class="headerlink" title="简单GET请求"></a>简单GET请求</h3><pre><code>public String getByConnection(String str) throws IOException {
+    //1.创建连接
+    URL url = new URL(str);
+    HttpURLConnection httpConn = (HttpURLConnection)url.openConnection();
+    //2.设置参数
+    httpConn.setRequestMethod(&quot;GET&quot;);       //请求类型
+    httpConn.setRequestProperty( &quot;Content-Type&quot;, &quot;text/html;charset=UTF-8&quot; );  //请求属性
+    httpConn.setConnectTimeout(100000);     //连接超时时间
+    httpConn.setReadTimeout(100000);        //读取超时时间
+    httpConn.setDoInput(true);              //是否读入
+    httpConn.setDoOutput(true);             //是否输出
+    httpConn.setUseCaches(true);            //是否使用缓存
+    //3.连接
+    httpConn.connect();                     //其实会调用所以不必要用connect()
+    //4.访问连接内容
+    BufferedReader reader = new BufferedReader(new InputStreamReader(httpConn.getInputStream()));
+    String line;
+    StringBuffer buffer = new StringBuffer();
+    while ((line = reader.readLine()) != null) {
+        buffer.append(line);
+    }
+    reader.close();
+    httpConn.disconnect();
+    return buffer.toString();
+}
+</code></pre><h3 id="进行上传文件"><a href="#进行上传文件" class="headerlink" title="进行上传文件"></a>进行上传文件</h3><p>之所以不写Post原因是上传文件实际上就是一种特殊的POST，只是比简单的POST要多上不少东西，对于简单的POST可以只是向连接的OutputStream中写入键值对便可以了（跟get没什么区别的话也没太多必要用POST)。</p>
+<p>首先由于HttpURLConnection的局限性（他只是一个抽象类，没有什么特别的集成），对于上传文件这类”multipart/form-data”类型的请求类型只能由我们手动拼接Header <del>（我来组成头部！）</del>，所以在说如何用HttpURLConnection进行上传文件前先说说上传时的Header：</p>
+<p>可见在这用POST上传图片实际上就是模拟表单上传，而这时需要有拼接请求体：<br><img src="/2018/09/28/http-easy/images/header.png" alt="Http Header"></p>
+<ol>
+<li>请求体中需要先以”—–一串随机数字(代码中用的是UUID的随机序列)\r\n(\r\n的作用是换行)”来上下分隔。所以在前后都要加上boundary</li>
+<li>然后写入Content-Disposition:form-data;name=”<strong>(此处需要与服务器约定)</strong>“;filename=”<strong>文件名</strong>“;</li>
+<li>通过InputStream写入HttpURLConnection的OutputStream中。</li>
+<li>最后以”—–那一串数字–\r\n”结尾。</li>
+</ol>
+<pre><code>public String uploadByConnection(String str) throws IOException{
+    //1.创建连接
+    URL url = new URL(str);
+    HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
+    //2.设置参数
+    String Boundary = UUID.randomUUID().toString();     //请求边界
+    httpConn.setRequestMethod(&quot;POST&quot;);                  //请求类型
+    httpConn.setRequestProperty(&quot;Charset&quot;, &quot;utf-8&quot;);    //请求属性
+    httpConn.setRequestProperty( &quot;Content-Type&quot;, &quot;multipart/form-data; boundary=&quot;+Boundary ); //请求属性
+    httpConn.setConnectTimeout(100000);     //连接超时时间
+    httpConn.setReadTimeout(100000);        //读取超时时间
+    httpConn.setDoInput(true);              //是否读入
+    httpConn.setDoOutput(true);             //是否输出
+    httpConn.setUseCaches(true);            //是否使用缓存
+    //3.HTTP请求体
+    DataOutputStream out = new DataOutputStream(httpConn.getOutputStream());
+    out.writeUTF(&quot;Content-Disposition: form-data; name=\&quot;user_upload_icon\&quot;;filename=\&quot;foo.jpg\&quot;\r\n\r\n&quot;);
+    InputStream in = new FileInputStream(&quot;src/foo.jpg&quot;);
+    byte[] b = new byte[1024];
+    int l = 0;
+    while((l = in.read(b)) != -1) out.write(b,0,l); // 写入文件
+    out.writeUTF(&quot;\r\n--&quot;+Boundary+&quot;--\r\n&quot;);
+    out.flush();
+    out.close();
+    in.close();
+    //4.获取响应信息
+    BufferedReader reader = new BufferedReader(new InputStreamReader(httpConn.getInputStream()));
+    String line;
+    StringBuffer buffer = new StringBuffer();
+    while ((line = reader.readLine()) != null) {
+        buffer.append(line);
+    }
+    reader.close();
+    httpConn.disconnect();
+    return buffer.toString();
+}
+</code></pre><hr>
+<h2 id="HttpClient"><a href="#HttpClient" class="headerlink" title="HttpClient"></a>HttpClient</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;作为Apache下手开发的工具包，使用起来比JDK自带的更为轻松和简单，实现的功能也更多。<br>HttpCLient最关键的方法是执行HTTP请求的方法execute。只要把HTTP请求传入，就可以得到HTTP响应。<br>使用HttpClient请求一个Http请求的步骤为：</p>
+<ol>
+<li>创建一个HttpClient对象</li>
+<li>创建一个Request对象</li>
+<li>使用HttpClient来执行Request请求，得到对方的response</li>
+<li>处理response</li>
+<li>关闭HttpClient</li>
+</ol>
+<h3 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h3><pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.httpcomponents&lt;/groupId&gt;
+  &lt;artifactId&gt;httpclient&lt;/artifactId&gt;
+  &lt;version&gt;4.5.6&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.httpcomponents&lt;/groupId&gt;
+    &lt;artifactId&gt;httpmime&lt;/artifactId&gt;
+    &lt;version&gt;4.5&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h3 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h3><pre><code>compile &#39;org.apache.httpcomponents:httpclient:4.5.6&#39;
+</code></pre><h3 id="简单的GET请求"><a href="#简单的GET请求" class="headerlink" title="简单的GET请求"></a>简单的GET请求</h3><pre><code>public String getByClient(String str) throws IOException {
+    CloseableHttpClient client = HttpClients.createDefault();       //创建HttpClient对象
+    RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(1000).build();   //可以对请求进行各种配置
+    HttpGet httpGet = new HttpGet(str);                             //创建Get请求
+    httpGet.setConfig(requestConfig);                               //设置配置
+    CloseableHttpResponse response = client.execute(httpGet);       //通过Client执行请求
+    String result = EntityUtils.toString(response.getEntity());     //处理获得的Http实体
+    response.close();                                               //关闭各种资源
+    client.close();
+    return result;
+}
+</code></pre><p>&nbsp;&nbsp;&nbsp;&nbsp;这绝对是肉眼可见的代码量减少，而且步骤十分清晰。值得一提的是，HttpClient以前的构建方式已经废弃，不能使用了：<br><del>HttpClinet client = new HttpClient();</del></p>
+<h3 id="简单的POST请求"><a href="#简单的POST请求" class="headerlink" title="简单的POST请求"></a>简单的POST请求</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;对于Post请求HttpClient巧妙的设计了HttpEntity类，以它来实现Http请求时的请求体，而且可以以多种方式创建，以便实现各种Post请求如表格，文件等，简单Post请求则可以用简单键值对来创建。</p>
+<pre><code>public static String postByClient(String str, String phone, String password) throws IOException{
+    CloseableHttpClient client = HttpClients.createDefault();       //创建HttpClient对象
+    RequestConfig requestConfig = RequestConfig.custom().           //对请求进行各种配置
+            setConnectTimeout(1000).setConnectionRequestTimeout(1000)
+            .setSocketTimeout(1000).setRedirectsEnabled(true).build();
+    List&lt;BasicNameValuePair&gt; list = new ArrayList&lt;BasicNameValuePair&gt;();    //以列表形式创建Post的键值对信息
+    list.add(new BasicNameValuePair(&quot;phone&quot;,phone));
+    list.add(new BasicNameValuePair(&quot;password&quot;, password));
+    UrlEncodedFormEntity entity = new UrlEncodedFormEntity(list,&quot;utf-8&quot;);   //用列表创建表格编码实体
+    HttpPost httpPost = new HttpPost(str);                          //创建Post请求
+    httpPost.setConfig(requestConfig);                              //设置配置
+    httpPost.setEntity(entity);                                     //设置实体信息
+    CloseableHttpResponse response = client.execute(httpPost);      //执行post请求
+    String result = EntityUtils.toString(response.getEntity());     //处理获得的Http实体
+    response.close();                                               //关闭各种资源
+    client.close();
+    return result;
+}
+</code></pre><h3 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;对于Post请求上传文件可以利用MultipartEntityBuilder来进行Http请求体的创建，利用addPart(key,body)的形式可以对多形式的value进行记入。</p>
+<pre><code>public static String uploadByClient(String str) throws IOException{
+    CloseableHttpClient client = HttpClients.createDefault();       //创建HttpClient对象
+    RequestConfig requestConfig = RequestConfig.custom().           //对请求进行各种配置
+            setConnectTimeout(1000).setConnectionRequestTimeout(1000)
+            .setSocketTimeout(1000).setRedirectsEnabled(true).build();
+    FileBody body = new FileBody(new File(&quot;src/foo.jpg&quot;), ContentType.MULTIPART_FORM_DATA);
+    HttpEntity entity = MultipartEntityBuilder.create().addPart(&quot;user_upload_icon&quot;,body).build();   //直接用MultipartEntityBuilder创建HTTP实体
+    HttpPost httpPost = new HttpPost(str);                          //创建Post请求
+    httpPost.setConfig(requestConfig);                              //设置配置
+    httpPost.setEntity(entity);                                     //设置实体信息
+    CloseableHttpResponse response = client.execute(httpPost);      //执行post请求
+    String result = EntityUtils.toString(response.getEntity());     //处理获得的Http实体
+    response.close();                                               //关闭各种资源
+    client.close();
+    return result;
+}
+</code></pre><hr>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;这次简单的说了一下HttpURLConnection和HttpClinet的get/post请求方式，而且也很明显比较可见HttpClient集成的东西，帮我们做到的东西。当然HttpClient可以做的事远远不止get/post请求，他还有各种强大的功能在背后，他的设计与效果是十分精湛的。可以参考下面的链接来看关于HttpClient的更多用法与解析。<br>&nbsp;&nbsp;&nbsp;&nbsp;除了HttpURLConnection和HttpClinet以外，还有许多的优秀网络框架，如okhttp，Volley等，在安卓端开发时备受好评。<del>(而且HttpClient在API 23后都不支持使用了）</del>当然像这样轻量级的框架在做简单请求操作的时候是完全足够的，对于其他的框架以后再看吧。</p>
+<hr>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a href="https://kb.cnblogs.com/page/92320/" target="_blank" rel="noopener">ABOUT HEADER</a></li>
+<li><a href="http://hc.apache.org/" target="_blank" rel="noopener">HTTPCLIENT</a></li>
+<li><a href="https://blog.csdn.net/u011179993/article/details/47147909" target="_blank" rel="noopener">HTTPCLIENT TUTORIALS</a></li>
+</ol>
+
+                </div>
+                <hr/>
+
+                <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone, qq, weibo, douban"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+                <div class="reprint">
+                    <p>
+                        <span class="reprint-tip">Reprint please specify: </span>
+                        <a href="https://chitoseyono.com" class="b-link-green">White Noise -Chitose Yono Offical Blog-</a>
+                        <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                        <a href="/2018/09/28/http-easy/" class="b-link-green">HttpURLConnection和HttpClient简单上手</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        
+        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
+<link rel="stylesheet" href="/css/gitment.css">
+
+<div class="gitment-card card" data-aos="fade-up">
+    <div id="gitment-content" class="card-content"></div>
+</div>
+
+<script src="/libs/gitment/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Fri Sep 28 2018 14:25:00 GMT+0800',
+    owner: 'ChitoseYono',
+    repo: 'chitoseyono.github.io',
+    oauth: {
+        client_id: '999f7c73059996845f36',
+        client_secret: '8c466460b56a73683ea40833c9d5dca6f530ce9c'
+    }
+});
+
+gitment.render('gitment-content');
+</script>
+        
+
+        
+
+        
+
+<article id="articles" class="container prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">Previous</div>
+            <div class="card">
+                <a href="/2018/09/28/white-noise/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/images/1.jpg" class="responsive-img" alt="Welcome to White Noise">
+                        
+                        <span class="card-title">Welcome to White Noise</span>
+                    </div>
+                    <div class="card-content article-content">
+                        <div class="summary">
+                             &nbsp;&nbsp;&nbsp;&nbsp;Welcome to White Noise - Chitose Yono Offical Blog! The website is still in constructing and af
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw"></i>2018-09-28
+                            </span>
+                            <span class="publish-author">
+                                <i class="fa fa-user fa-fw"></i>
+                                
+                                Chitose Yono
+                                
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="https://chitoseyono.com/tags/Test/"><span class="chip bg-color">Test</span></a>
+                        
+                    </div>
+                    
+                </a>
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">Current</div>
+            <div class="card">
+                <a href="/2018/09/28/http-easy/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/images/http.jpg" class="responsive-img" alt="HttpURLConnection和HttpClient简单上手">
+                        
+                        <span class="card-title">HttpURLConnection和HttpClient简单上手</span>
+                    </div>
+
+                    <div class="card-content article-content">
+                        <div class="summary"> 前言&nbsp;&nbsp;&nbsp;&nbsp;最近做项目过程中要搞HTTP请求的时候总是只能用以前写好的URLUtil，略是僵硬，想起之前做安卓有用过okhttp和httpclient，试着在Java里用一用并对比一下他们的效果吧。</div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw"></i>2018-09-28
+                            </span>
+                            <span class="publish-author">
+                                <i class="fa fa-user fa-fw"></i>
+                                
+                                Chitose Yono
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="https://chitoseyono.com/tags/Java/"><span class="chip bg-color">Java</span></a>
+                        
+                    </div>
+                    
+                </a>
+            </div>
+        </div>
+        
+    </div>
+</article>
+    </div>
+</main>
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;<a href="http://chitoseyono.com" target="_blank">&nbsp;Chitose Yono</a>&nbsp;|
+            Published with <a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;|
+            Theme by <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>&nbsp;|
+            Visited <span id="busuanzi_value_site_pv"></span> times<br>
+            <font size="2" color="#36648B">粤ICP备18124328号</font>
+        </div>
+        <div class="col s12 m4 l4 social-link">
+            <a href="https://github.com/chitoseyono" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+                <i class="fa fa-github fa-lg"></i>
+            </a>
+            <a href="mailto:chitoseyono@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+                <i class="fa fa-envelope fa-lg"></i>
+            </a>
+            <a href="https://weibo.com/2818513061/profile" class="tooltipped" data-tooltip="访问我的Weibo" data-position="top" data-delay="50">
+                <i class="fa fa-weibo fa-lg"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title">Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input" autofocus="">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/js/music.js"></script>
+</body>
+</html>
