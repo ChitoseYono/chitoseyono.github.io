@@ -175,7 +175,7 @@
 <blockquote>
 <p>此处JMM定义的主内存可以说是Java内存区域划分中的：堆与方法区<br>而工作内存则是：程序计数器、虚拟机栈及本地方法栈</p>
 </blockquote>
-<p>图示为Java内存模型的操作：<br><img src="/2018/11/09/thread2/images/jmm.jpg" alt="JMM"></p>
+<p>图示为Java内存模型的操作：<br><img src="/2018/11/09/thread2/images/JMM.jpg" alt="JMM"></p>
 <p>图中也有看到一些操作在旁边，那八个就是同步八操作，引发同步问题的八个罪魁祸首。</p>
 <h3 id="同步八操作"><a href="#同步八操作" class="headerlink" title="同步八操作"></a>同步八操作</h3><p>lock(锁定)：作用于主内存，让主内存变量标示为某一线程的独占的状态。<br><em>当进行lock时会使工作内存中的该变量清空，在执行前需重新执行load和assign</em></p>
 <p>unlock(解锁)：作用于主内存，让主内存变量的独占状态解除，可以被其他线程锁定。<br>。<em>进行unlock必须先把该变量从之前锁定的线程的工作内存中同步到主内存</em></p>
