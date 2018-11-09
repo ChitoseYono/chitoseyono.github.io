@@ -1,0 +1,401 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw,en,default">
+<head>
+    <head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="java | android | music | art | emotion | Chitose Yono | vomit machine, hexo-theme-matery">
+    <meta name="description" content="我所追寻的自己，可能不存在梦里">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>White Noise -Chitose Yono Offical Blog-</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span"></span>
+                    </a>
+                </div>
+
+                <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">Index</a>
+    </li>
+    
+    
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">Tags</a>
+    </li>
+    
+    
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">Archives</a>
+    </li>
+    
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/sublogo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">White Noise</div>
+        <div class="logo-desc">
+            
+            我所追寻的自己，可能不存在梦里
+            
+        </div>
+    </div>
+    <ul class="menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                <i class="fa fa-link fa-lg fa-fw"></i>Index
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                <i class="fa fa-link fa-lg fa-fw"></i>Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                <i class="fa fa-link fa-lg fa-fw"></i>Archives
+            </a>
+        </li>
+        
+    </ul>
+    <div class="social-link">
+        <a href="https://github.com/chitoseyono" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub"
+           data-position="top" data-delay="50">
+            <i class="fa fa-github fa-lg"></i>
+        </a>
+        <a href="mailto:chitoseyono@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我"
+           data-position="top" data-delay="50">
+            <i class="fa fa-envelope fa-lg"></i>
+        </a>
+        <a href="https://weibo.com/2818513061/profile" class="tooltipped" data-tooltip="访问我的微博"
+           data-position="top" data-delay="50">
+            <i class="fa fa-weibo fa-lg"></i>
+        </a>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/images/thread_fuck.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        <font size="6">Java线程（二）——JMM与线程安全</font>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="content">
+
+    <!-- 目录内容 -->
+         
+
+    <!-- 文章内容详情 -->
+    <div id="artDetail" class="container">
+        <div class="card">
+            <div class="card-content article-info">
+                
+                <div class="article-tag">
+                    
+                    <a href="https://chitoseyono.com/tags/Thread/" target="_blank"><span class="chip bg-color">Thread</span></a>
+                    
+                    <a href="https://chitoseyono.com/tags/Java/" target="_blank"><span class="chip bg-color">Java</span></a>
+                    
+                </div>
+                
+                <div class="author-info">
+                    <span>
+                        <i class="fa fa-calendar fa-fw"></i>2018-11-09
+                    </span>
+                </div>
+            </div>
+            <hr>
+            <div class="card-content article-card-content">
+                <div id="articleContent">
+                    <script src="/assets/js/APlayer.min.js"> </script><p><em>11.9已更新，下一次更新三大性质对应的类</em><br><em>这一篇将涉及比较多底层知识，代码较少但都是干货。</em></p>
+<hr>
+<h2 id="Java的内存划分"><a href="#Java的内存划分" class="headerlink" title="Java的内存划分"></a><strong>Java的内存划分</strong></h2><p>这里可以参考另一位大大的<a href="https://blog.csdn.net/javazejian/article/details/72772461" target="_blank" rel="noopener">全面理解Java内存模型(JMM)</a></p>
+<h2 id="JMM-Java-Memory-Model"><a href="#JMM-Java-Memory-Model" class="headerlink" title="JMM (Java Memory Model)"></a><strong>JMM</strong> <em>(Java Memory Model)</em></h2><p>&nbsp;&nbsp;&nbsp;&nbsp;在讲线程安全之前必须提及Java内存模型，因为线程安全是与它息息相关的。<br>&nbsp;&nbsp;&nbsp;&nbsp;首先，JMM是一个抽象的规范，它本身不存在，通过JMM，JVM虚拟机可以屏蔽掉各种硬件或者操作系统的差异，规范了JVM如何与计算机内存协同工作的、线程之间共享资源的方式（如一个线程如何看到其他线程修改后的变量，同步访问共享变量等）。<br>&nbsp;&nbsp;&nbsp;&nbsp;Java内存模型规定了所有变量都存储在主内存，即主内存是任何线程都能访问到的。<br>&nbsp;&nbsp;&nbsp;&nbsp;JVM运行的单位（实体）实际上就是线程，每个线程创建时JVM都会为它分配一个私有的工作内存（不同线程间无法访问），用于存放该线程拥有的变量，当要一个线程要对变量进行写操作的时候，线程从主内存拷贝一份私有拷贝变量到工作内存，处理后在写回主内存。</p>
+<blockquote>
+<p>此处JMM定义的主内存可以说是Java内存区域划分中的：堆与方法区<br>而工作内存则是：程序计数器、虚拟机栈及本地方法栈</p>
+</blockquote>
+<p>图示为Java内存模型的操作：<br><img src="/2018/11/09/thread2/images/jmm.jpg" alt="JMM"></p>
+<p>图中也有看到一些操作在旁边，那八个就是同步八操作，引发同步问题的八个罪魁祸首。</p>
+<h3 id="同步八操作"><a href="#同步八操作" class="headerlink" title="同步八操作"></a>同步八操作</h3><p>lock(锁定)：作用于主内存，让主内存变量标示为某一线程的独占的状态。<br><em>当进行lock时会使工作内存中的该变量清空，在执行前需重新执行load和assign</em></p>
+<p>unlock(解锁)：作用于主内存，让主内存变量的独占状态解除，可以被其他线程锁定。<br>。<em>进行unlock必须先把该变量从之前锁定的线程的工作内存中同步到主内存</em></p>
+<p>read(读取)：作用于主内存的变量，把一个变量值从主内存读取到线程的工作内存中，以便于load的操作。<br><em>load与read不能单独出现！</em></p>
+<p>load(载入)：作用于工作内存的变量，把主内存read到的变量放入工作内存的变量副本中。<br><em>一个新变量是只能在主内存中诞生，不允许工作内存中用一个未被初始化的变量，即use和store之前必须有load和assign</em></p>
+<p>use(使用)：作用于工作内存的变量，将变量副本取出来到执行引擎中执行。</p>
+<p>assign(赋值)：作用于工作内存的变量，将执行引擎中收到的值赋予工作内存中的变量。<br><em>一个线程assign过的变量必须从工作内存写回主内存</em></p>
+<p>store(存储)：作用于工作内存的变量，将工作内存的变量存入主内存中，便于进行write操作。<br><em>store与write不能单独出现！</em></p>
+<p>write(写入)：作用于主内存的变量，把store的变量传到主内存的变量中。</p>
+<p>当在多线程环境进行这同步八操作的时候，就有可能引致线程安全问题。那什么是线程安全？</p>
+<h2 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;线程安全是指在拥有共享数据的多条线程并行执行的程序中，线程安全的代码会通过同步机制保证各个线程都可以正常且正确的执行，得到预期想要的效果，不会出现数据污染等意外情况。<br>&nbsp;&nbsp;&nbsp;&nbsp;而线程安全主要从三个方面来考察：原子性、可见性、有序性。</p>
+<ul>
+<li>原子性：指不可分割性，互斥访问（同一时刻只能有一个线程进行的操作）；</li>
+<li>可见性：指线程之间，一个线程对主内存修改的结果，另一个线程能马上正确的看到；</li>
+<li>有序性：一个线程观察其他线程的指令执行顺序，在必要的执行顺序错误则无序（CPU为提高速度而产生的乱序执行优化）。</li>
+</ul>
+
+                </div>
+                <hr/>
+
+                <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone, qq, weibo, douban"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+                <div class="reprint">
+                    <p>
+                        <span class="reprint-tip">Reprint please specify: </span>
+                        <a href="https://chitoseyono.com" class="b-link-green">White Noise -Chitose Yono Offical Blog-</a>
+                        <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                        <a href="/2018/11/09/thread2/" class="b-link-green">Java线程（二）——JMM与线程安全</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        
+        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
+<link rel="stylesheet" href="/css/gitment.css">
+
+<div class="gitment-card card" data-aos="fade-up">
+    <div id="gitment-content" class="card-content"></div>
+</div>
+
+<script src="/libs/gitment/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Fri Nov 09 2018 17:51:56 GMT+0800',
+    owner: 'ChitoseYono',
+    repo: 'chitoseyono.github.io',
+    oauth: {
+        client_id: '999f7c73059996845f36',
+        client_secret: '8c466460b56a73683ea40833c9d5dca6f530ce9c'
+    }
+});
+
+gitment.render('gitment-content');
+</script>
+        
+
+        
+
+        
+
+<article id="articles" class="container prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">Current</div>
+            <div class="card">
+                <a href="/2018/11/09/thread2/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/images/thread_fuck.jpg" class="responsive-img" alt="Java线程（二）——JMM与线程安全">
+                        
+                        <span class="card-title">Java线程（二）——JMM与线程安全</span>
+                    </div>
+
+                    <div class="card-content article-content">
+                        <div class="summary"> 11.9已更新，下一次更新三大性质对应的类这一篇将涉及比较多底层知识，代码较少但都是干货。
+
+Java的内存划分这里可以参考另一位大大的全面理解Java内存模型(JMM)
+JMM (Java Memory Model)&nbsp;&nbs</div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw"></i>2018-11-09
+                            </span>
+                            <span class="publish-author">
+                                <i class="fa fa-user fa-fw"></i>
+                                
+                                Chitose Yono
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="https://chitoseyono.com/tags/Thread/"><span class="chip bg-color">Thread</span></a>
+                        
+                        <a href="https://chitoseyono.com/tags/Java/"><span class="chip bg-color">Java</span></a>
+                        
+                    </div>
+                    
+                </a>
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">Next</div>
+            <div class="card">
+                <a href="/2018/10/21/thread/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/images/thread.jpg" class="responsive-img" alt="Java线程（一）——线程的介绍与创建">
+                        
+                        <span class="card-title">Java线程（一）——线程的介绍与创建</span>
+                    </div>
+                    <div class="card-content article-content">
+                        <div class="summary">
+                             11.9已更新：ThreadPoolExecutor，下一次会更新更多线程池这一篇作为Java线程系列的开篇吧，简单的介绍一下一些普遍的线程和线程的创建方式。
+
+线程简介先放一张随处可见的线程状态转换图：所以啥是线程？平时我们用的程序他运
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw"></i>2018-10-21
+                            </span>
+                            <span class="publish-author">
+                                <i class="fa fa-user fa-fw"></i>
+                                
+                                Chitose Yono
+                                
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="https://chitoseyono.com/tags/Thread/"><span class="chip bg-color">Thread</span></a>
+                        
+                        <a href="https://chitoseyono.com/tags/Java/"><span class="chip bg-color">Java</span></a>
+                        
+                    </div>
+                    
+                </a>
+            </div>
+        </div>
+        
+    </div>
+</article>
+    </div>
+</main>
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;<a href="http://chitoseyono.com" target="_blank">&nbsp;Chitose Yono</a>&nbsp;|
+            Published with <a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;|
+            Theme by <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>&nbsp;|
+            Visited <span id="busuanzi_value_site_pv"></span> times<br>
+            <font size="2" color="#36648B">粤ICP备18124328号</font>
+        </div>
+        <div class="col s12 m4 l4 social-link">
+            <a href="https://github.com/chitoseyono" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+                <i class="fa fa-github fa-lg"></i>
+            </a>
+            <a href="mailto:chitoseyono@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+                <i class="fa fa-envelope fa-lg"></i>
+            </a>
+            <a href="https://weibo.com/2818513061/profile" class="tooltipped" data-tooltip="访问我的Weibo" data-position="top" data-delay="50">
+                <i class="fa fa-weibo fa-lg"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title">Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input" autofocus="">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/js/music.js"></script>
+</body>
+</html>

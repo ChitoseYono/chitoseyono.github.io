@@ -133,7 +133,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        <font size="6">Java线程（二）——线程的介绍与创建</font>
+                        <font size="6">Java线程（一）——线程的介绍与创建</font>
                     </div>
                 </div>
             </div>
@@ -153,9 +153,9 @@
                 
                 <div class="article-tag">
                     
-                    <a href="https://chitoseyono.com/tags/Java/" target="_blank"><span class="chip bg-color">Java</span></a>
-                    
                     <a href="https://chitoseyono.com/tags/Thread/" target="_blank"><span class="chip bg-color">Thread</span></a>
+                    
+                    <a href="https://chitoseyono.com/tags/Java/" target="_blank"><span class="chip bg-color">Java</span></a>
                     
                 </div>
                 
@@ -168,7 +168,7 @@
             <hr>
             <div class="card-content article-card-content">
                 <div id="articleContent">
-                    <script src="/assets/js/APlayer.min.js"> </script><p><em>11.9已更新：ThreadPoolExecutor</em><br><em>这一篇作为Java线程系列的开篇吧，简单的介绍一下一些普遍的线程和线程的创建方式。</em></p>
+                    <script src="/assets/js/APlayer.min.js"> </script><p><em>11.9已更新：ThreadPoolExecutor，下一次会更新更多线程池</em><br><em>这一篇作为Java线程系列的开篇吧，简单的介绍一下一些普遍的线程和线程的创建方式。</em></p>
 <hr>
 <h1 id="线程简介"><a href="#线程简介" class="headerlink" title="线程简介"></a>线程简介</h1><p>先放一张随处可见的线程状态转换图：<br><img src="/2018/10/21/thread/images/status.jpg" alt="Thread status"><br>所以啥是线程？<br>平时我们用的程序他运行起来了，他就叫进程（运行中的程序），是一个动态的概念，<br>而进程内部可能包含很多顺序执行任务，那这每一个任务就是一个线程。<br>进程和线程很类似，但又区别很大：</p>
 <p>相同点：</p>
@@ -421,8 +421,6 @@ public static void main(String[] args) {
 <p> <strong>1.能继承与实现更多的类</strong><br> <strong>2.能捕获异常进行处理</strong><br> <strong>3.能获得线程执行的返回值，在编程上能有更多空间</strong></p>
 <p>用线程池的方式的优势：</p>
 <p><strong>1.target通过submit()或schedule()传入线程池后，线程池会启用一个线程来执行target里的run()或call(),但执行结束后不会死亡，将进入空闲状态保留在线程池中，等待下一个target时使用。这样在创建大量的短暂线程的时候可以不用像Thraed那样用一个创建一个，性能差又浪费资源，直接从线程池中使用。</strong><br><strong>2.可以通过控制线程池的最大线程数来控制系统并发线程数，统一管理线程，防止线程创建过多占用过多系统资源而导致的JVM崩溃，也避免的资源竞争</strong><br><strong>3.利用ScheduledExecutorService能指定延迟或周期性的执行线程任务</strong><br><strong>4.集合Runnable和Callable的优点——能共享资源，能处理返回值等</strong><br><strong>5.使用Executor能明显感到线程与任务是不同的概念，因为它甚至替你创建与管理线程，他将用户提交与运行分离开来，当然你也可以通过ThreadFactory来自定义线程池中线程的创建方式</strong></p>
-<hr>
-<p><em>本篇还未更新完，下一篇会写线程的控制相关</em></p>
 
                 </div>
                 <hr/>
@@ -442,7 +440,7 @@ public static void main(String[] args) {
                         <span class="reprint-tip">Reprint please specify: </span>
                         <a href="https://chitoseyono.com" class="b-link-green">White Noise -Chitose Yono Offical Blog-</a>
                         <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                        <a href="/2018/10/21/thread/" class="b-link-green">Java线程（二）——线程的介绍与创建</a>
+                        <a href="/2018/10/21/thread/" class="b-link-green">Java线程（一）——线程的介绍与创建</a>
                     </p>
                 </div>
             </div>
@@ -479,24 +477,26 @@ gitment.render('gitment-content');
 <article id="articles" class="container prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">Current</div>
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">Previous</div>
             <div class="card">
-                <a href="/2018/10/21/thread/">
+                <a href="/2018/11/09/thread2/">
                     <div class="card-image">
                         
-                        <img src="/medias/images/thread.jpg" class="responsive-img" alt="Java线程（二）——线程的介绍与创建">
+                        <img src="/medias/images/thread_fuck.jpg" class="responsive-img" alt="Java线程（二）——JMM与线程安全">
                         
-                        <span class="card-title">Java线程（二）——线程的介绍与创建</span>
+                        <span class="card-title">Java线程（二）——JMM与线程安全</span>
                     </div>
-
                     <div class="card-content article-content">
-                        <div class="summary"> 11.9已更新：ThreadPoolExecutor这一篇作为Java线程系列的开篇吧，简单的介绍一下一些普遍的线程和线程的创建方式。
+                        <div class="summary">
+                             11.9已更新，下一次更新三大性质对应的类这一篇将涉及比较多底层知识，代码较少但都是干货。
 
-线程简介先放一张随处可见的线程状态转换图：所以啥是线程？平时我们用的程序他运行起来了，他就叫进程（运</div>
+Java的内存划分这里可以参考另一位大大的全面理解Java内存模型(JMM)
+JMM (Java Memory Model)&nbsp;&nbs
+                        </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-calendar fa-fw"></i>2018-10-21
+                                <i class="fa fa-calendar fa-fw"></i>2018-11-09
                             </span>
                             <span class="publish-author">
                                 <i class="fa fa-user fa-fw"></i>
@@ -506,13 +506,12 @@ gitment.render('gitment-content');
                             </span>
                         </div>
                     </div>
-
                     
                     <div class="card-action article-tags">
                         
-                        <a href="https://chitoseyono.com/tags/Java/"><span class="chip bg-color">Java</span></a>
-                        
                         <a href="https://chitoseyono.com/tags/Thread/"><span class="chip bg-color">Thread</span></a>
+                        
+                        <a href="https://chitoseyono.com/tags/Java/"><span class="chip bg-color">Java</span></a>
                         
                     </div>
                     
@@ -524,20 +523,20 @@ gitment.render('gitment-content');
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">Next</div>
             <div class="card">
-                <a href="/2018/10/14/http-easy/">
+                <a href="/2018/10/05/gson/">
                     <div class="card-image">
                         
-                        <img src="/medias/images/http.jpg" class="responsive-img" alt="HttpURLConnection和HttpClient简单上手">
+                        <img src="/medias/images/json.jpg" class="responsive-img" alt="Json和Gson的介绍与简单使用">
                         
-                        <span class="card-title">HttpURLConnection和HttpClient简单上手</span>
+                        <span class="card-title">Json和Gson的介绍与简单使用</span>
                     </div>
                     <div class="card-content article-content">
                         <div class="summary">
-                             &nbsp;&nbsp;&nbsp;&nbsp;最近做项目过程中要搞HTTP请求的时候总是只能用以前写好的URLUtil，略是僵硬，想起之前做安卓有用过okhttp和httpclient，试着在Java里用一用并对比一下他们的效果吧。本章
+                             &nbsp;&nbsp;&nbsp;&nbsp;JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式，易于人阅读和编写，同时也易于机器解析和生成，广泛应用于各种数据的交互中，尤其是服务器与客户端的交
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-calendar fa-fw"></i>2018-10-14
+                                <i class="fa fa-calendar fa-fw"></i>2018-10-05
                             </span>
                             <span class="publish-author">
                                 <i class="fa fa-user fa-fw"></i>
@@ -550,9 +549,7 @@ gitment.render('gitment-content');
                     
                     <div class="card-action article-tags">
                         
-                        <a href="https://chitoseyono.com/tags/Java/"><span class="chip bg-color">Java</span></a>
-                        
-                        <a href="https://chitoseyono.com/tags/Http/"><span class="chip bg-color">Http</span></a>
+                        <a href="https://chitoseyono.com/tags/Json/"><span class="chip bg-color">Json</span></a>
                         
                     </div>
                     
