@@ -170,7 +170,7 @@
                 <div id="articleContent">
                     <script src="/assets/js/APlayer.min.js"> </script><p><em>这一篇将涉及比较多底层知识，代码较少但都是干货。</em></p>
 <hr>
-<h2 id="JMM-Java-Memory-Model"><a href="#JMM-Java-Memory-Model" class="headerlink" title="JMM (Java Memory Model)"></a><strong>JMM</strong> <em>(Java Memory Model)</em></h2><p>&nbsp;&nbsp;&nbsp;&nbsp;在讲线程安全之前必须提及Java内存模型，因为线程安全是与它息息相关的。<br>&nbsp;&nbsp;&nbsp;&nbsp;首先，JMM是一个抽象的规范，它本身不存在，通过JMM，JVM虚拟机可以屏蔽掉各种硬件或者操作系统的差异，规范了JVM如何与计算机内存协同工作的、线程之间共享资源的方式（如一个线程如何看到其他线程修改后的变量，同步访问共享变量等）。<br><img src="/2018/11/09/thread2/images/JMMDetail.png" alt="JMM"><br>&nbsp;&nbsp;&nbsp;&nbsp;如图，Java内存模型规定了所有变量都存储在主内存中<em>（即图中的Heap，主内存有时候也称堆内存）</em>，即主内存是任何线程都能访问到的。</p>
+<h2 id="JMM-Java-Memory-Model"><a href="#JMM-Java-Memory-Model" class="headerlink" title="JMM (Java Memory Model)"></a><strong>JMM</strong> <em>(Java Memory Model)</em></h2><p>&nbsp;&nbsp;&nbsp;&nbsp;在讲线程安全之前必须提及Java内存模型，因为线程安全是与它息息相关的。<br>&nbsp;&nbsp;&nbsp;&nbsp;首先，JMM是一个抽象的规范，它本身不存在，通过JMM，JVM虚拟机可以屏蔽掉各种硬件或者操作系统的差异，规范了JVM如何与计算机内存协同工作的、线程之间共享资源的方式（如一个线程如何看到其他线程修改后的变量，同步访问共享变量等）。<br><img src="/2018/11/09/thread2/JMMDetail.png" alt="JMM"><br>&nbsp;&nbsp;&nbsp;&nbsp;如图，Java内存模型规定了所有变量都存储在主内存中<em>（即图中的Heap，主内存有时候也称堆内存）</em>，即主内存是任何线程都能访问到的。</p>
 <ul>
 <li>存放：所有<strong>对象</strong>及他们的成员变量、数组元素、静态域</li>
 <li>优点：他是运行时的数据区，运行时动态分配内存的，生存期不必实现确定，由Java垃圾回收管理</li>
@@ -187,7 +187,7 @@
 <blockquote>
 <p><strong>注意：必须搞清楚一件事是Java的内存划分与Java内存模型是不同层次的概念！</strong><br>关于Java的内存划分我会在本文最后放出相应的图示与解释。<br>此处JMM定义的主内存可以说是Java内存区域划分中的：堆与方法区<br>而工作内存则是：程序计数器、虚拟机栈及本地方法栈</p>
 </blockquote>
-<h3 id="同步八操作"><a href="#同步八操作" class="headerlink" title="同步八操作"></a>同步八操作</h3><p>图示为Java内存模型的操作：<br><img src="/2018/11/09/thread2/images/JMM.jpg" alt="JMM"><br><em>如果了解计算机的缓存一致性MESI的人应该能看得出来Java内存模型跟多处理机进行缓存一致性操作有异曲同工之妙，至于那是什么可以去搜一下或者看在本文最后的东西。</em></p>
+<h3 id="同步八操作"><a href="#同步八操作" class="headerlink" title="同步八操作"></a>同步八操作</h3><p>图示为Java内存模型的操作：<br><img src="/2018/11/09/thread2/JMM.jpg" alt="JMM"><br><em>如果了解计算机的缓存一致性MESI的人应该能看得出来Java内存模型跟多处理机进行缓存一致性操作有异曲同工之妙，至于那是什么可以去搜一下或者看在本文最后的东西。</em></p>
 <p>lock(锁定)：作用于主内存，让主内存变量标示为某一线程的独占的状态。<br><em>当进行lock时会使工作内存中的该变量清空，在执行前需重新执行load和assign</em></p>
 <p>unlock(解锁)：作用于主内存，让主内存变量的独占状态解除，可以被其他线程锁定。<br>。<em>进行unlock必须先把该变量从之前锁定的线程的工作内存中同步到主内存</em></p>
 <p>read(读取)：作用于主内存的变量，把一个变量值从主内存读取到线程的工作内存中，以便于load的操作。<br><em>load与read不能单独出现！</em></p>
@@ -341,7 +341,7 @@
 </code></pre><blockquote>
 <p>count (should be 1000) : 1000<br> count (should be 1000) : 1000<br> count (should be 1000) : 1000<br> count (should be 1000) : 1000<br> count (should be 1000) : 1000</p>
 </blockquote>
-<p> 在此AtomicInteger的原子类是线程安全的，这些原子类的实现都是基于一个CAS算法，我们可以看看那个AtomicInteger的内部：<br> <img src="/2018/11/09/thread2/images/CAS.png" alt="CAS?"><br> 然后再进去看看：<br> ，var1是传入的对象，var2是对象当前的值，var4为加数，var5是通过getIntVolatile()方法获得对象的底层值，通过在死循环里不停使用compareAndSwapInt（就是CAS）比较对象的当前值与其底层值，这里的compareAndSwapInt是Unsafe类中的一个native本地内部方法，若不相同则返回false，若相同则将其值更新为var5+var4。<br> <img src="/2018/11/09/thread2/images/CAS2.jpg" alt="CAS"><br> 原子类都是通过这种CAS算法来进行安全的修改。</p>
+<p> 在此AtomicInteger的原子类是线程安全的，这些原子类的实现都是基于一个CAS算法，我们可以看看那个AtomicInteger的内部：<br> <img src="/2018/11/09/thread2/CAS.png" alt="CAS?"><br> 然后再进去看看：<br> ，var1是传入的对象，var2是对象当前的值，var4为加数，var5是通过getIntVolatile()方法获得对象的底层值，通过在死循环里不停使用compareAndSwapInt（就是CAS）比较对象的当前值与其底层值，这里的compareAndSwapInt是Unsafe类中的一个native本地内部方法，若不相同则返回false，若相同则将其值更新为var5+var4。<br> <img src="/2018/11/09/thread2/CAS2.jpg" alt="CAS"><br> 原子类都是通过这种CAS算法来进行安全的修改。</p>
 <p> 顺带讲一种用法，<br> <strong>懒汉单例模式</strong>：</p>
 <pre><code> public class LazySingletonExample {
 
@@ -415,11 +415,11 @@ public static synchronized DoubleLazySingletonExample getInstance(){
 <h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><p>volatile实际上是通过内存屏障禁止重排序来实现可见性的：</p>
 <ul>
 <li>对volatile变量进行write操作的时候，写后加入一条store屏障，将本地内存中共享变量刷到主内存去，那么store指令会在写操作后把最新的值强制刷新到主内存中。同时还会禁止cpu对代码进行重排序优化。这样就保证了值在主内存中是最新的。</li>
-<li>对volatile变量进行read操作的时候，加入一条load屏障，load指令会在读操作前把内存缓存中的值清空后，再从主内存中读取最新的值。<br>实际上可以说是相当于volatile变量的操作是在主内存上进行操作的，因而时刻保证其最新值。<br><img src="/2018/11/09/thread2/images/vwrite.png" alt="volatile write"><br><img src="/2018/11/09/thread2/images/vread.png" alt="volatile read"><br>适合用到volatile的场景：</li>
+<li>对volatile变量进行read操作的时候，加入一条load屏障，load指令会在读操作前把内存缓存中的值清空后，再从主内存中读取最新的值。<br>实际上可以说是相当于volatile变量的操作是在主内存上进行操作的，因而时刻保证其最新值。<br><img src="/2018/11/09/thread2/vwrite.png" alt="volatile write"><br><img src="/2018/11/09/thread2/vread.png" alt="volatile read"><br>适合用到volatile的场景：</li>
 </ul>
 <ol>
 <li>对volatile写不依赖于当前的值（如自增自减）</li>
-<li>该变量不被包含在具有其他变量的式子中<br>所以可见他比较适合做标记量（如IO操作的完成标记）<br><img src="/2018/11/09/thread2/images/vuse.png" alt="volatile use"></li>
+<li>该变量不被包含在具有其他变量的式子中<br>所以可见他比较适合做标记量（如IO操作的完成标记）<br><img src="/2018/11/09/thread2/vuse.png" alt="volatile use"></li>
 </ol>
 <h2 id="有序性"><a href="#有序性" class="headerlink" title="有序性"></a>有序性</h2><p>在执行程序时为了提高性能，编译器和处理器经常会对指令进行重排序。从Java源代码到最终实际执行的指令序列，会依次经过这三种重排序：</p>
 <ol>
@@ -438,8 +438,8 @@ public static synchronized DoubleLazySingletonExample getInstance(){
 <li>线程终结规则：线程中所有的操作都先行发生于线程的终止检测，我们可以通过Thread.join()方法结束、Thread.isAlive()方法返回值手段检测到线程已经终止执行</li>
 <li>对象终结规则：一个对象的初始化完成必定先行发生于他的finalize()方法的开始</li>
 </ol>
-<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="Java的内存划分"><a href="#Java的内存划分" class="headerlink" title="Java的内存划分"></a>Java的内存划分</h3><p><img src="/2018/11/09/thread2/images/JVMM.jpg" alt="JVM Memory"><br>&nbsp;&nbsp;&nbsp;&nbsp;左边和右边有时也被称为堆区和栈区，相对Java内存模型来看其实差不多，跟我们平时所说的堆和栈，都可以运用。虽然这个清不清楚不会太影响这里解释Java内存模型，对于JVM内存划分想要详情了解的可以参考别的大佬的博客：<a href="https://www.cnblogs.com/zhguang/p/3257367.html" target="_blank" rel="noopener">Java内存区域划分</a></p>
-<h3 id="计算机硬件架构的图示"><a href="#计算机硬件架构的图示" class="headerlink" title="计算机硬件架构的图示"></a>计算机硬件架构的图示</h3><p><img src="/2018/11/09/thread2/images/cpu.jpg" alt="CPU"><br>&nbsp;&nbsp;&nbsp;&nbsp;由于计算机的存储设备与处理器的运算能力之间有几个数量级的差距，所以现代计算机系统都不得不加入一层读写速度尽可能接近处理器运算速度的高速缓存（cache）来作为内存与处理器之间的缓冲：将运算需要使用到的数据复制到缓存中，让运算能快速进行，当运算结束后再从缓存同步回内存之中没这样处理器就无需等待缓慢的内存读写了。但这里就会有一个问题，多个处理器进行处理如果发生同步的操作的时候就可能会出现数据错误，这时就需要有MESI这类缓存一致性协议了。具体可参考：<a href="https://en.wikipedia.org/wiki/MESI_protocol" target="_blank" rel="noopener">维基百科对缓存一致性的介绍</a></p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="Java的内存划分"><a href="#Java的内存划分" class="headerlink" title="Java的内存划分"></a>Java的内存划分</h3><p><img src="/2018/11/09/thread2/JVMM.jpg" alt="JVM Memory"><br>&nbsp;&nbsp;&nbsp;&nbsp;左边和右边有时也被称为堆区和栈区，相对Java内存模型来看其实差不多，跟我们平时所说的堆和栈，都可以运用。虽然这个清不清楚不会太影响这里解释Java内存模型，对于JVM内存划分想要详情了解的可以参考别的大佬的博客：<a href="https://www.cnblogs.com/zhguang/p/3257367.html" target="_blank" rel="noopener">Java内存区域划分</a></p>
+<h3 id="计算机硬件架构的图示"><a href="#计算机硬件架构的图示" class="headerlink" title="计算机硬件架构的图示"></a>计算机硬件架构的图示</h3><p><img src="/2018/11/09/thread2/cpu.jpg" alt="CPU"><br>&nbsp;&nbsp;&nbsp;&nbsp;由于计算机的存储设备与处理器的运算能力之间有几个数量级的差距，所以现代计算机系统都不得不加入一层读写速度尽可能接近处理器运算速度的高速缓存（cache）来作为内存与处理器之间的缓冲：将运算需要使用到的数据复制到缓存中，让运算能快速进行，当运算结束后再从缓存同步回内存之中没这样处理器就无需等待缓慢的内存读写了。但这里就会有一个问题，多个处理器进行处理如果发生同步的操作的时候就可能会出现数据错误，这时就需要有MESI这类缓存一致性协议了。具体可参考：<a href="https://en.wikipedia.org/wiki/MESI_protocol" target="_blank" rel="noopener">维基百科对缓存一致性的介绍</a></p>
 
                 </div>
                 <hr/>
