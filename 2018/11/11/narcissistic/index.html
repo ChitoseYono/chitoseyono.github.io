@@ -1,0 +1,496 @@
+<!DOCTYPE HTML>
+<html lang="zh-tw,en,default">
+<head>
+    <head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="java | android | music | art | emotion | Chitose Yono | vomit machine, hexo-theme-matery">
+    <meta name="description" content="我所追寻的自己，可能不存在梦里">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>White Noise -Chitose Yono Offical Blog-</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span"></span>
+                    </a>
+                </div>
+
+                <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">Index</a>
+    </li>
+    
+    
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">Tags</a>
+    </li>
+    
+    
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">Archives</a>
+    </li>
+    
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/sublogo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">White Noise</div>
+        <div class="logo-desc">
+            
+            我所追寻的自己，可能不存在梦里
+            
+        </div>
+    </div>
+    <ul class="menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                <i class="fa fa-link fa-lg fa-fw"></i>Index
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                <i class="fa fa-link fa-lg fa-fw"></i>Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                <i class="fa fa-link fa-lg fa-fw"></i>Archives
+            </a>
+        </li>
+        
+    </ul>
+    <div class="social-link">
+        <a href="https://github.com/chitoseyono" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub"
+           data-position="top" data-delay="50">
+            <i class="fa fa-github fa-lg"></i>
+        </a>
+        <a href="mailto:chitoseyono@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我"
+           data-position="top" data-delay="50">
+            <i class="fa fa-envelope fa-lg"></i>
+        </a>
+        <a href="https://weibo.com/2818513061/profile" class="tooltipped" data-tooltip="访问我的微博"
+           data-position="top" data-delay="50">
+            <i class="fa fa-weibo fa-lg"></i>
+        </a>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/images/Narcissistic.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        <font size="6">高位水仙花数算法优化</font>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="content">
+
+    <!-- 目录内容 -->
+    
+        <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none"></p>
+        </p>
+        <div id="toc-article" class="toc-article">
+            <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+            <strong class="toc-title">Navigator</strong>
+            
+       </div>
+       <script type="text/javascript">
+        function showToc(){
+            var toc_article = document.getElementById("toc-article");
+            var show_toc_btn = document.getElementById("show-toc-btn");
+            toc_article.setAttribute("style","display:block");
+            show_toc_btn.setAttribute("style","display:none");
+            };
+        function showBtn(){
+            var toc_article = document.getElementById("toc-article");
+            var show_toc_btn = document.getElementById("show-toc-btn");
+            toc_article.setAttribute("style","display:none");
+            show_toc_btn.setAttribute("style","display:block");
+            };
+       </script>
+         
+
+    <!-- 文章内容详情 -->
+    <div id="artDetail" class="container">
+        <div class="card">
+            <div class="card-content article-info">
+                
+                <div class="article-tag">
+                    
+                    <a href="https://chitoseyono.com/tags/Java/" target="_blank"><span class="chip bg-color">Java</span></a>
+                    
+                    <a href="https://chitoseyono.com/tags/算法/" target="_blank"><span class="chip bg-color">算法</span></a>
+                    
+                </div>
+                
+                <div class="author-info">
+                    <span>
+                        <i class="fa fa-calendar fa-fw"></i>2018-11-11
+                    </span>
+                </div>
+            </div>
+            <hr>
+            <div class="card-content article-card-content">
+                <div id="articleContent">
+                    <script src="/assets/js/APlayer.min.js"> </script><p>算法思路：<br>以三位的水仙花数为例——</p>
+<ol>
+<li>432各位立方幂和为99，小于100，则不能使用；</li>
+<li>433各位立方幂和为118，但118并不由4 3 3三个数组成，则不是水仙花数；</li>
+<li>531各位立方和为153，且153由5 3 1组成，则是水仙花数；</li>
+<li>777各位立方和为1029，大于999，则不能使用，结束循环。</li>
+</ol>
+<p>再通过预处理（初始化0~9的N次幂）+递归减少运算量。</p>
+<pre><code>import java.math.BigInteger;
+
+/**
+ * @class: Narcissistic
+ * @author: Chitose
+ * @date: 2018/11/11
+ * @description:
+ */
+
+public class Narcissistic  {
+
+    public static int size = 21;
+    public static BigInteger powArray[] = new BigInteger[10]; // 记录0~9的size次方
+    public static int usedTimes[] = new int[10];// 记录0~9的使用次数
+    public static BigInteger powArrayTimes[][]; //记录0到9中任意数字i的N次方乘以其出现的次数j的结果（i^N*j）
+    public static BigInteger MAX; // size位的数字能表示的最大值
+    public static BigInteger MIN; // size位的数字能表示的最小值
+
+
+    public static void main(String[] args) {
+
+        long start = System.currentTimeMillis();
+
+        for (int i = 0; i &lt; 10; i++) {// 初始化powArray[]
+            powArray[i] = (new BigInteger(&quot;&quot; + i)).pow(size);
+        }
+        MIN = BigInteger.valueOf(10).pow(size - 1); // 初始化最小值
+        MAX = BigInteger.valueOf(10).pow(size);     // 初始化最大值（不能等于这个值）
+
+        powArrayTimes = new BigInteger[10][size + 1];  //初始化powArrayTimes[][]
+        for (int i = 0; i &lt; 10; i++) {
+            powArrayTimes[i][0] = BigInteger.valueOf(0);
+            for (int j = 1; j &lt; size + 1; j++) {
+                powArrayTimes[i][j] = powArrayTimes[i][j - 1].add(powArray[i]);
+            }
+        }
+
+        solve(9, 0, BigInteger.ZERO);
+
+        long end = System.currentTimeMillis();
+        System.out.println(end-start+&quot;毫秒&quot;);
+
+    }
+
+//index:当前轮到的0~9数字   used:当前已使用的数字总数   now:当前各数字幂和
+    static void solve(int index, int used, BigInteger now){
+
+        if(index == 0){                     //若index到0了则剩下的全部都是0
+            usedTimes[0] = size - used;
+            solve(-1, size, now);
+            usedTimes[0] = 0;
+            return;
+        }
+
+        if(used == size){
+            if(now.compareTo(MIN)&lt;0) {      //若现在值还是小于最小值，退出
+                return;
+            }
+            String strNow = now.toString();
+            int realUsedTimes[] = new int[10];                  // 记录真实的数中0~9的使用次数
+            for(int i = 0 ; i &lt; strNow.length() ; i++){
+                realUsedTimes[strNow.charAt(i)-&#39;0&#39;]++;
+            }
+            for(int i = 0 ; i &lt; 10 ; i++){
+                if(realUsedTimes[i] != usedTimes[i]) {          //若比对真实值与使用数不同则退出递归
+                    return;
+                }
+            }
+            System.out.println(now);                            //如果0~9的使用次数都相同才打印
+            return;
+        }
+
+        //递归主要部分
+        for(int i = 0 ; i &lt; size - used ; i++){
+            if(now.add(powArrayTimes[index][i]).compareTo(MAX)&gt;=0){          //如果已经超过最大值直接退出这一层递归
+                return;
+            }
+            usedTimes[index] = i;       //使用i次index的数
+            solve(index-1, used+i, now.add(powArrayTimes[index][i]));
+            usedTimes[index] = 0;       //还原使用次数
+        }
+    }
+}
+
+</code></pre><p>以21位的水仙花数做例子，输出如下：</p>
+<blockquote>
+<p>128468643043731391252<br>449177399146038697307<br>4.155秒</p>
+</blockquote>
+
+                </div>
+                <hr/>
+
+                <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone, qq, weibo, douban"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+                <div class="reprint">
+                    <p>
+                        <span class="reprint-tip">Reprint please specify: </span>
+                        <a href="https://chitoseyono.com" class="b-link-green">White Noise -Chitose Yono Offical Blog-</a>
+                        <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                        <a href="/2018/11/11/narcissistic/" class="b-link-green">高位水仙花数算法优化</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        
+        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
+<link rel="stylesheet" href="/css/gitment.css">
+
+<div class="gitment-card card" data-aos="fade-up">
+    <div id="gitment-content" class="card-content"></div>
+</div>
+
+<script src="/libs/gitment/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Sun Nov 11 2018 09:37:00 GMT+0800',
+    owner: 'ChitoseYono',
+    repo: 'chitoseyono.github.io',
+    oauth: {
+        client_id: '999f7c73059996845f36',
+        client_secret: '8c466460b56a73683ea40833c9d5dca6f530ce9c'
+    }
+});
+
+gitment.render('gitment-content');
+</script>
+        
+
+        
+
+        
+
+<article id="articles" class="container prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">Current</div>
+            <div class="card">
+                <a href="/2018/11/11/narcissistic/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/images/Narcissistic.jpg" class="responsive-img" alt="高位水仙花数算法优化">
+                        
+                        <span class="card-title">高位水仙花数算法优化</span>
+                    </div>
+
+                    <div class="card-content article-content">
+                        <div class="summary"> 算法思路：以三位的水仙花数为例——
+
+432各位立方幂和为99，小于100，则不能使用；
+433各位立方幂和为118，但118并不由4 3 3三个数组成，则不是水仙花数；
+531各位立方和为153，且153由5 3 1组成，则是水仙花数；</div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw"></i>2018-11-11
+                            </span>
+                            <span class="publish-author">
+                                <i class="fa fa-user fa-fw"></i>
+                                
+                                Chitose Yono
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="https://chitoseyono.com/tags/Java/"><span class="chip bg-color">Java</span></a>
+                        
+                        <a href="https://chitoseyono.com/tags/算法/"><span class="chip bg-color">算法</span></a>
+                        
+                    </div>
+                    
+                </a>
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">Next</div>
+            <div class="card">
+                <a href="/2018/11/09/thread2/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/images/thread_fuck.jpg" class="responsive-img" alt="Java线程（二）——JMM与线程安全">
+                        
+                        <span class="card-title">Java线程（二）——JMM与线程安全</span>
+                    </div>
+                    <div class="card-content article-content">
+                        <div class="summary">
+                             这一篇将涉及比较多底层知识，代码较少但都是干货。
+
+JMM (Java Memory Model)&nbsp;&nbsp;&nbsp;&nbsp;在讲线程安全之前必须提及Java内存模型，因为线程安全是与它息息相关的。&nbsp;&nbs
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw"></i>2018-11-09
+                            </span>
+                            <span class="publish-author">
+                                <i class="fa fa-user fa-fw"></i>
+                                
+                                Chitose Yono
+                                
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="https://chitoseyono.com/tags/Java/"><span class="chip bg-color">Java</span></a>
+                        
+                        <a href="https://chitoseyono.com/tags/Thread/"><span class="chip bg-color">Thread</span></a>
+                        
+                    </div>
+                    
+                </a>
+            </div>
+        </div>
+        
+    </div>
+</article>
+    </div>
+</main>
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;<a href="http://chitoseyono.com" target="_blank">&nbsp;Chitose Yono</a>&nbsp;|
+            Published with <a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;|
+            Theme by <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>&nbsp;|
+            Visited <span id="busuanzi_value_site_pv"></span> times<br>
+            <font size="2" color="#36648B">粤ICP备18124328号</font>
+        </div>
+        <div class="col s12 m4 l4 social-link">
+            <a href="https://github.com/chitoseyono" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+                <i class="fa fa-github fa-lg"></i>
+            </a>
+            <a href="mailto:chitoseyono@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+                <i class="fa fa-envelope fa-lg"></i>
+            </a>
+            <a href="https://weibo.com/2818513061/profile" class="tooltipped" data-tooltip="访问我的Weibo" data-position="top" data-delay="50">
+                <i class="fa fa-weibo fa-lg"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title">Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input" autofocus="">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/js/music.js"></script>
+</body>
+</html>
