@@ -3,6 +3,47 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2018/11/18/idk/"/>
+      <url>/2018/11/18/idk/</url>
+      
+        <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>LenovoLenovo���L�Dotumʏ�M�͏�N�MingLiU���O��j�lu</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    <entry>
+      <title>idk</title>
+      <link href="/2018/11/18/idk/"/>
+      <url>/2018/11/18/idk/</url>
+      
+        <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script>]]></content>
+      
+      
+      
+    </entry>
+    
+    <entry>
+      <title>动态规划算法入门题</title>
+      <link href="/2018/11/13/dps/"/>
+      <url>/2018/11/13/dps/</url>
+      
+        <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="最长公共子序列CLS算法"><a href="#最长公共子序列CLS算法" class="headerlink" title="最长公共子序列CLS算法"></a>最长公共子序列CLS算法</h2><h2 id="Floyd算法"><a href="#Floyd算法" class="headerlink" title="Floyd算法"></a>Floyd算法</h2><h2 id="01背包问题"><a href="#01背包问题" class="headerlink" title="01背包问题"></a>01背包问题</h2>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>高位水仙花数算法优化</title>
       <link href="/2018/11/11/narcissistic/"/>
       <url>/2018/11/11/narcissistic/</url>
@@ -87,9 +128,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> Json </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
