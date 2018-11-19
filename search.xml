@@ -3,6 +3,25 @@
   
     
     <entry>
+      <title>欧拉、费马小定理</title>
+      <link href="/2018/11/19/eulerandfermet/"/>
+      <url>/2018/11/19/eulerandfermet/</url>
+      
+        <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="HDU1098"><a href="#HDU1098" class="headerlink" title="HDU1098"></a><a href="&quot;http://acm.hdu.edu.cn/showproblem.php?pid=1098&quot;">HDU1098</a></h1><p>(费马小定理)</p><p>f(x)=5<em>x^13+13</em>x^5+k<em>a</em>x转化成f(x)=(5<em>x^12+13</em>x^4+k<em>a)</em>x</p><p>从1~65开始数，倘若x%65!=0，则必须要里面的内容<strong>(5<em>x^12+13</em>x^4+k*a)%65=0</strong>，<br>那么分开来看：</p><p>左边的5<em>x^12本来就是5的倍数，根据费马小定理他被13整除的结果：<br>而  </em>x^(13-1)%13≡1<em>，<br>故  **5</em>x^12%13≡5**。</p><p>中间的13<em>x^5本来就是13的倍数，根据费马小定理他被5整除的结果：<br>而  </em>x^(5-1)%5≡1<em>，<br>故  **13</em>x^5%5≡2**。</p><p>那么对于最后的ka我们可以这样看：<br>当需要他被13整除的时候，左边已经有5了，那么这时候只需要<strong>ka%13==8</strong>；<br>当需要他被13整除的时候，中间已经有2了，那么这时候只需要<strong>ka%5==3</strong>；<br>满足这两个式子的a便是满足题意的a值</p><p>Java代码如下：</p><pre><code>import java.util.Scanner;public class hdu1098 {    public static void main(String[] args) {        Scanner sc = new Scanner(System.in) ;        while(sc.hasNext()){            int ans = -1;            int k = sc.nextInt();            for(int a = 1 ; a &lt;=65 ; a++){                if(k*a%5==2 &amp;&amp; k*a%13==8){                    ans = a;                    break;                }            }            if(ans&gt;0)                System.out.println(ans);            else                System.out.println(&quot;no&quot;);        }    }}</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 数论 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>I don&#39;t know</title>
       <link href="/2018/11/18/idk/"/>
       <url>/2018/11/18/idk/</url>
@@ -123,9 +142,9 @@
       
         <tags>
             
-            <tag> Json </tag>
-            
             <tag> Java </tag>
+            
+            <tag> Json </tag>
             
         </tags>
       

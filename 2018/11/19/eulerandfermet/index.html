@@ -127,13 +127,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/images/1.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/images/dps.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        <font size="6">Welcome to White Noise</font>
+                        <font size="6">欧拉、费马小定理</font>
                     </div>
                 </div>
             </div>
@@ -150,7 +150,7 @@
         <div id="toc-article" class="toc-article">
             <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
             <strong class="toc-title">Navigator</strong>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#About"><span class="toc-number">1.</span> <span class="toc-text">About</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Todo-list"><span class="toc-number">1.1.</span> <span class="toc-text">Todo-list</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chitose-Yono"><span class="toc-number">1.2.</span> <span class="toc-text">Chitose Yono</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#White-Noise"><span class="toc-number">1.3.</span> <span class="toc-text">White Noise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vomit-machine"><span class="toc-number">1.4.</span> <span class="toc-text">Vomit machine</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HDU1098"><span class="toc-number">1.</span> <span class="toc-text">HDU1098</span></a></li></ol>
        </div>
        <script type="text/javascript">
         function showToc(){
@@ -175,39 +175,50 @@
                 
                 <div class="article-tag">
                     
-                    <a href="https://chitoseyono.com/tags/Test/" target="_blank"><span class="chip bg-color">Test</span></a>
+                    <a href="https://chitoseyono.com/tags/算法/" target="_blank"><span class="chip bg-color">算法</span></a>
+                    
+                    <a href="https://chitoseyono.com/tags/数论/" target="_blank"><span class="chip bg-color">数论</span></a>
                     
                 </div>
                 
                 <div class="author-info">
                     <span>
-                        <i class="fa fa-calendar fa-fw"></i>2018-09-28
+                        <i class="fa fa-calendar fa-fw"></i>2018-11-19
                     </span>
                 </div>
             </div>
             <hr>
             <div class="card-content article-card-content">
                 <div id="articleContent">
-                    <script src="/assets/js/APlayer.min.js"> </script><p>&nbsp;&nbsp;&nbsp;&nbsp;Welcome to <a href="https://chitoseyono.github.io/" target="_blank" rel="noopener">White Noise - Chitose Yono Offical Blog</a>! The website is still in constructing and after a while you can enjoy my articles here. Though whether they’re writen in English or Chinese depends on my heart, maybe most of time there is Chinese version.</p>
-<h2 id="About"><a href="#About" class="headerlink" title="About"></a>About</h2><h3 id="Todo-list"><a href="#Todo-list" class="headerlink" title="Todo-list"></a>Todo-list</h3><ul>
-<li>Navigator for articles √</li>
-<li>Music bar √</li>
-<li>Original background images for changing √</li>
-<li>Domain binding for the blog √</li>
-<li>Pin to top √</li>
-<li>Gallery</li>
-<li>Categories</li>
-<li>After all of these finished, I’ll make a conclusion.</li>
-</ul>
-<h3 id="Chitose-Yono"><a href="#Chitose-Yono" class="headerlink" title="Chitose Yono"></a>Chitose Yono</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;An undergraduate majoring in Software Programing. Got a lot of interests including music, art, traveling and so on, so don’t expect such a introvert guy will fill the blog with barely programing.</p>
-<h3 id="White-Noise"><a href="#White-Noise" class="headerlink" title="White Noise"></a>White Noise</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;Article in <a href="https://chitoseyono.github.io/" target="_blank" rel="noopener">White Noise</a> will be include but not limited to</p>
-<ul>
-<li>Software programing</li>
-<li>Music making</li>
-<li>Vomit machine</li>
-</ul>
-<h3 id="Vomit-machine"><a href="#Vomit-machine" class="headerlink" title="Vomit machine"></a>Vomit machine</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;To talk about the surrounding naraku everyday just like vomitting the shit, so you may have to taste the fucking emotional words in it.</p>
+                    <script src="/assets/js/APlayer.min.js"> </script><h1 id="HDU1098"><a href="#HDU1098" class="headerlink" title="HDU1098"></a><a href="&quot;http://acm.hdu.edu.cn/showproblem.php?pid=1098&quot;">HDU1098</a></h1><p>(费马小定理)</p>
+<p>f(x)=5<em>x^13+13</em>x^5+k<em>a</em>x转化成f(x)=(5<em>x^12+13</em>x^4+k<em>a)</em>x</p>
+<p>从1~65开始数，倘若x%65!=0，则必须要里面的内容<strong>(5<em>x^12+13</em>x^4+k*a)%65=0</strong>，<br>那么分开来看：</p>
+<p>左边的5<em>x^12本来就是5的倍数，根据费马小定理他被13整除的结果：<br>而  </em>x^(13-1)%13≡1<em>，<br>故  **5</em>x^12%13≡5**。</p>
+<p>中间的13<em>x^5本来就是13的倍数，根据费马小定理他被5整除的结果：<br>而  </em>x^(5-1)%5≡1<em>，<br>故  **13</em>x^5%5≡2**。</p>
+<p>那么对于最后的ka我们可以这样看：<br>当需要他被13整除的时候，左边已经有5了，那么这时候只需要<strong>ka%13==8</strong>；<br>当需要他被13整除的时候，中间已经有2了，那么这时候只需要<strong>ka%5==3</strong>；<br>满足这两个式子的a便是满足题意的a值</p>
+<p>Java代码如下：</p>
+<pre><code>import java.util.Scanner;
 
+public class hdu1098 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in) ;
+        while(sc.hasNext()){
+            int ans = -1;
+            int k = sc.nextInt();
+            for(int a = 1 ; a &lt;=65 ; a++){
+                if(k*a%5==2 &amp;&amp; k*a%13==8){
+                    ans = a;
+                    break;
+                }
+            }
+            if(ans&gt;0)
+                System.out.println(ans);
+            else
+                System.out.println(&quot;no&quot;);
+        }
+    }
+}
+</code></pre>
                 </div>
                 <hr/>
 
@@ -226,7 +237,7 @@
                         <span class="reprint-tip">Reprint please specify: </span>
                         <a href="https://chitoseyono.com" class="b-link-green">White Noise -Chitose Yono Offical Blog-</a>
                         <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                        <a href="/2018/09/28/white-noise/" class="b-link-green">Welcome to White Noise</a>
+                        <a href="/2018/11/19/eulerandfermet/" class="b-link-green">欧拉、费马小定理</a>
                     </p>
                 </div>
             </div>
@@ -243,7 +254,7 @@
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Fri Sep 28 2018 14:25:00 GMT+0800',
+    id: 'Mon Nov 19 2018 18:14:33 GMT+0800',
     owner: 'ChitoseYono',
     repo: 'chitoseyono.github.io',
     oauth: {
@@ -263,23 +274,24 @@ gitment.render('gitment-content');
 <article id="articles" class="container prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">Previous</div>
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">Current</div>
             <div class="card">
-                <a href="/2018/10/05/gson/">
+                <a href="/2018/11/19/eulerandfermet/">
                     <div class="card-image">
                         
-                        <img src="/medias/images/json.jpg" class="responsive-img" alt="Json和Gson的介绍与简单使用">
+                        <img src="/medias/images/dps.jpg" class="responsive-img" alt="欧拉、费马小定理">
                         
-                        <span class="card-title">Json和Gson的介绍与简单使用</span>
+                        <span class="card-title">欧拉、费马小定理</span>
                     </div>
+
                     <div class="card-content article-content">
-                        <div class="summary">
-                             &nbsp;&nbsp;&nbsp;&nbsp;JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式，易于人阅读和编写，同时也易于机器解析和生成，广泛应用于各种数据的交互中，尤其是服务器与客户端的交
-                        </div>
+                        <div class="summary"> HDU1098(费马小定理)
+f(x)=5x^13+13x^5+kax转化成f(x)=(5x^12+13x^4+ka)x
+从1~65开始数，倘若x%65!=0，则必须要里面的内容(5x^12+13x^4+k*a)%65=0，那么分开来看：</div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-calendar fa-fw"></i>2018-10-05
+                                <i class="fa fa-calendar fa-fw"></i>2018-11-19
                             </span>
                             <span class="publish-author">
                                 <i class="fa fa-user fa-fw"></i>
@@ -289,12 +301,13 @@ gitment.render('gitment-content');
                             </span>
                         </div>
                     </div>
+
                     
                     <div class="card-action article-tags">
                         
-                        <a href="https://chitoseyono.com/tags/Java/"><span class="chip bg-color">Java</span></a>
+                        <a href="https://chitoseyono.com/tags/算法/"><span class="chip bg-color">算法</span></a>
                         
-                        <a href="https://chitoseyono.com/tags/Json/"><span class="chip bg-color">Json</span></a>
+                        <a href="https://chitoseyono.com/tags/数论/"><span class="chip bg-color">数论</span></a>
                         
                     </div>
                     
@@ -304,21 +317,22 @@ gitment.render('gitment-content');
         
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">Current</div>
+            <div class="article-badge right-badge text-color">Next</div>
             <div class="card">
-                <a href="/2018/09/28/white-noise/">
+                <a href="/2018/11/18/idk/">
                     <div class="card-image">
                         
-                        <img src="/medias/images/1.jpg" class="responsive-img" alt="Welcome to White Noise">
+                        <img src="/medias/images/plzkillme.jpg" class="responsive-img" alt="I don't know">
                         
-                        <span class="card-title">Welcome to White Noise</span>
+                        <span class="card-title">I don't know</span>
                     </div>
-
                     <div class="card-content article-content">
-                        <div class="summary"> &nbsp;&nbsp;&nbsp;&nbsp;Welcome to White Noise - Chitose Yono Offical Blog! The website is still in constructing and af</div>
+                        <div class="summary">
+                             我在空间日志里写了一篇日志，记录一下当天还能支持着我活下去的事物吧。他们可能简单的平凡无比，也是这样我才敢大声说出来。“想食秋刀鱼。”这样的心情也能支撑我有动力一点。但是那篇日志真的几乎不怎么更新了，后面更新我想写下去的东西都过于晦涩或者
+                        </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-calendar fa-fw"></i>2018-09-28
+                                <i class="fa fa-calendar fa-fw"></i>2018-11-18
                             </span>
                             <span class="publish-author">
                                 <i class="fa fa-user fa-fw"></i>
@@ -328,11 +342,10 @@ gitment.render('gitment-content');
                             </span>
                         </div>
                     </div>
-
                     
                     <div class="card-action article-tags">
                         
-                        <a href="https://chitoseyono.com/tags/Test/"><span class="chip bg-color">Test</span></a>
+                        <a href="https://chitoseyono.com/tags/Vomit/"><span class="chip bg-color">Vomit</span></a>
                         
                     </div>
                     
