@@ -127,13 +127,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/images/dps.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/images/numTheory1.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        <font size="6">欧拉、费马小定理</font>
+                        <font size="6">欧拉函数、费马小定理</font>
                     </div>
                 </div>
             </div>
@@ -144,28 +144,6 @@
 <main class="content">
 
     <!-- 目录内容 -->
-    
-        <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none"></p>
-        </p>
-        <div id="toc-article" class="toc-article">
-            <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-            <strong class="toc-title">Navigator</strong>
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HDU1098"><span class="toc-number">1.</span> <span class="toc-text">HDU1098</span></a></li></ol>
-       </div>
-       <script type="text/javascript">
-        function showToc(){
-            var toc_article = document.getElementById("toc-article");
-            var show_toc_btn = document.getElementById("show-toc-btn");
-            toc_article.setAttribute("style","display:block");
-            show_toc_btn.setAttribute("style","display:none");
-            };
-        function showBtn(){
-            var toc_article = document.getElementById("toc-article");
-            var show_toc_btn = document.getElementById("show-toc-btn");
-            toc_article.setAttribute("style","display:none");
-            show_toc_btn.setAttribute("style","display:block");
-            };
-       </script>
          
 
     <!-- 文章内容详情 -->
@@ -183,14 +161,14 @@
                 
                 <div class="author-info">
                     <span>
-                        <i class="fa fa-calendar fa-fw"></i>2018-11-19
+                        <i class="fa fa-calendar fa-fw"></i>2018-11-18
                     </span>
                 </div>
             </div>
             <hr>
             <div class="card-content article-card-content">
                 <div id="articleContent">
-                    <script src="/assets/js/APlayer.min.js"> </script><h1 id="HDU1098"><a href="#HDU1098" class="headerlink" title="HDU1098"></a><a href="&quot;http://acm.hdu.edu.cn/showproblem.php?pid=1098&quot;">HDU1098</a></h1><p>(费马小定理)</p>
+                    <script src="/assets/js/APlayer.min.js"> </script><h1 id="HDU1098Ignatius’s-puzzle"><a href="#HDU1098Ignatius’s-puzzle" class="headerlink" title="HDU1098Ignatius’s puzzle"></a>HDU1098<a href="&quot;http://acm.hdu.edu.cn/showproblem.php?pid=1098&quot;">Ignatius’s puzzle</a></h1><p>（费马小定理）</p>
 <p>f(x)=5<em>x^13+13</em>x^5+k<em>a</em>x转化成f(x)=(5<em>x^12+13</em>x^4+k<em>a)</em>x</p>
 <p>从1~65开始数，倘若x%65!=0，则必须要里面的内容<strong>(5<em>x^12+13</em>x^4+k*a)%65=0</strong>，<br>那么分开来看：</p>
 <p>左边的5<em>x^12本来就是5的倍数，根据费马小定理他被13整除的结果：<br>而  </em>x^(13-1)%13≡1<em>，<br>故  **5</em>x^12%13≡5**。</p>
@@ -218,6 +196,50 @@ public class hdu1098 {
         }
     }
 }
+</code></pre><h1 id="HDU2588GCD"><a href="#HDU2588GCD" class="headerlink" title="HDU2588GCD"></a>HDU2588<a href="&quot;http://acm.hdu.edu.cn/showproblem.php?pid=2588&quot;">GCD</a></h1><p>（欧拉函数）</p>
+<p>这题真的好折腾啊…题目过于误导人去用gcd了（一用不是TLE就是MLE）<br>首先对于 gcd(x,n)=i ，x/i显然与n/i互斥（即gcd(x/i,n/i)=1)<br>那么求x/i的个数就相当于求x的个数了，<br>而对于gcd(x,n)!=1的x，必然是n的约数，<br>所以只需要遍历i-&gt;[1,n]，求出各个与n/i互斥的x/i个数，<br>即使用欧拉函数——累计φ(n/i)的值即可。</p>
+<p>但在这题有10^9的那么大的数，为了优化，就只遍历到sqrt(n)即可了，对于大于sqrt(n)的i，<br>因为每一次遍历得到的为n的约数的i，相应的也会同样有n的约数n/i（除去了i^2=n的情况，防止重复），<br>那么每一次遍历就是ans += φ(n/i) 和 ans += φ(n/(n/i))，<br>即ans += φ(n/i) 和ans += φ(i)</p>
+<p>Java代码如下：</p>
+<pre><code>import java.util.Scanner;
+
+public class hdu2879 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int cases = sc.nextInt();
+        for(int i = 0 ; i &lt;cases; i++) {
+            int N = sc.nextInt();
+            int M = sc.nextInt();
+            int sum = 0;
+            for(int j =1 ; j &lt;= Math.sqrt(N) ; j++){
+                if(N%j == 0){
+                    if(j&gt;=M &amp;&amp; j!= Math.sqrt(N) ){
+                        sum += euler(N/j);
+                    }
+                    if(N/j &gt;= M){
+                        sum += euler(j);
+                    }
+                }
+            }
+            System.out.println(sum);
+        }
+    }
+
+    static int euler(int num){
+        int ans = 1;
+        for(int i = 2 ; i &lt;= num ;i++){
+            if(num%i==0){
+                ans *= (i-1);
+                num/=i;
+                while(num%i==0) {
+                    ans *= i;
+                    num /= i;
+                }
+            }
+        }
+        return ans;
+    }
+
+}
 </code></pre>
                 </div>
                 <hr/>
@@ -237,7 +259,7 @@ public class hdu1098 {
                         <span class="reprint-tip">Reprint please specify: </span>
                         <a href="https://chitoseyono.com" class="b-link-green">White Noise -Chitose Yono Offical Blog-</a>
                         <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                        <a href="/2018/11/19/eulerandfermet/" class="b-link-green">欧拉、费马小定理</a>
+                        <a href="/2018/11/18/eulerandfermet/" class="b-link-green">欧拉函数、费马小定理</a>
                     </p>
                 </div>
             </div>
@@ -254,7 +276,7 @@ public class hdu1098 {
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Mon Nov 19 2018 18:14:33 GMT+0800',
+    id: 'Sun Nov 18 2018 11:25:00 GMT+0800',
     owner: 'ChitoseYono',
     repo: 'chitoseyono.github.io',
     oauth: {
@@ -274,50 +296,8 @@ gitment.render('gitment-content');
 <article id="articles" class="container prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">Current</div>
-            <div class="card">
-                <a href="/2018/11/19/eulerandfermet/">
-                    <div class="card-image">
-                        
-                        <img src="/medias/images/dps.jpg" class="responsive-img" alt="欧拉、费马小定理">
-                        
-                        <span class="card-title">欧拉、费马小定理</span>
-                    </div>
-
-                    <div class="card-content article-content">
-                        <div class="summary"> HDU1098(费马小定理)
-f(x)=5x^13+13x^5+kax转化成f(x)=(5x^12+13x^4+ka)x
-从1~65开始数，倘若x%65!=0，则必须要里面的内容(5x^12+13x^4+k*a)%65=0，那么分开来看：</div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-calendar fa-fw"></i>2018-11-19
-                            </span>
-                            <span class="publish-author">
-                                <i class="fa fa-user fa-fw"></i>
-                                
-                                Chitose Yono
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="https://chitoseyono.com/tags/算法/"><span class="chip bg-color">算法</span></a>
-                        
-                        <a href="https://chitoseyono.com/tags/数论/"><span class="chip bg-color">数论</span></a>
-                        
-                    </div>
-                    
-                </a>
-            </div>
-        </div>
-        
-        
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">Next</div>
+            <div class="article-badge left-badge text-color">Previous</div>
             <div class="card">
                 <a href="/2018/11/18/idk/">
                     <div class="card-image">
@@ -346,6 +326,47 @@ f(x)=5x^13+13x^5+kax转化成f(x)=(5x^12+13x^4+ka)x
                     <div class="card-action article-tags">
                         
                         <a href="https://chitoseyono.com/tags/Vomit/"><span class="chip bg-color">Vomit</span></a>
+                        
+                    </div>
+                    
+                </a>
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">Next</div>
+            <div class="card">
+                <a href="/2018/11/13/dps/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/images/dps.jpg" class="responsive-img" alt="动态规划算法入门题">
+                        
+                        <span class="card-title">动态规划算法入门题</span>
+                    </div>
+                    <div class="card-content article-content">
+                        <div class="summary">
+                             最长公共子序列CLS算法还没写还没写还没写还没写还没写还没写还没写
+Floyd算法01背包问题
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw"></i>2018-11-13
+                            </span>
+                            <span class="publish-author">
+                                <i class="fa fa-user fa-fw"></i>
+                                
+                                Chitose Yono
+                                
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="https://chitoseyono.com/tags/Java/"><span class="chip bg-color">Java</span></a>
+                        
+                        <a href="https://chitoseyono.com/tags/算法/"><span class="chip bg-color">算法</span></a>
                         
                     </div>
                     
