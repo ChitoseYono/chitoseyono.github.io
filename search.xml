@@ -3,6 +3,25 @@
   
     
     <entry>
+      <title>深度搜索、广度搜索</title>
+      <link href="/2018/12/03/dfs-bfs/"/>
+      <url>/2018/12/03/dfs-bfs/</url>
+      
+        <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="字母列举例题"><a href="#字母列举例题" class="headerlink" title="字母列举例题"></a>字母列举例题</h1><font color="#0099ff"><strong>Problem description</strong></font><blockquote><p>概率论老师：听懂了么？<br>大家：。。。<br>概率论是门有趣的学科，但我不想凭概率挂科，是时候认真看看书了<br>书里有一道这样的题目：</p></blockquote><blockquote><p>一俱乐部有5名一年级学生，2名二年级学生，3名三年级学生，2名四年级学生。<br>在其中任选5名学生，求一、二、三、四年级学生均包含在内的概率。<br>概率论是个细活，不过我比较粗心，经常漏掉几种情况而算错<br>现在我想让你编个程序列举出所有符合要求（各年级学生均包含在内）的情况</p></blockquote><font color="#0099ff"><strong>Input</strong></font><blockquote><p>首先输入一个t表示有t组样例<br>每组样例有两行输入<br>第一行输入N（1&lt;=N&lt;=6）表示有N个年级，紧接着按顺序输入从1到N每个年级对应的学生数量m（1&lt;m&lt;50）<br>第二行输入要抽选的学生人数n(N&lt;=n&lt;=总人数)</p></blockquote><font color="#0099ff"><strong>Output</strong></font><blockquote><p>用n代表一个属于n年级的学生<br>例如：1 2 3 4 4 代表1名一年级、1名二年级、一名三年级和两名4年级的学生的组合<br>对于每组样例，每种组合按年级顺序输出对应学生并用空格隔开（行尾没有多余空格），并按字典序输出所有可能的组合</p></blockquote><p><font color="#0099ff"><strong>Sample Input</strong></font></p><blockquote><p>2<br>4 5 2 3 2<br>5<br>1 4<br>2</p></blockquote><p><font color="#0099ff"><strong>Sample Output</strong></font></p><blockquote><p>1 1 2 3 4<br>1 2 2 3 4<br>1 2 3 3 4<br>1 2 3 4 4<br>1 1</p></blockquote><p><strong>简单DFS思路</strong><br>先从各年级取一个人，然后再DFS各年级的剩下的人，取出来全部后排序即可。<br>重点在于不能重复计算，所以要从小到大执行。</p><p>Java代码：</p><pre><code>import java.util.Arrays;import java.util.Scanner;public class Main {    static int grades;      //年级数    static int[] men;       //各年级的人数    static int num;         //总共需要的人数    static int[] dfs;       //用于存放选取出来的人    public static void main(String[] args) {        Scanner sc = new Scanner(System.in);        int n = sc.nextInt();        while(n--&gt;0){            grades = sc.nextInt();            men = new int[grades+1];            for(int i = 1 ; i &lt;= grades ; i++){                men[i] = sc.nextInt();            }            num = sc.nextInt();            dfs = new int[num+1];            for(int i = 1; i &lt;= grades ; i++){                dfs[i] = i;         //首先选好各年级一人满足题目条件            }            dfs(1);        }    }    static void dfs(int layer){        //出口：人数足够，将选好的人排序并输出        if(layer+grades&gt;num) {            int[] tmp = Arrays.copyOfRange(dfs, 0, num+1);            Arrays.sort(tmp);            for(int i = 1 ; i &lt;= num ; i++){                if(i!=num)                    System.out.print(tmp[i]+&quot; &quot;);                else                    System.out.print(tmp[i]);            }            System.out.println();        }else {            for (int i = 1; i &lt;= grades; i++) {            //判断条件：该年级还有人且当前位置的数不比要填的数大（保证不重复）                if (men[i]&gt; 1 &amp;&amp; (i&gt;=dfs[layer+grades-1] || layer==1)) {                    men[i]--;                    dfs[layer+grades] = i;                    dfs(layer + 1);                    men[i]++;                }            }        }    }}</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 搜索 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>欧拉函数、费马小定理</title>
       <link href="/2018/11/19/eulerandfermet/"/>
       <url>/2018/11/19/eulerandfermet/</url>
@@ -142,9 +161,9 @@
       
         <tags>
             
-            <tag> Java </tag>
-            
             <tag> Json </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       

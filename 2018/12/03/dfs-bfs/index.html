@@ -127,13 +127,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/images/numTheory1.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/images/fs.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        <font size="6">欧拉函数、费马小定理</font>
+                        <font size="6">深度搜索、广度搜索</font>
                     </div>
                 </div>
             </div>
@@ -155,91 +155,102 @@
                     
                     <a href="https://chitoseyono.com/tags/算法/" target="_blank"><span class="chip bg-color">算法</span></a>
                     
-                    <a href="https://chitoseyono.com/tags/数论/" target="_blank"><span class="chip bg-color">数论</span></a>
+                    <a href="https://chitoseyono.com/tags/搜索/" target="_blank"><span class="chip bg-color">搜索</span></a>
                     
                 </div>
                 
                 <div class="author-info">
                     <span>
-                        <i class="fa fa-calendar fa-fw"></i>2018-11-19
+                        <i class="fa fa-calendar fa-fw"></i>2018-12-03
                     </span>
                 </div>
             </div>
             <hr>
             <div class="card-content article-card-content">
                 <div id="articleContent">
-                    <script src="/assets/js/APlayer.min.js"> </script><h1 id="HDU1098"><a href="#HDU1098" class="headerlink" title="HDU1098"></a>HDU1098</h1><p><a href="&quot;http://acm.hdu.edu.cn/showproblem.php?pid=1098&quot;">Ignatius’s puzzle</a><br>（费马小定理）</p>
-<p>f(x)=5<em>x^13+13</em>x^5+k<em>a</em>x转化成f(x)=(5<em>x^12+13</em>x^4+k<em>a)</em>x</p>
-<p>从1~65开始数，倘若x%65!=0，则必须要里面的内容<strong>(5<em>x^12+13</em>x^4+k*a)%65=0</strong>，<br>那么分开来看：</p>
-<p>左边的5<em>x^12本来就是5的倍数，根据费马小定理他被13整除的结果：<br>而  </em>x^(13-1)%13≡1<em>，<br>故  ** 5</em>x^12%13≡5 **。</p>
-<p>中间的13<em>x^5本来就是13的倍数，根据费马小定理他被5整除的结果：<br>而  </em>x^(5-1)%5≡1<em>，<br>故  ** 13</em>x^5%5≡2 **。</p>
-<p>那么对于最后的ka我们可以这样看：<br>当需要他被13整除的时候，左边已经有5了，那么这时候只需要<strong>ka%13==8</strong>；<br>当需要他被13整除的时候，中间已经有2了，那么这时候只需要<strong>ka%5==3</strong>；<br>满足这两个式子的a便是满足题意的a值</p>
-<p>Java代码如下：</p>
-<pre><code>import java.util.Scanner;
+                    <script src="/assets/js/APlayer.min.js"> </script><h1 id="字母列举例题"><a href="#字母列举例题" class="headerlink" title="字母列举例题"></a>字母列举例题</h1><font color="#0099ff"><strong>Problem description</strong></font>
 
-public class hdu1098 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in) ;
-        while(sc.hasNext()){
-            int ans = -1;
-            int k = sc.nextInt();
-            for(int a = 1 ; a &lt;=65 ; a++){
-                if(k*a%5==2 &amp;&amp; k*a%13==8){
-                    ans = a;
-                    break;
-                }
-            }
-            if(ans&gt;0)
-                System.out.println(ans);
-            else
-                System.out.println(&quot;no&quot;);
-        }
-    }
-}
-</code></pre><h1 id="HDU2588"><a href="#HDU2588" class="headerlink" title="HDU2588"></a>HDU2588</h1><p><a href="&quot;http://acm.hdu.edu.cn/showproblem.php?pid=2588&quot;">GCD</a><br>（欧拉函数）</p>
-<p>这题真的好折腾啊…题目过于误导人去用gcd了（一用不是TLE就是MLE）<br>首先对于 gcd(x,n)=i ，<strong>x/i显然与n/i互斥</strong>（即gcd(x/i,n/i)=1)<br>那么<strong>求x/i的个数就相当于求x的个数了，</strong><br>而对于gcd(x,n)!=1的x，必然是n的约数，<br>所以只需要遍历i-&gt;[1,n]为n的约数的，求出各个与n/i互斥的x/i个数，<br>即使用欧拉函数——<strong>累计φ(n/i)</strong>的值即可。</p>
-<p>但在这题有10^9的那么大的数，为了优化，就只遍历到sqrt(n)即可了，对于大于sqrt(n)的i，<br>因为每一次遍历得到的为n的约数的i，相应的也会同样有n的约数n/i（除去了i^2=n的情况，防止重复），<br>那么每一次遍历就是ans += φ(n/i) 和 ans += φ(n/(n/i))，<br>即<strong>ans += φ(n/i) 和ans += φ(i)</strong></p>
-<p>Java代码如下：</p>
-<pre><code>import java.util.Scanner;
+<blockquote>
+<p>概率论老师：听懂了么？<br>大家：。。。<br>概率论是门有趣的学科，但我不想凭概率挂科，是时候认真看看书了<br>书里有一道这样的题目：</p>
+</blockquote>
+<blockquote>
+<p>一俱乐部有5名一年级学生，2名二年级学生，3名三年级学生，2名四年级学生。<br>在其中任选5名学生，求一、二、三、四年级学生均包含在内的概率。<br>概率论是个细活，不过我比较粗心，经常漏掉几种情况而算错<br>现在我想让你编个程序列举出所有符合要求（各年级学生均包含在内）的情况</p>
+</blockquote>
+<font color="#0099ff"><strong>Input</strong></font>
 
-public class hdu2879 {
+<blockquote>
+<p>首先输入一个t表示有t组样例<br>每组样例有两行输入<br>第一行输入N（1&lt;=N&lt;=6）表示有N个年级，紧接着按顺序输入从1到N每个年级对应的学生数量m（1&lt;m&lt;50）<br>第二行输入要抽选的学生人数n(N&lt;=n&lt;=总人数)</p>
+</blockquote>
+<font color="#0099ff"><strong>Output</strong></font>
+
+<blockquote>
+<p>用n代表一个属于n年级的学生<br>例如：1 2 3 4 4 代表1名一年级、1名二年级、一名三年级和两名4年级的学生的组合<br>对于每组样例，每种组合按年级顺序输出对应学生并用空格隔开（行尾没有多余空格），并按字典序输出所有可能的组合</p>
+</blockquote>
+<p><font color="#0099ff"><strong>Sample Input</strong></font></p>
+<blockquote>
+<p>2<br>4 5 2 3 2<br>5<br>1 4<br>2</p>
+</blockquote>
+<p><font color="#0099ff"><strong>Sample Output</strong></font></p>
+<blockquote>
+<p>1 1 2 3 4<br>1 2 2 3 4<br>1 2 3 3 4<br>1 2 3 4 4<br>1 1</p>
+</blockquote>
+<p><strong>简单DFS思路</strong><br>先从各年级取一个人，然后再DFS各年级的剩下的人，取出来全部后排序即可。<br>重点在于不能重复计算，所以要从小到大执行。</p>
+<p>Java代码：</p>
+<pre><code>import java.util.Arrays;
+import java.util.Scanner;
+
+public class Main {
+
+    static int grades;      //年级数
+    static int[] men;       //各年级的人数
+    static int num;         //总共需要的人数
+    static int[] dfs;       //用于存放选取出来的人
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int cases = sc.nextInt();
-        for(int i = 0 ; i &lt;cases; i++) {
-            int N = sc.nextInt();
-            int M = sc.nextInt();
-            int sum = 0;
-            for(int j =1 ; j &lt;= Math.sqrt(N) ; j++){
-                if(N%j == 0){
-                    if(j&gt;=M &amp;&amp; j!= Math.sqrt(N) ){
-                        sum += euler(N/j);
-                    }
-                    if(N/j &gt;= M){
-                        sum += euler(j);
-                    }
-                }
+        int n = sc.nextInt();
+        while(n--&gt;0){
+            grades = sc.nextInt();
+            men = new int[grades+1];
+
+            for(int i = 1 ; i &lt;= grades ; i++){
+                men[i] = sc.nextInt();
             }
-            System.out.println(sum);
+            num = sc.nextInt();
+            dfs = new int[num+1];
+            for(int i = 1; i &lt;= grades ; i++){
+                dfs[i] = i;         //首先选好各年级一人满足题目条件
+            }
+            dfs(1);
         }
     }
 
-    static int euler(int num){
-        int ans = 1;
-        for(int i = 2 ; i &lt;= num ;i++){
-            if(num%i==0){
-                ans *= (i-1);
-                num/=i;
-                while(num%i==0) {
-                    ans *= i;
-                    num /= i;
+    static void dfs(int layer){
+        //出口：人数足够，将选好的人排序并输出
+        if(layer+grades&gt;num) {
+            int[] tmp = Arrays.copyOfRange(dfs, 0, num+1);
+            Arrays.sort(tmp);
+            for(int i = 1 ; i &lt;= num ; i++){
+                if(i!=num)
+                    System.out.print(tmp[i]+&quot; &quot;);
+                else
+                    System.out.print(tmp[i]);
+            }
+            System.out.println();
+        }else {
+            for (int i = 1; i &lt;= grades; i++) {
+            //判断条件：该年级还有人且当前位置的数不比要填的数大（保证不重复）
+                if (men[i]&gt; 1 &amp;&amp; (i&gt;=dfs[layer+grades-1] || layer==1)) {
+                    men[i]--;
+                    dfs[layer+grades] = i;
+                    dfs(layer + 1);
+                    men[i]++;
                 }
             }
         }
-        return ans;
     }
-
 }
+
 </code></pre>
                 </div>
                 <hr/>
@@ -259,7 +270,7 @@ public class hdu2879 {
                         <span class="reprint-tip">Reprint please specify: </span>
                         <a href="https://chitoseyono.com" class="b-link-green">White Noise -Chitose Yono Offical Blog-</a>
                         <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                        <a href="/2018/11/19/eulerandfermet/" class="b-link-green">欧拉函数、费马小定理</a>
+                        <a href="/2018/12/03/dfs-bfs/" class="b-link-green">深度搜索、广度搜索</a>
                     </p>
                 </div>
             </div>
@@ -276,7 +287,7 @@ public class hdu2879 {
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Mon Nov 19 2018 11:25:00 GMT+0800',
+    id: 'Mon Dec 03 2018 17:53:13 GMT+0800',
     owner: 'ChitoseYono',
     repo: 'chitoseyono.github.io',
     oauth: {
@@ -296,8 +307,8 @@ gitment.render('gitment-content');
 <article id="articles" class="container prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">Previous</div>
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">Current</div>
             <div class="card">
                 <a href="/2018/12/03/dfs-bfs/">
                     <div class="card-image">
@@ -306,16 +317,15 @@ gitment.render('gitment-content');
                         
                         <span class="card-title">深度搜索、广度搜索</span>
                     </div>
+
                     <div class="card-content article-content">
-                        <div class="summary">
-                             字母列举例题Problem description
+                        <div class="summary"> 字母列举例题Problem description
 
 
 概率论老师：听懂了么？大家：。。。概率论是门有趣的学科，但我不想凭概率挂科，是时候认真看看书了书里有一道这样的题目：
 
 
-一俱乐部有5名一年级学生，2名二年级学生，3名三年级学生，2
-                        </div>
+一俱乐部有5名一年级学生，2名二年级学生，3名三年级学生，2</div>
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-calendar fa-fw"></i>2018-12-03
@@ -328,6 +338,7 @@ gitment.render('gitment-content');
                             </span>
                         </div>
                     </div>
+
                     
                     <div class="card-action article-tags">
                         
@@ -345,20 +356,22 @@ gitment.render('gitment-content');
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">Next</div>
             <div class="card">
-                <a href="/2018/11/18/idk/">
+                <a href="/2018/11/19/eulerandfermet/">
                     <div class="card-image">
                         
-                        <img src="/medias/images/plzkillme.jpg" class="responsive-img" alt="I don't know">
+                        <img src="/medias/images/numTheory1.jpg" class="responsive-img" alt="欧拉函数、费马小定理">
                         
-                        <span class="card-title">I don't know</span>
+                        <span class="card-title">欧拉函数、费马小定理</span>
                     </div>
                     <div class="card-content article-content">
                         <div class="summary">
-                             我在空间日志里写了一篇日志，记录一下当天还能支持着我活下去的事物吧。他们可能简单的平凡无比，也是这样我才敢大声说出来。“想食秋刀鱼。”这样的心情也能支撑我有动力一点。但是那篇日志真的几乎不怎么更新了，后面更新我想写下去的东西都过于晦涩或者
+                             HDU1098Ignatius’s puzzle（费马小定理）
+f(x)=5x^13+13x^5+kax转化成f(x)=(5x^12+13x^4+ka)x
+从1~65开始数，倘若x%65!=0，则必须要里面的内容(5x^12+13x^4+
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-calendar fa-fw"></i>2018-11-18
+                                <i class="fa fa-calendar fa-fw"></i>2018-11-19
                             </span>
                             <span class="publish-author">
                                 <i class="fa fa-user fa-fw"></i>
@@ -371,7 +384,9 @@ gitment.render('gitment-content');
                     
                     <div class="card-action article-tags">
                         
-                        <a href="https://chitoseyono.com/tags/Vomit/"><span class="chip bg-color">Vomit</span></a>
+                        <a href="https://chitoseyono.com/tags/算法/"><span class="chip bg-color">算法</span></a>
+                        
+                        <a href="https://chitoseyono.com/tags/数论/"><span class="chip bg-color">数论</span></a>
                         
                     </div>
                     
