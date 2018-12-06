@@ -58,11 +58,11 @@
     </entry>
     
     <entry>
-      <title>动态规划算法入门题</title>
+      <title>动态规划之背包问题</title>
       <link href="/2018/11/13/dps/"/>
       <url>/2018/11/13/dps/</url>
       
-        <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h2 id="最长公共子序列CLS算法"><a href="#最长公共子序列CLS算法" class="headerlink" title="最长公共子序列CLS算法"></a>最长公共子序列CLS算法</h2><p>还没写还没写还没写还没写还没写还没写还没写</p><h2 id="Floyd算法"><a href="#Floyd算法" class="headerlink" title="Floyd算法"></a>Floyd算法</h2><h2 id="01背包问题"><a href="#01背包问题" class="headerlink" title="01背包问题"></a>01背包问题</h2>]]></content>
+        <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><h1 id="HDU1171"><a href="#HDU1171" class="headerlink" title="HDU1171"></a>HDU1171</h1><p><a href="&quot;http://acm.hdu.edu.cn/showproblem.php?pid=1171&quot;">Big Event in HDU</a></p><p>解题思路：<br>十分巧妙的一题，可以转换成01背包问题。<br>dp数组的意义：<strong>dp[MAX]=不超过MAX而能取得的最大价值</strong><br>那么对全部物品遍历价值val[i]，有<strong>dp[x] = max(dp[x], dp[x-val[i]]+val[i])</strong><br>根据题意B就是dp[sum(总价值)/2]，A就是总价值-dp[sum/2]</p><p>代码如下：<br>import java.util.Scanner;<br>import static java.lang.Math.max;</p><p>public class Main {</p><pre><code>public static void main(String[] args) {    Scanner sc = new Scanner(System.in);    int n;    while ((n=sc.nextInt())&gt;0){        int sum = 0;        int index = 0;        int dp[] = new int[200000];        int val[] = new int[5005];        for(int i = 0 ; i &lt; n ; i ++){            int a = sc.nextInt();            int b = sc.nextInt();            while(b--&gt;0) {                val[index++] = a;                sum += a;            }        }        for(int i = 0 ; i &lt; index ; i ++){            for(int j = sum/2 ; j &gt;= val[i] ; j-=val[i]){                dp[j] = max(dp[j], dp[j-val[i]]+val[i]);            }        }        System.out.println((sum-dp[sum/2]+&quot; &quot;+dp[sum/2]));    }}</code></pre><p>}</p>]]></content>
       
       
       
@@ -71,6 +71,8 @@
             <tag> Java </tag>
             
             <tag> 算法 </tag>
+            
+            <tag> DP </tag>
             
         </tags>
       
