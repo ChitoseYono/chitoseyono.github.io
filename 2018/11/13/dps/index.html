@@ -170,36 +170,75 @@
             <hr>
             <div class="card-content article-card-content">
                 <div id="articleContent">
-                    <script src="/assets/js/APlayer.min.js"> </script><h1 id="HDU1171"><a href="#HDU1171" class="headerlink" title="HDU1171"></a>HDU1171</h1><p><a href="&quot;http://acm.hdu.edu.cn/showproblem.php?pid=1171&quot;">Big Event in HDU</a></p>
-<p>解题思路：<br>十分巧妙的一题，可以转换成01背包问题。<br>dp数组的意义：<strong>dp[MAX]=不超过MAX而能取得的最大价值</strong><br>那么对全部物品遍历价值val[i]，有<strong>dp[x] = max(dp[x], dp[x-val[i]]+val[i])</strong><br>根据题意B就是dp[sum(总价值)/2]，A就是总价值-dp[sum/2]</p>
-<p>代码如下：<br>import java.util.Scanner;<br>import static java.lang.Math.max;</p>
-<p>public class Main {</p>
-<pre><code>public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    int n;
-    while ((n=sc.nextInt())&gt;0){
-        int sum = 0;
-        int index = 0;
-        int dp[] = new int[200000];
-        int val[] = new int[5005];
-        for(int i = 0 ; i &lt; n ; i ++){
-            int a = sc.nextInt();
-            int b = sc.nextInt();
-            while(b--&gt;0) {
-                val[index++] = a;
-                sum += a;
+                    <script src="/assets/js/APlayer.min.js"> </script><h1 id="HDU2602"><a href="#HDU2602" class="headerlink" title="HDU2602"></a>HDU2602</h1><p><a href="&quot;http://acm.hdu.edu.cn/showproblem.php?pid=2602&quot;">Bone Collector</a><br>解题思路：<br>交学费题。<br>一看就是01背包以为没什么难的，<br>一开始还懵了一直WA看题目条件还以为是大数才A不了，<br><strong>结果原来还有体积为0的东西</strong>。</p>
+<pre><code>import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        while (n-- &gt; 0) {
+            int N = sc.nextInt();
+            int V = sc.nextInt();
+            int val[] = new int[N + 1];
+            int vol[] = new int[N + 1];
+            int dp[][] = new int[N + 1][V + 1];
+            for (int i = 1; i &lt;= N; i++) {
+                val[i] = sc.nextInt();
             }
-        }
-        for(int i = 0 ; i &lt; index ; i ++){
-            for(int j = sum/2 ; j &gt;= val[i] ; j-=val[i]){
-                dp[j] = max(dp[j], dp[j-val[i]]+val[i]);
+            for (int i = 1; i &lt;= N; i++) {
+                vol[i] = sc.nextInt();
             }
+            for(int i = 0 ; i &lt;= V ; i ++){
+                dp[0][i] = 0;
+            }
+            for (int i = 1; i &lt;= N; i++) {
+                for (int k = 0; k &lt;= V; k++) {
+                    if(k&gt;=vol[i]) {
+                        int a = dp[i - 1][k];
+                        int b = dp[i - 1][k - vol[i]]+(val[i]);
+                        dp[i][k] = a&gt;b?a:b;
+                    }else dp[i][k] = dp[i - 1][k];
+                }
+            }
+            System.out.println(dp[N][V]);
         }
-        System.out.println((sum-dp[sum/2]+&quot; &quot;+dp[sum/2]));
     }
 }
-</code></pre><p>}</p>
+</code></pre><h1 id="HDU1171"><a href="#HDU1171" class="headerlink" title="HDU1171"></a>HDU1171</h1><p><a href="&quot;http://acm.hdu.edu.cn/showproblem.php?pid=1171&quot;">Big Event in HDU</a></p>
+<p>解题思路：<br>十分巧妙的一题，可以转换成01背包问题。<br>dp数组的意义：<strong>dp[MAX]=不超过MAX而能取得的最大价值</strong><br>那么对全部物品遍历价值val[i]，有<strong>dp[x] = max(dp[x], dp[x-val[i]]+val[i])</strong><br>根据题意B就是dp[sum(总价值)/2]，A就是总价值-dp[sum/2]</p>
+<p>代码如下：</p>
+<pre><code>import java.util.Scanner;
+import static java.lang.Math.max;
 
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n;
+        while ((n=sc.nextInt())&gt;0){
+            int sum = 0;
+            int index = 0;
+            int dp[] = new int[200000];
+            int val[] = new int[5005];
+            for(int i = 0 ; i &lt; n ; i ++){
+                int a = sc.nextInt();
+                int b = sc.nextInt();
+                while(b--&gt;0) {
+                    val[index++] = a;
+                    sum += a;
+                }
+            }
+            for(int i = 0 ; i &lt; index ; i ++){
+                for(int j = sum/2 ; j &gt;= val[i] ; j-=val[i]){
+                    dp[j] = max(dp[j], dp[j-val[i]]+val[i]);
+                }
+            }
+            System.out.println((sum-dp[sum/2]+&quot; &quot;+dp[sum/2]));
+        }
+    }
+}
+</code></pre>
                 </div>
                 <hr/>
 
