@@ -139,13 +139,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/images/numTheory1.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        <font size="6">欧拉函数、费马小定理</font>
+                        <font size="6">guestbook</font>
                     </div>
                 </div>
             </div>
@@ -163,96 +163,31 @@
         <div class="card">
             <div class="card-content article-info">
                 
-                <div class="article-tag">
-                    
-                    <a href="https://chitoseyono.com/tags/算法/" target="_blank"><span class="chip bg-color">算法</span></a>
-                    
-                    <a href="https://chitoseyono.com/tags/数论/" target="_blank"><span class="chip bg-color">数论</span></a>
-                    
-                </div>
-                
                 <div class="author-info">
                     <span>
-                        <i class="fa fa-calendar fa-fw"></i>2018-11-19
+                        <i class="fa fa-calendar fa-fw"></i>2018-12-06
                     </span>
                 </div>
             </div>
             <hr>
             <div class="card-content article-card-content">
                 <div id="articleContent">
-                    <script src="/assets/js/APlayer.min.js"> </script><h1 id="HDU1098"><a href="#HDU1098" class="headerlink" title="HDU1098"></a>HDU1098</h1><p><a href="&quot;http://acm.hdu.edu.cn/showproblem.php?pid=1098&quot;">Ignatius’s puzzle</a><br>（费马小定理）</p>
-<p>f(x)=5<em>x^13+13</em>x^5+k<em>a</em>x转化成f(x)=(5<em>x^12+13</em>x^4+k<em>a)</em>x</p>
-<p>从1~65开始数，倘若x%65!=0，则必须要里面的内容<strong>(5<em>x^12+13</em>x^4+k*a)%65=0</strong>，<br>那么分开来看：</p>
-<p>左边的5<em>x^12本来就是5的倍数，根据费马小定理他被13整除的结果：<br>而  </em>x^(13-1)%13≡1<em>，<br>故  ** 5</em>x^12%13≡5 **。</p>
-<p>中间的13<em>x^5本来就是13的倍数，根据费马小定理他被5整除的结果：<br>而  </em>x^(5-1)%5≡1<em>，<br>故  ** 13</em>x^5%5≡2 **。</p>
-<p>那么对于最后的ka我们可以这样看：<br>当需要他被13整除的时候，左边已经有5了，那么这时候只需要<strong>ka%13==8</strong>；<br>当需要他被13整除的时候，中间已经有2了，那么这时候只需要<strong>ka%5==3</strong>；<br>满足这两个式子的a便是满足题意的a值</p>
-<p>Java代码如下：</p>
-<pre><code>import java.util.Scanner;
+                    <script src="/assets/js/APlayer.min.js"> </script><div class="gitment-card card" data-aos="fade-up"><br>    <div id="gitment-content" class="card-content"></div><br></div>
 
-public class hdu1098 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in) ;
-        while(sc.hasNext()){
-            int ans = -1;
-            int k = sc.nextInt();
-            for(int a = 1 ; a &lt;=65 ; a++){
-                if(k*a%5==2 &amp;&amp; k*a%13==8){
-                    ans = a;
-                    break;
-                }
-            }
-            if(ans&gt;0)
-                System.out.println(ans);
-            else
-                System.out.println(&quot;no&quot;);
-        }
+<script src="/libs/gitment/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: '<%= page.date %>',
+    owner: 'ChitoseYono',
+    repo: 'chitoseyono.github.io',
+    oauth: {
+        client_id: '999f7c73059996845f36',
+        client_secret: '8c466460b56a73683ea40833c9d5dca6f530ce9c'
     }
-}
-</code></pre><h1 id="HDU2588"><a href="#HDU2588" class="headerlink" title="HDU2588"></a>HDU2588</h1><p><a href="&quot;http://acm.hdu.edu.cn/showproblem.php?pid=2588&quot;">GCD</a><br>（欧拉函数）</p>
-<p>这题真的好折腾啊…题目过于误导人去用gcd了（一用不是TLE就是MLE）<br>首先对于 gcd(x,n)=i ，<strong>x/i显然与n/i互斥</strong>（即gcd(x/i,n/i)=1)<br>那么<strong>求x/i的个数就相当于求x的个数了，</strong><br>而对于gcd(x,n)!=1的x，必然是n的约数，<br>所以只需要遍历i-&gt;[1,n]为n的约数的，求出各个与n/i互斥的x/i个数，<br>即使用欧拉函数——<strong>累计φ(n/i)</strong>的值即可。</p>
-<p>但在这题有10^9的那么大的数，为了优化，就只遍历到sqrt(n)即可了，对于大于sqrt(n)的i，<br>因为每一次遍历得到的为n的约数的i，相应的也会同样有n的约数n/i（除去了i^2=n的情况，防止重复），<br>那么每一次遍历就是ans += φ(n/i) 和 ans += φ(n/(n/i))，<br>即<strong>ans += φ(n/i) 和ans += φ(i)</strong></p>
-<p>Java代码如下：</p>
-<pre><code>import java.util.Scanner;
+});
 
-public class hdu2879 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int cases = sc.nextInt();
-        for(int i = 0 ; i &lt;cases; i++) {
-            int N = sc.nextInt();
-            int M = sc.nextInt();
-            int sum = 0;
-            for(int j =1 ; j &lt;= Math.sqrt(N) ; j++){
-                if(N%j == 0){
-                    if(j&gt;=M &amp;&amp; j!= Math.sqrt(N) ){
-                        sum += euler(N/j);
-                    }
-                    if(N/j &gt;= M){
-                        sum += euler(j);
-                    }
-                }
-            }
-            System.out.println(sum);
-        }
-    }
-
-    static int euler(int num){
-        int ans = 1;
-        for(int i = 2 ; i &lt;= num ;i++){
-            if(num%i==0){
-                ans *= (i-1);
-                num/=i;
-                while(num%i==0) {
-                    ans *= i;
-                    num /= i;
-                }
-            }
-        }
-        return ans;
-    }
-
-}
-</code></pre>
+gitment.render('gitment-content');
+</script>
                 </div>
                 <hr/>
 
@@ -271,7 +206,7 @@ public class hdu2879 {
                         <span class="reprint-tip">Reprint please specify: </span>
                         <a href="https://chitoseyono.com" class="b-link-green">White Noise -Chitose Yono Offical Blog-</a>
                         <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                        <a href="/2018/11/19/eulerandfermet/" class="b-link-green">欧拉函数、费马小定理</a>
+                        <a href="/guestbook/index.html" class="b-link-green">guestbook</a>
                     </p>
                 </div>
             </div>
@@ -288,7 +223,7 @@ public class hdu2879 {
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Mon Nov 19 2018 11:25:00 GMT+0800',
+    id: 'Thu Dec 06 2018 21:00:07 GMT+0800',
     owner: 'ChitoseYono',
     repo: 'chitoseyono.github.io',
     oauth: {
@@ -308,29 +243,31 @@ gitment.render('gitment-content');
 <article id="articles" class="container prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">Previous</div>
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">Current</div>
             <div class="card">
-                <a href="/2018/12/03/dfs-bfs/">
+                <a href="/guestbook/index.html">
                     <div class="card-image">
                         
-                        <img src="/medias/images/fs.jpg" class="responsive-img" alt="深度搜索、广度搜索">
                         
-                        <span class="card-title">深度搜索、广度搜索</span>
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="guestbook">
+                        
+                        <span class="card-title">guestbook</span>
                     </div>
+
                     <div class="card-content article-content">
-                        <div class="summary">
-                             字母列举例题Problem description
+                        <div class="summary">     
 
 
-概率论老师：听懂了么？大家：。。。概率论是门有趣的学科，但我不想凭概率挂科，是时候认真看看书了书里有一道这样的题目：
 
-
-一俱乐部有5名一年级学生，2名二年级学生，3名三年级学生，2
-                        </div>
+var gitment = new Gitment({
+    id: '',
+    owner: 'ChitoseYono',
+    repo: 'chitoseyono.github.io',
+    oauth:</div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-calendar fa-fw"></i>2018-12-03
+                                <i class="fa fa-calendar fa-fw"></i>2018-12-06
                             </span>
                             <span class="publish-author">
                                 <i class="fa fa-user fa-fw"></i>
@@ -340,14 +277,7 @@ gitment.render('gitment-content');
                             </span>
                         </div>
                     </div>
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="https://chitoseyono.com/tags/算法/"><span class="chip bg-color">算法</span></a>
-                        
-                        <a href="https://chitoseyono.com/tags/搜索/"><span class="chip bg-color">搜索</span></a>
-                        
-                    </div>
+
                     
                 </a>
             </div>
@@ -355,22 +285,30 @@ gitment.render('gitment-content');
         
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">Next</div>
+            <div class="article-badge right-badge text-color">Current</div>
             <div class="card">
-                <a href="/2018/11/18/idk/">
+                <a href="/guestbook/index.html">
                     <div class="card-image">
                         
-                        <img src="/medias/images/plzkillme.jpg" class="responsive-img" alt="I don't know">
                         
-                        <span class="card-title">I don't know</span>
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="guestbook">
+                        
+                        <span class="card-title">guestbook</span>
                     </div>
+
                     <div class="card-content article-content">
-                        <div class="summary">
-                             我在空间日志里写了一篇日志，记录一下当天还能支持着我活下去的事物吧。他们可能简单的平凡无比，也是这样我才敢大声说出来。“想食秋刀鱼。”这样的心情也能支撑我有动力一点。但是那篇日志真的几乎不怎么更新了，后面更新我想写下去的东西都过于晦涩或者
-                        </div>
+                        <div class="summary">     
+
+
+
+var gitment = new Gitment({
+    id: '',
+    owner: 'ChitoseYono',
+    repo: 'chitoseyono.github.io',
+    oauth:</div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-calendar fa-fw"></i>2018-11-18
+                                <i class="fa fa-calendar fa-fw"></i>2018-12-06
                             </span>
                             <span class="publish-author">
                                 <i class="fa fa-user fa-fw"></i>
@@ -380,12 +318,7 @@ gitment.render('gitment-content');
                             </span>
                         </div>
                     </div>
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="https://chitoseyono.com/tags/Vomit/"><span class="chip bg-color">Vomit</span></a>
-                        
-                    </div>
+
                     
                 </a>
             </div>
