@@ -170,119 +170,36 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
 <main class="content">
 
     
-<div id="tags" class="container tag-tip-container">
-    <div class="card">
-        <div class="card-content">
-            <div class="tag-title center-align">文章标签</div>
-            <div class="tag-chips">
-                
-                
-                <a href="https://chitoseyono.com/tags/Java/" title="Java: 7">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="Java" style="background-color: #F9EBEA;">Java
-                        <span class="tag-length">7</span>
-                    </span>
-                </a>
-                
-                
-                <a href="https://chitoseyono.com/tags/算法/" title="算法: 5">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="算法" style="background-color: #F5EEF8;">算法
-                        <span class="tag-length">5</span>
-                    </span>
-                </a>
-                
-                
-                <a href="https://chitoseyono.com/tags/Json/" title="Json: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="Json" style="background-color: #D5F5E3;">Json
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="https://chitoseyono.com/tags/Thread/" title="Thread: 2">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="Thread" style="background-color: #E8F8F5;">Thread
-                        <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="https://chitoseyono.com/tags/搜索/" title="搜索: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            data-tagname="搜索" style="background-color: #FEF9E7;">搜索
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="https://chitoseyono.com/tags/DP/" title="DP: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="DP" style="background-color: #F8F9F9;">DP
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="https://chitoseyono.com/tags/数论/" title="数论: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="数论" style="background-color: #82E0AA;">数论
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="https://chitoseyono.com/tags/Test/" title="Test: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="Test" style="background-color: #D7BDE2;">Test
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="https://chitoseyono.com/tags/Vomit/" title="Vomit: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="Vomit" style="background-color: #A3E4D7;">Vomit
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
+    <div class="container notice">
+        <div class="card">
+            <div class="card-content">
+                <i class="fa fa-volume-up fa-lg fa-fw text-color"></i>Chitose Yono struggles everyday just to depart from the damn world.
             </div>
         </div>
     </div>
-</div>
+    
 
-    <div class="container">
-        
+    
 
-        <article>
-            <div class="row tags-posts">
-                
-                
-                <div class="article tag-post col s12 m6 l4" data-tags="算法, 搜索">
-                    <div class="card">
-                        <a href="/2018/12/03/dfs-bfs/">
-                            <div class="card-image tag-image">
-                                
-                                <img src="/medias/images/fs.jpg" class="responsive-img" alt="深度搜索、广度搜索">
-                                
-                                <span class="card-title">深度搜索、广度搜索</span>
-                            </div>
-                        </a>
+    <!-- 所有文章卡片 -->
+    <article id="articles" class="container articles">
+        <div class="row article-row">
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2018/09/28/white-noise/">
+                        <div class="card-image">
+                            
+                            <img src="/medias/images/1.jpg" class="responsive-img" alt="Welcome to White Noise">
+                            
+                            <span class="card-title">Welcome to White Noise</span>
+                        </div>
+
                         <div class="card-content article-content">
+                            <div class="summary"> &nbsp;&nbsp;&nbsp;&nbsp;Welcome to White Noise - Chitose Yo</div>
                             <div class="publish-info">
                                 <span class="publish-date">
-                                    <i class="fa fa-calendar fa-fw"></i>2018-12-03
+                                    <i class="fa fa-calendar fa-fw"></i>2018-09-28
                                 </span>
                                 <span class="publish-author">
                                     <i class="fa fa-user fa-fw"></i>
@@ -292,13 +209,50 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                                 </span>
                             </div>
                         </div>
-                    </div>
+
+                        
+                        <div class="card-action article-tags">
+                            
+                            <a href="https://chitoseyono.com/tags/Test/" target="_blank">
+                                <span class="chip bg-color">Test</span>
+                            </a>
+                            
+                        </div>
+                        
+                    </a>
                 </div>
-                
             </div>
-        </article>
-    </div>
+            
+        </div>
+    </article>
+
 </main>
+
+
+
+<div class="container paging">
+    <div class="row">
+        <div class="col s6 m4 l4">
+            
+            <a href="/"
+               class="left btn-floating btn-large waves-effect waves-light bg-color">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            
+        </div>
+        <div class="page-info col m4 l4 hide-on-small-only">
+            <div class="center-align b-text-gray">2 / 2</div>
+        </div>
+        <div class="col s6 m4 l4">
+            
+            <a class="right btn-floating btn-large disabled">
+                <i class="fa fa-angle-right"></i>
+            </a>
+            
+        </div>
+    </div>
+</div>
+
 
 
 <footer class="page-footer bg-color">

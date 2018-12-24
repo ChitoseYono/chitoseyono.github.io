@@ -3,6 +3,25 @@
   
     
     <entry>
+      <title>关于各种由TLC变成AC的解决</title>
+      <link href="/2018/12/24/tlesolution/"/>
+      <url>/2018/12/24/tlesolution/</url>
+      
+        <content type="html"><![CDATA[<script src="/assets/js/APlayer.min.js"> </script><p>太久没写博了以至于快要忘记了这东西，因为太忙了，不过偶尔还是会更一更吧。<br>遇到过好多弱智题明明都知道该怎么做但是硬是TLE，总结一下类型吧。</p><h1 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h1><p>预处理很多地方都用得到，一般都用在那种递推问题上（就是那种f(n)需要先求f(n-1)之类的），这种情况你要是每测试一个值都重新求一次就很麻烦，不如直接预处理一遍把从1~n（看题目取n的大小）的答案获取存数组里，然后便可以直接输出答案。<br><a href="&quot;http://acm.hdu.edu.cn/showproblem.php?pid=1250&quot;">Hat’s Fibonacci</a></p><p>预处理水题，大数，当看例题就好。</p><pre><code>import java.math.BigInteger;import java.util.Scanner;/** * @class: hdu1250 * @author: Chitose * @date: 2018/12/24 * @description: */public class Main {    public static void main(String[] args) {        Scanner sc = new Scanner(System.in);        BigInteger fib[] = new BigInteger[10000];        fib[1] = fib[2] = fib[3] = fib[4] = BigInteger.ONE;        for(int i = 5 ; i &lt; 10000 ; i++){            fib[i] = fib[i-1].add(fib[i-2]).add(fib[i-3]).add(fib[i-4]);        }        while(sc.hasNext()){            System.out.println(fib[sc.nextInt()]);        }    }}</code></pre><h1 id="保存计算值"><a href="#保存计算值" class="headerlink" title="保存计算值"></a>保存计算值</h1><p>这一招甚至可以用在任何题当中，将自己每一次测试的值保存下来，防止有重复的测试用例。（当然那种测试用例很大的输出小的可能就不太适用了。）<br><a href="&quot;http://acm.hdu.edu.cn/showproblem.php?pid=2553&quot;">N皇后问题</a></p><p>经典的n皇后模板题简单DFS，但不保存每次的值就会TLE：</p><pre><code>import java.util.HashMap;import java.util.Map;import java.util.Scanner;/** * @class: hdu2553 * @author: Chitose * @date: 2018/12/24 * @description: */public class Main {    static int n;    private static int ans;    private static int[] cols;//按行来记录皇后，那么用一个一维数组就可以记录了    public static void main(String[] args) {        Scanner sc = new Scanner(System.in);        Map&lt;Integer,Integer&gt; map = new HashMap();        while((n=sc.nextInt())!=0){            if(map.containsKey(n))                System.out.println(map.get(n));            else {                ans = 0;                cols = new int[n];                dfs(0);                System.out.println(ans);                map.put(n, ans);            }        }    }    static void dfs(int used){        if(used == n)   ans++;        else for(int i = 0 ; i &lt; n ; i++){            cols[used] = i;            if(ok(used))                dfs(used+1);        }    }    static boolean ok(int row){        for(int i = 0 ; i &lt; row ; i++){            if(cols[row] == cols[i] || row - cols[row] == i - cols[i] || row + cols[row] == i + cols[i])    //这里有技巧，寻找是否同一对角线上的话只需要找截距相同的点就可以了，斜率都是1或-1                return false;        }        return true;    }}</code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>深度搜索、广度搜索</title>
       <link href="/2018/12/03/dfs-bfs/"/>
       <url>/2018/12/03/dfs-bfs/</url>
@@ -163,9 +182,9 @@
       
         <tags>
             
-            <tag> Json </tag>
-            
             <tag> Java </tag>
+            
+            <tag> Json </tag>
             
         </tags>
       

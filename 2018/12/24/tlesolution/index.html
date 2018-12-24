@@ -142,13 +142,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/images/1.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/images/tle.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        <font size="6">Welcome to White Noise</font>
+                        <font size="6">关于各种由TLC变成AC的解决</font>
                     </div>
                 </div>
             </div>
@@ -159,28 +159,6 @@
 <main class="content">
 
     <!-- 目录内容 -->
-    
-        <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none"></p>
-        </p>
-        <div id="toc-article" class="toc-article">
-            <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-            <strong class="toc-title">Navigator</strong>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#About"><span class="toc-number">1.</span> <span class="toc-text">About</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Todo-list"><span class="toc-number">1.1.</span> <span class="toc-text">Todo-list</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chitose-Yono"><span class="toc-number">1.2.</span> <span class="toc-text">Chitose Yono</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#White-Noise"><span class="toc-number">1.3.</span> <span class="toc-text">White Noise</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vomit-machine"><span class="toc-number">1.4.</span> <span class="toc-text">Vomit machine</span></a></li></ol></li></ol>
-       </div>
-       <script type="text/javascript">
-        function showToc(){
-            var toc_article = document.getElementById("toc-article");
-            var show_toc_btn = document.getElementById("show-toc-btn");
-            toc_article.setAttribute("style","display:block");
-            show_toc_btn.setAttribute("style","display:none");
-            };
-        function showBtn(){
-            var toc_article = document.getElementById("toc-article");
-            var show_toc_btn = document.getElementById("show-toc-btn");
-            toc_article.setAttribute("style","display:none");
-            show_toc_btn.setAttribute("style","display:block");
-            };
-       </script>
          
 
     <!-- 文章内容详情 -->
@@ -190,39 +168,98 @@
                 
                 <div class="article-tag">
                     
-                    <a href="https://chitoseyono.com/tags/Test/" target="_blank"><span class="chip bg-color">Test</span></a>
+                    <a href="https://chitoseyono.com/tags/Java/" target="_blank"><span class="chip bg-color">Java</span></a>
+                    
+                    <a href="https://chitoseyono.com/tags/算法/" target="_blank"><span class="chip bg-color">算法</span></a>
                     
                 </div>
                 
                 <div class="author-info">
                     <span>
-                        <i class="fa fa-calendar fa-fw"></i>2018-09-28
+                        <i class="fa fa-calendar fa-fw"></i>2018-12-24
                     </span>
                 </div>
             </div>
             <hr>
             <div class="card-content article-card-content">
                 <div id="articleContent">
-                    <script src="/assets/js/APlayer.min.js"> </script><p>&nbsp;&nbsp;&nbsp;&nbsp;Welcome to <a href="https://chitoseyono.github.io/" target="_blank" rel="noopener">White Noise - Chitose Yono Offical Blog</a>! The website is still in constructing and after a while you can enjoy my articles here. Though whether they’re writen in English or Chinese depends on my heart, maybe most of time there is Chinese version.</p>
-<h2 id="About"><a href="#About" class="headerlink" title="About"></a>About</h2><h3 id="Todo-list"><a href="#Todo-list" class="headerlink" title="Todo-list"></a>Todo-list</h3><ul>
-<li>Navigator for articles √</li>
-<li>Music bar √</li>
-<li>Original background images for changing √</li>
-<li>Domain binding for the blog √</li>
-<li>Pin to top √</li>
-<li>Gallery</li>
-<li>Categories</li>
-<li>After all of these finished, I’ll make a conclusion.</li>
-</ul>
-<h3 id="Chitose-Yono"><a href="#Chitose-Yono" class="headerlink" title="Chitose Yono"></a>Chitose Yono</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;An undergraduate majoring in Software Programing. Got a lot of interests including music, art, traveling and so on, so don’t expect such a introvert guy will fill the blog with barely programing.</p>
-<h3 id="White-Noise"><a href="#White-Noise" class="headerlink" title="White Noise"></a>White Noise</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;Article in <a href="https://chitoseyono.github.io/" target="_blank" rel="noopener">White Noise</a> will be include but not limited to</p>
-<ul>
-<li>Software programing</li>
-<li>Music making</li>
-<li>Vomit machine</li>
-</ul>
-<h3 id="Vomit-machine"><a href="#Vomit-machine" class="headerlink" title="Vomit machine"></a>Vomit machine</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;To talk about the surrounding naraku everyday just like vomitting the shit, so you may have to taste the fucking emotional words in it.</p>
+                    <script src="/assets/js/APlayer.min.js"> </script><p>太久没写博了以至于快要忘记了这东西，因为太忙了，不过偶尔还是会更一更吧。<br>遇到过好多弱智题明明都知道该怎么做但是硬是TLE，总结一下类型吧。</p>
+<h1 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h1><p>预处理很多地方都用得到，一般都用在那种递推问题上（就是那种f(n)需要先求f(n-1)之类的），这种情况你要是每测试一个值都重新求一次就很麻烦，不如直接预处理一遍把从1~n（看题目取n的大小）的答案获取存数组里，然后便可以直接输出答案。<br><a href="&quot;http://acm.hdu.edu.cn/showproblem.php?pid=1250&quot;">Hat’s Fibonacci</a></p>
+<p>预处理水题，大数，当看例题就好。</p>
+<pre><code>import java.math.BigInteger;
+import java.util.Scanner;
 
+/**
+ * @class: hdu1250
+ * @author: Chitose
+ * @date: 2018/12/24
+ * @description:
+ */
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        BigInteger fib[] = new BigInteger[10000];
+        fib[1] = fib[2] = fib[3] = fib[4] = BigInteger.ONE;
+        for(int i = 5 ; i &lt; 10000 ; i++){
+            fib[i] = fib[i-1].add(fib[i-2]).add(fib[i-3]).add(fib[i-4]);
+        }
+        while(sc.hasNext()){
+            System.out.println(fib[sc.nextInt()]);
+        }
+    }
+}
+</code></pre><h1 id="保存计算值"><a href="#保存计算值" class="headerlink" title="保存计算值"></a>保存计算值</h1><p>这一招甚至可以用在任何题当中，将自己每一次测试的值保存下来，防止有重复的测试用例。（当然那种测试用例很大的输出小的可能就不太适用了。）<br><a href="&quot;http://acm.hdu.edu.cn/showproblem.php?pid=2553&quot;">N皇后问题</a></p>
+<p>经典的n皇后模板题简单DFS，但不保存每次的值就会TLE：</p>
+<pre><code>import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+/**
+ * @class: hdu2553
+ * @author: Chitose
+ * @date: 2018/12/24
+ * @description:
+ */
+
+public class Main {
+    static int n;
+    private static int ans;
+    private static int[] cols;//按行来记录皇后，那么用一个一维数组就可以记录了
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Map&lt;Integer,Integer&gt; map = new HashMap();
+        while((n=sc.nextInt())!=0){
+            if(map.containsKey(n))
+                System.out.println(map.get(n));
+            else {
+                ans = 0;
+                cols = new int[n];
+                dfs(0);
+                System.out.println(ans);
+                map.put(n, ans);
+            }
+        }
+    }
+
+    static void dfs(int used){
+        if(used == n)   ans++;
+        else for(int i = 0 ; i &lt; n ; i++){
+            cols[used] = i;
+            if(ok(used))
+                dfs(used+1);
+        }
+    }
+
+    static boolean ok(int row){
+        for(int i = 0 ; i &lt; row ; i++){
+            if(cols[row] == cols[i] || row - cols[row] == i - cols[i] || row + cols[row] == i + cols[i])    //这里有技巧，寻找是否同一对角线上的话只需要找截距相同的点就可以了，斜率都是1或-1
+                return false;
+        }
+        return true;
+    }
+}
+
+</code></pre>
                 </div>
                 <hr/>
 
@@ -241,7 +278,7 @@
                         <span class="reprint-tip">转载请注明: </span>
                         <a href="https://chitoseyono.com" class="b-link-green">White Noise -Chitose Yono Offical Blog-</a>
                         <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                        <a href="/2018/09/28/white-noise/" class="b-link-green">Welcome to White Noise</a>
+                        <a href="/2018/12/24/tlesolution/" class="b-link-green">关于各种由TLC变成AC的解决</a>
                     </p>
                 </div>
             </div>
@@ -258,7 +295,7 @@
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Fri Sep 28 2018 14:25:00 GMT+0800',
+    id: 'Mon Dec 24 2018 21:37:13 GMT+0800',
     owner: 'ChitoseYono',
     repo: 'chitoseyono.github.io',
     oauth: {
@@ -278,23 +315,23 @@ gitment.render('gitment-content');
 <article id="articles" class="container prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">上一篇</div>
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">本篇</div>
             <div class="card">
-                <a href="/2018/10/05/gson/">
+                <a href="/2018/12/24/tlesolution/">
                     <div class="card-image">
                         
-                        <img src="/medias/images/json.jpg" class="responsive-img" alt="Json和Gson的介绍与简单使用">
+                        <img src="/medias/images/tle.jpg" class="responsive-img" alt="关于各种由TLC变成AC的解决">
                         
-                        <span class="card-title">Json和Gson的介绍与简单使用</span>
+                        <span class="card-title">关于各种由TLC变成AC的解决</span>
                     </div>
+
                     <div class="card-content article-content">
-                        <div class="summary">
-                             &nbsp;&nbsp;&nbsp;&nbsp;JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式，易于人阅读和编写，同时也易于机器解析和生成，广泛应用于各种数据的交互中，尤其是服务器与客户端的交
-                        </div>
+                        <div class="summary"> 太久没写博了以至于快要忘记了这东西，因为太忙了，不过偶尔还是会更一更吧。遇到过好多弱智题明明都知道该怎么做但是硬是TLE，总结一下类型吧。
+预处理预处理很多地方都用得到，一般都用在那种递推问题上（就是那种f(n)需要先求f(n-1)之类的</div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-calendar fa-fw"></i>2018-10-05
+                                <i class="fa fa-calendar fa-fw"></i>2018-12-24
                             </span>
                             <span class="publish-author">
                                 <i class="fa fa-user fa-fw"></i>
@@ -304,12 +341,13 @@ gitment.render('gitment-content');
                             </span>
                         </div>
                     </div>
+
                     
                     <div class="card-action article-tags">
                         
                         <a href="https://chitoseyono.com/tags/Java/"><span class="chip bg-color">Java</span></a>
                         
-                        <a href="https://chitoseyono.com/tags/Json/"><span class="chip bg-color">Json</span></a>
+                        <a href="https://chitoseyono.com/tags/算法/"><span class="chip bg-color">算法</span></a>
                         
                     </div>
                     
@@ -319,21 +357,28 @@ gitment.render('gitment-content');
         
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">本篇</div>
+            <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
-                <a href="/2018/09/28/white-noise/">
+                <a href="/2018/12/03/dfs-bfs/">
                     <div class="card-image">
                         
-                        <img src="/medias/images/1.jpg" class="responsive-img" alt="Welcome to White Noise">
+                        <img src="/medias/images/fs.jpg" class="responsive-img" alt="深度搜索、广度搜索">
                         
-                        <span class="card-title">Welcome to White Noise</span>
+                        <span class="card-title">深度搜索、广度搜索</span>
                     </div>
-
                     <div class="card-content article-content">
-                        <div class="summary"> &nbsp;&nbsp;&nbsp;&nbsp;Welcome to White Noise - Chitose Yono Offical Blog! The website is still in constructing and af</div>
+                        <div class="summary">
+                             字母列举例题Problem description
+
+
+概率论老师：听懂了么？大家：。。。概率论是门有趣的学科，但我不想凭概率挂科，是时候认真看看书了书里有一道这样的题目：
+
+
+一俱乐部有5名一年级学生，2名二年级学生，3名三年级学生，2
+                        </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-calendar fa-fw"></i>2018-09-28
+                                <i class="fa fa-calendar fa-fw"></i>2018-12-03
                             </span>
                             <span class="publish-author">
                                 <i class="fa fa-user fa-fw"></i>
@@ -343,11 +388,12 @@ gitment.render('gitment-content');
                             </span>
                         </div>
                     </div>
-
                     
                     <div class="card-action article-tags">
                         
-                        <a href="https://chitoseyono.com/tags/Test/"><span class="chip bg-color">Test</span></a>
+                        <a href="https://chitoseyono.com/tags/算法/"><span class="chip bg-color">算法</span></a>
+                        
+                        <a href="https://chitoseyono.com/tags/搜索/"><span class="chip bg-color">搜索</span></a>
                         
                     </div>
                     
