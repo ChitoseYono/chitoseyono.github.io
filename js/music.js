@@ -11,6 +11,12 @@ const ap = new APlayer({
         cover: 'http://p1.music.126.net/XQ0apoeD66MvCdhpcBtByg==/3239161255748471.jpg',
       },
       {
+        name: "neru",
+        artist: 'chitose yono',
+        url: 'http://s.chitoseyono.com/neru.mp3',
+        cover: 'https://avatar.csdnimg.cn/B/7/0/1_chitoseyono.jpg',
+      },
+      {
         name: 'eau',
         artist: 'yutaka hirasaka',
         url: 'http://s.chitoseyono.com/eau.mp3',
