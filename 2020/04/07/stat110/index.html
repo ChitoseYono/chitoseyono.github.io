@@ -142,13 +142,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/images/gan.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/images/harvard_stat110.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        <font size="6">一点点开始生成对抗网络</font>
+                        <font size="6">Stat110 - Introduction to Probability代码的R实现与Python实现</font>
                     </div>
                 </div>
             </div>
@@ -168,22 +168,196 @@
                 
                 <div class="article-tag">
                     
-                    <a href="https://chitoseyono.com/tags/Machine-Learning/" target="_blank"><span class="chip bg-color">Machine Learning</span></a>
+                    <a href="https://chitoseyono.com/tags/Probability/" target="_blank"><span class="chip bg-color">Probability</span></a>
                     
-                    <a href="https://chitoseyono.com/tags/深度学习/" target="_blank"><span class="chip bg-color">深度学习</span></a>
+                    <a href="https://chitoseyono.com/tags/R/" target="_blank"><span class="chip bg-color">R</span></a>
+                    
+                    <a href="https://chitoseyono.com/tags/Python/" target="_blank"><span class="chip bg-color">Python</span></a>
                     
                 </div>
                 
                 <div class="author-info">
                     <span>
-                        <i class="fa fa-calendar fa-fw"></i>2019-03-21
+                        <i class="fa fa-calendar fa-fw"></i>2020-04-07
                     </span>
                 </div>
             </div>
             <hr>
             <div class="card-content article-card-content">
                 <div id="articleContent">
-                    <script src="/assets/js/APlayer.min.js"> </script>
+                    <script src="/assets/js/APlayer.min.js"> </script><p>这篇文章主要是用于记录将《Introduction to Probability》第一版一书中的R代码向Python进行翻译转换，在更新中。</p>
+<p>资源链接：<a href="http://stat110.net" target="_blank" rel="noopener">http://stat110.net</a></p>
+<h1 id="Chapter-01"><a href="#Chapter-01" class="headerlink" title="Chapter 01"></a>Chapter 01</h1><p>对应原文1.8内容。</p>
+<p>国内用R的话建议直接使用清华镜像下载R语言：<a href="https://mirrors.tuna.tsinghua.edu.cn/CRAN/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/CRAN/</a></p>
+<p>R语言在科学计算上的确有很多优势，但是学习起来学习曲线比较陡峭，不太适合新手。</p>
+<p>我用惯了Python，想要同时把他们两都操作一下熟悉熟悉。</p>
+<p>以后的代码对比都以下面的形式或者表格形式来展现。</p>
+<h2 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h2><p><strong>Python：</strong></p>
+<pre class=" language-python"><code class="language-python">v <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 将v定义为一组向量[3,1,4,1,5,9]</span>
+</code></pre>
+<p><strong>R：</strong></p>
+<pre class=" language-R"><code class="language-R">v <- c(3,1,4,1,5,9) # 将v定义为一组向量(3,1,4,1,5,9),c代表concatenate
+</code></pre>
+<p>在Python里面此处用Numpy的数组做向量。与Python不同，R语言是建立在向量之上的，就算是简单的 <code>n &lt;- 100</code> 都被R视为一个长度为1的向量。</p>
+<p>当然在R里面稍有不同的是，”=”与”&lt;-“使用上稍有不同，在函数调用中，func(x=1)与func(x&lt;-1)是有区别的，前者调用完后变量x不会被保留，而后者会在工作区里保留变量x=1。</p>
+<p>R与Python不同的地方还是有挺多的：</p>
+<table>
+<thead>
+<tr>
+<th>Python</th>
+<th>R</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sum(v)</td>
+<td>sum(v)</td>
+<td>求和</td>
+</tr>
+<tr>
+<td>max(v)</td>
+<td>max(v)</td>
+<td>求最大值</td>
+</tr>
+<tr>
+<td>min(v)</td>
+<td>min(v)</td>
+<td>求最小值</td>
+</tr>
+<tr>
+<td>len(v)</td>
+<td>length(v)</td>
+<td>获得长度</td>
+</tr>
+<tr>
+<td>range(m,n+1)</td>
+<td>m:n</td>
+<td>m,m+1,…n-1,n</td>
+</tr>
+</tbody>
+</table>
+<p>在元素获取上，两者区别还是挺大的，最大区别还是从0还是1开始数：</p>
+<table>
+<thead>
+<tr>
+<th>Python</th>
+<th>R</th>
+<th style="text-align:left">输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v[0]</td>
+<td>v[1]</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td>？</td>
+<td>v[-(2:4)]</td>
+<td style="text-align:left">1 5 9</td>
+</tr>
+<tr>
+<td>v[[0,2,4]]</td>
+<td>v[c(1,3,5)]</td>
+<td style="text-align:left">[3,4,5] / 3 4 5</td>
+</tr>
+<tr>
+<td>[x**(-2) for x in range(1,101)]</td>
+<td>1/(1:100)^2</td>
+<td style="text-align:left">$($${1} \over {1^2}$$,$${1} \over {2^2}$$,…,$${1} \over {100^2}$$)$</td>
+</tr>
+</tbody>
+</table>
+<h2 id="阶乘与二项式"><a href="#阶乘与二项式" class="headerlink" title="阶乘与二项式"></a>阶乘与二项式</h2><p>在本来并不用于计算的Python中，运算这种需要调用别的库，例如阶乘：</p>
+<p><strong>Python：</strong></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> math
+math<span class="token punctuation">.</span>factorial<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
+</code></pre>
+<p><strong>R：</strong></p>
+<pre><code>facotrial(n)
+</code></pre><p>同样的也有像二项式，一般Python图方便会直接自己写一个函数，不过实在要调用也是可以的。</p>
+<p><strong>Python</strong></p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> scipy<span class="token punctuation">.</span>special <span class="token keyword">import</span> comb
+comb<span class="token punctuation">(</span>n<span class="token punctuation">,</span>k<span class="token punctuation">)</span>
+</code></pre>
+<p><strong>R：</strong></p>
+<pre><code>choose(n,k)
+</code></pre><p>R相较之下真的太方便了。此外R还有lchoose(n,k)，lfactorial(n)用来运算log值，方便进行乘法转换加法。</p>
+<h2 id="取样模拟"><a href="#取样模拟" class="headerlink" title="取样模拟"></a>取样模拟</h2><p>这方面上不同的更多了，直接上表格吧。</p>
+<table>
+<thead>
+<tr>
+<th>Python</th>
+<th>R</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>np.random.choice(range(1,n+1),size=k,replace=False)</td>
+<td>sample(n,k)</td>
+<td>从1-n中不放回抽样k次</td>
+</tr>
+<tr>
+<td>np.random.choice(range(1,n+1),size=k)</td>
+<td>sample(n,k,replace=True)</td>
+<td>从1-n中有放回抽样k次</td>
+</tr>
+<tr>
+<td>np.random.choice([‘a’,’b’,…,’z’]),size=k,,replace=False)</td>
+<td>sample(letters,k) #letters是R自带的26个小写字母表数组</td>
+<td>从26个字符中取不重复地取字母组成k字符单词</td>
+</tr>
+<tr>
+<td>#大概在SciPy里有，还是学了再补充吧。</td>
+<td>sample(4, 3, replace=TRUE, prob=c(0.1,0.2,0.3,0.4))</td>
+<td>1-4的概率分别为0.1,0.2,0.3,0.4</td>
+</tr>
+</tbody>
+</table>
+<h2 id="de-Montmort‘s-配对问题"><a href="#de-Montmort‘s-配对问题" class="headerlink" title="de Montmort‘s 配对问题"></a>de Montmort‘s 配对问题</h2><p>de Montmort’s配对问题指的是一堆卡片标有1-n的数字，打乱后一张一张的掀开，第k次掀开的若对应的数字正好为k，那么则视为成功，求的是整套卡片翻完的至少成功一次的概率。</p>
+<p>单纯的运算需要运用Inclusion-exclusion公式：</p>
+<p><img src="/2020/04/07/stat110/D:/Chitose\blog\source\_posts\Stat110\1-1.png" alt=""></p>
+<p>而在代码里我们可以做simulation模拟。</p>
+<p><strong>Python：</strong></p>
+<pre class=" language-python"><code class="language-python">n <span class="token operator">=</span> <span class="token number">100</span>
+count <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">10</span><span class="token operator">**</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    r <span class="token operator">=</span> sum<span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>n<span class="token punctuation">,</span>replace<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token operator">==</span>range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> r<span class="token operator">>=</span><span class="token number">1</span><span class="token punctuation">:</span>
+        count<span class="token operator">+=</span><span class="token number">1</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span>count<span class="token operator">/</span><span class="token number">10</span><span class="token operator">**</span><span class="token number">4</span><span class="token punctuation">)</span>
+</code></pre>
+<p><strong>R：</strong></p>
+<pre class=" language-R"><code class="language-R">n <- 100
+r <- replicate(10^4,sum(sample(n)==(1:n))) # 重复10^4次，计算n个不重复取样与1:n的相同个数总数
+sum(r>=1)/10^4
+</code></pre>
+<p>R是真的简短很多…不过说真的，python相比之下更加友好。</p>
+<h2 id="生日问题"><a href="#生日问题" class="headerlink" title="生日问题"></a>生日问题</h2><p>对于概率计算，Python，所幸numpy也支持prod。</p>
+<p><strong>Python：</strong></p>
+<pre class=" language-python"><code class="language-python"><span class="token number">1</span><span class="token operator">-</span>np<span class="token punctuation">.</span>prod<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">365</span><span class="token operator">-</span>k<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">365</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">365</span><span class="token operator">**</span>k
+</code></pre>
+<p><strong>R的话有两种方式：</strong></p>
+<pre class=" language-R"><code class="language-R">1-prod((365-k+1):365)/365^k # 1.直接计算
+pbirthday(k) # 2.使用内置的函数
+</code></pre>
+<p>还挺犯规的，生日问题都内置了。而且R还能用<code>qbirthday(n)</code>来计算达到n概率两人以上相同生日所需要的人数。</p>
+<p>而且对于这两个函数，能加上coincident参数来指定特定多少人同一天生日，就不做示范了。</p>
+<p>生日问题的模拟的话是这样：</p>
+<p><strong>Python：</strong></p>
+<pre><code>count = 0
+for i in range(10**4):
+    if Counter(np.random.choice(range(365),23)).most_common(1)[0][1]&gt;1:
+        count += 1
+print(count/10**4)
+</code></pre><p><strong>R：</strong></p>
+<pre class=" language-R"><code class="language-R">r <- replicate(10^4, max(tabulate(sample(1:365,23,replace=TRUE)))) # 重复10^4次，计算23次从365个数重复取样取得相同次数最多的个数
+sum(r>=2)/10^4
+</code></pre>
+
                 </div>
                 <hr/>
 
@@ -202,7 +376,7 @@
                         <span class="reprint-tip">转载请注明: </span>
                         <a href="https://chitoseyono.com" class="b-link-green">White Noise -Chitose Yono Offical Blog-</a>
                         <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                        <a href="/2019/03/21/gan/" class="b-link-green">一点点开始生成对抗网络</a>
+                        <a href="/2020/04/07/stat110/" class="b-link-green">Stat110 - Introduction to Probability代码的R实现与Python实现</a>
                     </p>
                 </div>
             </div>
@@ -219,7 +393,7 @@
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Thu Mar 21 2019 11:05:06 GMT+0800',
+    id: 'Tue Apr 07 2020 23:29:04 GMT+0800',
     owner: 'ChitoseYono',
     repo: 'chitoseyono.github.io',
     oauth: {
@@ -239,8 +413,8 @@ gitment.render('gitment-content');
 <article id="articles" class="container prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">上一篇</div>
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">本篇</div>
             <div class="card">
                 <a href="/2020/04/07/stat110/">
                     <div class="card-image">
@@ -249,13 +423,12 @@ gitment.render('gitment-content');
                         
                         <span class="card-title">Stat110 - Introduction to Probability代码的R实现与Python实现</span>
                     </div>
+
                     <div class="card-content article-content">
-                        <div class="summary">
-                             这篇文章主要是用于记录将《Introduction to Probability》第一版一书中的R代码向Python进行翻译转换，在更新中。
+                        <div class="summary"> 这篇文章主要是用于记录将《Introduction to Probability》第一版一书中的R代码向Python进行翻译转换，在更新中。
 资源链接：http://stat110.net
 Chapter 01对应原文1.8内容。
-国内用
-                        </div>
+国内用</div>
                         <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-calendar fa-fw"></i>2020-04-07
@@ -268,6 +441,7 @@ Chapter 01对应原文1.8内容。
                             </span>
                         </div>
                     </div>
+
                     
                     <div class="card-action article-tags">
                         
@@ -287,21 +461,20 @@ Chapter 01对应原文1.8内容。
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
-                <a href="/2018/12/24/tlesolution/">
+                <a href="/2019/03/21/gan/">
                     <div class="card-image">
                         
-                        <img src="/medias/images/tle.jpg" class="responsive-img" alt="关于各种由TLC变成AC的解决">
+                        <img src="/medias/images/gan.jpg" class="responsive-img" alt="一点点开始生成对抗网络">
                         
-                        <span class="card-title">关于各种由TLC变成AC的解决</span>
+                        <span class="card-title">一点点开始生成对抗网络</span>
                     </div>
                     <div class="card-content article-content">
                         <div class="summary">
-                             太久没写博了以至于快要忘记了这东西，因为太忙了，不过偶尔还是会更一更吧。遇到过好多弱智题明明都知道该怎么做但是硬是TLE，总结一下类型吧。
-预处理预处理很多地方都用得到，一般都用在那种递推问题上（就是那种f(n)需要先求f(n-1)之类的
+                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-calendar fa-fw"></i>2018-12-24
+                                <i class="fa fa-calendar fa-fw"></i>2019-03-21
                             </span>
                             <span class="publish-author">
                                 <i class="fa fa-user fa-fw"></i>
@@ -314,9 +487,9 @@ Chapter 01对应原文1.8内容。
                     
                     <div class="card-action article-tags">
                         
-                        <a href="https://chitoseyono.com/tags/Java/"><span class="chip bg-color">Java</span></a>
+                        <a href="https://chitoseyono.com/tags/Machine-Learning/"><span class="chip bg-color">Machine Learning</span></a>
                         
-                        <a href="https://chitoseyono.com/tags/算法/"><span class="chip bg-color">算法</span></a>
+                        <a href="https://chitoseyono.com/tags/深度学习/"><span class="chip bg-color">深度学习</span></a>
                         
                     </div>
                     
