@@ -4,40 +4,34 @@ const ap = new APlayer({
     fixed: true,
     autoplay: false,
     audio: [
-      {
+            {
+        name: 'grief',
+        artist: 'Madi Marie',
+        url: 'http://music.163.com/song/media/outer/url?id=1299563516',
+        cover: 'http://p1.music.126.net/fQf7fCleUaySezoK9opotw==/109951163448114771.jpg',
+      },
+            {
         name: "rain",
         artist: 'sasanomaly',
-        url: 'http://s.chitoseyono.com/rain.mp3',
+        url: 'http://music.163.com/song/media/outer/url?id=29713218',
         cover: 'http://p1.music.126.net/XQ0apoeD66MvCdhpcBtByg==/3239161255748471.jpg',
       },
       {
-        name: "neru",
-        artist: 'chitose yono',
-        url: 'http://s.chitoseyono.com/neru.mp3',
-        cover: 'https://avatar.csdnimg.cn/B/7/0/1_chitoseyono.jpg',
+        name: 'weapon',
+        artist: 'inbirth',
+        url: 'http://music.163.com/song/media/outer/url?id=29388454',
+        cover: 'http://p2.music.126.net/AgTWX99uVk12PBG8TqC-QA==/2531075767156918.jpg',
       },
       {
-        name: 'eau',
-        artist: 'yutaka hirasaka',
-        url: 'http://s.chitoseyono.com/eau.mp3',
-        cover: 'http://p2.music.126.net/LCdM92m31k6my2G5Qkidhw==/6622358534995240.jpg',
-      },
-      {
-        name: 'arne',
-        artist: 'haruka nakamura',
-        url: 'http://s.chitoseyono.com/arne.mp3',
-        cover: 'http://p2.music.126.net/sM0gbClGYFr4r6NXy_77_Q==/857619069688801.jpg',
-      },
-      {
-        name: "toki",
-        artist: 'hideyuki hashimoto',
-        url: 'https://raw.githubusercontent.com/ChitoseYono/chitoseyono.github.io/master/medias/music/toki.mp3',
-        cover: 'http://p2.music.126.net/J1K37kRTg8GNQ6cCYhvuWQ==/5899979394913533.jpg',
+        name: "Bedtime candy",
+        artist: 'Tsun Dealer',
+        url: 'http://music.163.com/song/media/outer/url?id=420513822',
+        cover: 'http://p2.music.126.net/4i1qDyi4vYSsjl8zhzzZPQ==/1366692966249869.jpg',
       },
       {
         name: "alone,,again",
         artist: 'elijah who',
-        url: 'http://s.chitoseyono.com/who.mp3',
+        url: 'http://music.163.com/song/media/outer/url?id=3495218039',
         cover: 'http://p2.music.126.net/qJRzJOtNhcPlkTaljwI-0w==/19106213556171653.jpg',
       }
     ]

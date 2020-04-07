@@ -148,7 +148,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        <font size="6">Stat110 - Introduction to Probability代码的R实现与Python实现</font>
+                        <font size="6">Stat110 - Introduction to Probability代码的R语言与Python实现</font>
                     </div>
                 </div>
             </div>
@@ -318,7 +318,7 @@ comb<span class="token punctuation">(</span>n<span class="token punctuation">,</
 </table>
 <h2 id="de-Montmort‘s-配对问题"><a href="#de-Montmort‘s-配对问题" class="headerlink" title="de Montmort‘s 配对问题"></a>de Montmort‘s 配对问题</h2><p>de Montmort’s配对问题指的是一堆卡片标有1-n的数字，打乱后一张一张的掀开，第k次掀开的若对应的数字正好为k，那么则视为成功，求的是整套卡片翻完的至少成功一次的概率。</p>
 <p>单纯的运算需要运用Inclusion-exclusion公式：</p>
-<p><img src="/2020/04/07/stat110/D:/Chitose\blog\source\_posts\Stat110\1-1.png" alt=""></p>
+<p><img src="/2020/04/07/stat110/1-1.png" alt="de Montmort‘s"></p>
 <p>而在代码里我们可以做simulation模拟。</p>
 <p><strong>Python：</strong></p>
 <pre class=" language-python"><code class="language-python">n <span class="token operator">=</span> <span class="token number">100</span>
@@ -376,7 +376,7 @@ sum(r>=2)/10^4
                         <span class="reprint-tip">转载请注明: </span>
                         <a href="https://chitoseyono.com" class="b-link-green">White Noise -Chitose Yono Offical Blog-</a>
                         <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                        <a href="/2020/04/07/stat110/" class="b-link-green">Stat110 - Introduction to Probability代码的R实现与Python实现</a>
+                        <a href="/2020/04/07/stat110/" class="b-link-green">Stat110 - Introduction to Probability代码的R语言与Python实现</a>
                     </p>
                 </div>
             </div>
@@ -419,9 +419,9 @@ gitment.render('gitment-content');
                 <a href="/2020/04/07/stat110/">
                     <div class="card-image">
                         
-                        <img src="/medias/images/harvard_stat110.jpg" class="responsive-img" alt="Stat110 - Introduction to Probability代码的R实现与Python实现">
+                        <img src="/medias/images/harvard_stat110.jpg" class="responsive-img" alt="Stat110 - Introduction to Probability代码的R语言与Python实现">
                         
-                        <span class="card-title">Stat110 - Introduction to Probability代码的R实现与Python实现</span>
+                        <span class="card-title">Stat110 - Introduction to Probability代码的R语言与Python实现</span>
                     </div>
 
                     <div class="card-content article-content">
@@ -562,5 +562,21 @@ Chapter 01对应原文1.8内容。
 <div id="aplayer"></div>
 <script type="text/javascript" src="/dist/APlayer.min.js"></script>
 <script type="text/javascript" src="/js/music.js"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 </body>
 </html>

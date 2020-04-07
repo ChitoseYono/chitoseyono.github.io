@@ -272,12 +272,12 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                     <div class="col m4 s4">
                         
                         <div class="img-item" data-src="/medias/images/harvard_stat110.jpg">
-                            <img src="/medias/images/harvard_stat110.jpg" class="archive-img" alt="Stat110 - Introduction to Probability代码的R实现与Python实现"/>
+                            <img src="/medias/images/harvard_stat110.jpg" class="archive-img" alt="Stat110 - Introduction to Probability代码的R语言与Python实现"/>
                         </div>
                         
                     </div>
                     <div class="col m8 s8 article-title">
-                        <a href="/2020/04/07/stat110/">Stat110 - Introduction to Probability代码的R实现与Python实现</a>
+                        <a href="/2020/04/07/stat110/">Stat110 - Introduction to Probability代码的R语言与Python实现</a>
                         <div class="summary"> 这篇文章主要是用于记录将《Introduction to Probability》第一版一书中的R代码向Python进行翻译转换，在更新中。
 资源链接：htt</div>
                     </div>
@@ -839,5 +839,21 @@ JMM (Java Memory Model)&nbsp;&nbsp;&nbsp;&nbsp;在讲线程安全</div>
 <div id="aplayer"></div>
 <script type="text/javascript" src="/dist/APlayer.min.js"></script>
 <script type="text/javascript" src="/js/music.js"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 </body>
 </html>

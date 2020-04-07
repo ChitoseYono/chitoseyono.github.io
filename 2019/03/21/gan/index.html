@@ -245,9 +245,9 @@ gitment.render('gitment-content');
                 <a href="/2020/04/07/stat110/">
                     <div class="card-image">
                         
-                        <img src="/medias/images/harvard_stat110.jpg" class="responsive-img" alt="Stat110 - Introduction to Probability代码的R实现与Python实现">
+                        <img src="/medias/images/harvard_stat110.jpg" class="responsive-img" alt="Stat110 - Introduction to Probability代码的R语言与Python实现">
                         
-                        <span class="card-title">Stat110 - Introduction to Probability代码的R实现与Python实现</span>
+                        <span class="card-title">Stat110 - Introduction to Probability代码的R语言与Python实现</span>
                     </div>
                     <div class="card-content article-content">
                         <div class="summary">
@@ -389,5 +389,21 @@ Chapter 01对应原文1.8内容。
 <div id="aplayer"></div>
 <script type="text/javascript" src="/dist/APlayer.min.js"></script>
 <script type="text/javascript" src="/js/music.js"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 </body>
 </html>
