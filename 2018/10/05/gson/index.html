@@ -168,9 +168,9 @@
                 
                 <div class="article-tag">
                     
-                    <a href="https://chitoseyono.com/tags/Java/" target="_blank"><span class="chip bg-color">Java</span></a>
-                    
                     <a href="https://chitoseyono.com/tags/Json/" target="_blank"><span class="chip bg-color">Json</span></a>
+                    
+                    <a href="https://chitoseyono.com/tags/Java/" target="_blank"><span class="chip bg-color">Java</span></a>
                     
                 </div>
                 
@@ -238,7 +238,7 @@ class Job {
 }
 </code></pre><hr>
 <h2 id="org-json"><a href="#org-json" class="headerlink" title="org.json"></a><strong>org.json</strong></h2><p>&nbsp;&nbsp;&nbsp;&nbsp;先简单说说org.json的用法吧，他提供的类库十分简单，只有四个常用类一个异常类，其中最为常用的一个类就JSONObject，基本可以用这个类解决比较多的事，org.json的设定是将它里面的类用作存储功能。<br><img src="/2018/10/05/gson/images/json_doucment.jpg" alt="org.json&#39;s document"></p>
-<h3 id="获取Json格式数据"><a href="#获取Json格式数据" class="headerlink" title="获取Json格式数据"></a><strong>获取Json格式数据</strong></h3><p>&nbsp;&nbsp;&nbsp;&nbsp;其实利用org.json基本上就像是Map&lt;K,V&gt;一样取值存值而已。</p>
+<h3 id="获取Json格式数据"><a href="#获取Json格式数据" class="headerlink" title="获取Json格式数据"></a><strong>获取Json格式数据</strong></h3><p>&nbsp;&nbsp;&nbsp;&nbsp;其实利用org.json基本上就像是Map<k,v>一样取值存值而已。</k,v></p>
 <p>JSONObject有几个常用的构造方法，那么我先使用JSONObject来进行序列化：</p>
 <pre><code>    //字符串转Json
     String jsonStr = &quot;{\&quot;name\&quot;: \&quot;Bruce Eckel\&quot;,\&quot;age\&quot;: 61,\&quot;male\&quot;: true,\&quot;representative_books\&quot;: [\&quot;Thinking in C++\&quot;,\&quot;Thinking in Java\&quot;],\&quot;job\&quot;: {\&quot;company\&quot;: \&quot;MindView\&quot;,\&quot;position\&quot;: \&quot;CEO\&quot;},\&quot;comment\&quot;: null}&quot;;
@@ -273,14 +273,8 @@ class Job {
 </code></pre><p>输出效果如下：</p>
 <blockquote>
 <p>构造参数为String类：{“name”:”Bruce Eckel”,”comment”:null,”representive_works”:[“Thinking in C++”,”Thinking in Java”],”job”:{“company”:”MindView”,”position”:”CEO”},”age”:61,”male”:true}</p>
-</blockquote>
-<blockquote>
 <p>构造参数为Map类：{“name”:”Bruce Eckel”,”representive_work”:[“Thinking in C++”,”Thinking in Java”],”job”:{“company”:”MindView”,”position”:”CEO”},”age”:61,”male”:true}</p>
-</blockquote>
-<blockquote>
 <p>构造参数为Bean类：{“books”:[“Thinking in C++”,”Thinking in Java”],”gender”:true,”name”:”Bruce Eckel”,”job”:{},”age”:61}</p>
-</blockquote>
-<blockquote>
 <p>构造参数为空：{“representive_work”:[“Thinking in C++”,”Thinking in Java”],”name”:”Bruce Eckel”,”comment”:”null”,”job”:{“company”:”MindView”,”position”:”CEO”},”age”:61,”male”:true}</p>
 </blockquote>
 <p><strong>可见JSONObject来进行序列化有如下几点缺陷</strong>：</p>
@@ -320,7 +314,7 @@ class Job {
 </blockquote>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;虽然是麻烦了点(非常麻烦)…毕竟他是有序的。而且一般情况用JSONObject也是够的因为有序不一定有用，而且JSONStringer虽然较为麻烦，但是他对于多重嵌套的问题有很大帮助。但要注意object()和endObject()、array()和endArray()，一定要匹配，否则就会抛出JSONException异常。</p>
 <p><strong>对于第二点的解决方法</strong>：<br>&nbsp;&nbsp;&nbsp;&nbsp;JSONObject对于null的识别是有坑的，想要赋予值为空的属性时得以”null”的方式传入（可以参考上述无参的构造方式中传”null”的方法-第29行。）<br>那么问题来了，如果想传值为”null”的字符串怎么办？<br>那可能只能通过直接处理字符串的方式了：</p>
-<pre><code>    jsonObject.toString.replaceAll(&quot;:null,&quot;, &quot;:\&quot;null\&quot;,&quot;) 
+<pre><code>    jsonObject.toString.replaceAll(&quot;:null,&quot;, &quot;:\&quot;null\&quot;,&quot;)
 </code></pre><p><strong>对于第三点的解决方法</strong>：<br>&nbsp;&nbsp;&nbsp;&nbsp;org.json库无法识别自定义属性，所以只好用嵌套的方式，即JSONObject里包含JSONObject的方式来代替。（可以参考上述无参构造方式中的job-第27行)</p>
 <h3 id="获取Json的属性值"><a href="#获取Json的属性值" class="headerlink" title="获取Json的属性值"></a><strong>获取Json的属性值</strong></h3><p>&nbsp;&nbsp;&nbsp;&nbsp;这里用回之前的JSONObject。org.json压根就没做反序列化，如果手动来做的话这样是比较快的方法了，如果不是为了演示用法真不想做一次，对比起任何一个类库即使是json-lib都比他方便多了。当然，如果你只是为了取得里面的部分数据绝对是可以使用org.json的。</p>
 <pre><code>    String jsonStr = &quot;{\&quot;name\&quot;: \&quot;Bruce Eckel\&quot;,\&quot;age\&quot;: 61,\&quot;male\&quot;: true,\&quot;representive_works\&quot;: [\&quot;Thinking in C++\&quot;,\&quot;Thinking in Java\&quot;],\&quot;job\&quot;: {\&quot;company\&quot;: \&quot;MindView\&quot;,\&quot;position\&quot;: \&quot;CEO\&quot;},\&quot;comment\&quot;: null}&quot;;
