@@ -188,7 +188,7 @@
                     <script src="/assets/js/APlayer.min.js"> </script><blockquote>
 <p>这篇文章主要是用于记录将哈佛大学Stat110的教材用书《Introduction to Probability》第一版一书中的R代码向Python进行翻译转换，相关资源链接：<a href="http://stat110.net" target="_blank" rel="noopener">http://stat110.net</a></p>
 </blockquote>
-<p>&emsp;&emsp;本博文还在更新中，最新更新为<strong>27/04/2020, Chapter05</strong>。建议你使用能够支持markdown的浏览器，如新版本chrome或edge来进行阅读，否则可能出现格式错乱问题。在完成以后会提供全文pdf文件。</p>
+<p>&emsp;&emsp;本博文还在更新中，最新更新为<strong>27/04/2020, Chapter05</strong>，出于一些原因，暂时停更。建议你使用能够支持markdown的浏览器，如新版本chrome或edge来进行阅读，否则可能出现格式错乱问题。在完成以后会提供全文pdf文件。</p>
 <p>&emsp;&emsp;R语言在科学计算上的确有很多优势，但是学习起来学习曲线比较陡峭，不太适合新手。我用惯了Python，想要同时把他们两都操作一下熟悉熟悉。以后的代码对比都以下面的形式或者表格形式来展现。国内需要使用R的话，建议直接到清华镜像下载：<a href="https://mirrors.tuna.tsinghua.edu.cn/CRAN/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/CRAN/</a></p>
 <p>&emsp;&emsp;<strong>注意：本博文只对书本上的代码进行介绍与翻译，对其相应的知识点只会粗略带过，需要读者自行进行学习。</strong></p>
 <h1 id="Chapter-01"><a href="#Chapter-01" class="headerlink" title="Chapter 01"></a>Chapter 01</h1><p>&emsp;&emsp;对应原文1.8内容。</p>
@@ -199,8 +199,7 @@
 <pre class=" language-lang-python"><code class="language-lang-python">v = np.array([3,1,4,1,5,9]) # 将v定义为一组向量[3,1,4,1,5,9]
 </code></pre>
 <p><strong>R：</strong></p>
-<pre class=" language-lang-R"><code class="language-lang-R">v <- c(3,1,4,1,5,9) # 将v定义为一组向量(3,1,4,1,5,9),c代表concatenate
-</code></pre>
+<pre class=" language-lang-R"><code class="language-lang-R">v <- c(3,1,4,1,5,9)="" #="" 将v定义为一组向量(3,1,4,1,5,9),c代表concatenate="" <="" code=""></-></code></pre>
 <p>&emsp;&emsp;在Python里面此处用Numpy的数组做向量。与Python不同，R语言是建立在向量之上的，就算是简单的 <code>n &lt;- 100</code> 都被R视为一个长度为1的向量。</p>
 <p>&emsp;&emsp;当然在R里面稍有不同的是，”=”与”&lt;-“使用上稍有不同，在函数调用中，func(x=1)与func(x&lt;-1)是有区别的，前者调用完后变量x不会被保留，而后者会在工作区里保留变量x=1。</p>
 <p>&emsp;&emsp;R与Python不同的地方还是有挺多的：</p>
@@ -342,10 +341,8 @@ for i in range(10**4):
 print(count/10**4)
 </code></pre>
 <p><strong>R：</strong></p>
-<pre class=" language-lang-R"><code class="language-lang-R">n <- 100
-r <- replicate(10^4,sum(sample(n)==(1:n))) # 重复10^4次，计算n个不重复取样与1:n的相同个数总数
-sum(r>=1)/10^4
-</code></pre>
+<pre class=" language-lang-R"><code class="language-lang-R">n <- 100="" r="" <-="" replicate(10^4,sum(sample(n)="=(1:n)))" #="" 重复10^4次，计算n个不重复取样与1:n的相同个数总数="" sum(r="">=1)/10^4
+</-></code></pre>
 <p>&emsp;&emsp;R是真的简短很多，不愧是数字科学专用语言…不过说真的，python的代码相比之下更加友好。</p>
 <h2 id="生日问题"><a href="#生日问题" class="headerlink" title="生日问题"></a>生日问题</h2><p>&emsp;&emsp;对于生日问题的概率计算，Python，所幸numpy也支持prod。</p>
 <p><strong>Python：</strong></p>
@@ -364,9 +361,8 @@ for i in range(10**4):
         count += 1
 print(count/10**4)
 </code></pre><p><strong>R：</strong></p>
-<pre class=" language-lang-R"><code class="language-lang-R">r <- replicate(10^4, max(tabulate(sample(1:365,23,replace=TRUE)))) # 重复10^4次，计算23次从365个数重复取样取得相同次数最多的个数
-sum(r>=2)/10^4
-</code></pre>
+<pre class=" language-lang-R"><code class="language-lang-R">r <- replicate(10^4,="" max(tabulate(sample(1:365,23,replace="TRUE))))" #="" 重复10^4次，计算23次从365个数重复取样取得相同次数最多的个数="" sum(r="">=2)/10^4
+</-></code></pre>
 <h1 id="Chapter-02"><a href="#Chapter-02" class="headerlink" title="Chapter 02"></a>Chapter 02</h1><p>&emsp;&emsp;对应原文2.10的内容</p>
 <p>&emsp;&emsp;<strong>第二章总结：</strong></p>
 <p>&emsp;&emsp;这一章很细致的讲了条件概率的各种东西，包括事件独立性，贝叶斯，全概率公式，多条件概率，条件的选择（三门问题，递归问题，Gambler’s ruin）各种谬误（Prosecutor’s fallcay，Simpson’s paradox)。</p>
@@ -388,46 +384,10 @@ p_2 = n_s/n_c2 # P(S|C2)
 print('P(S|C1)=%f,P(S|C2)=%f' % (p_1,p_2))
 </code></pre>
 <p><strong>R：</strong></p>
-<pre class=" language-lang-R"><code class="language-lang-R">n <- 10^5
-childa <- sample(2,n,replace=TRUE)
-childb <- sample(2,n,replace=TRUE)
-n.b <- sum(childa==1) # A是女孩
-n.b2 <- sum(childa==1 | childb==1) # 至少一个女孩
-n.ab <- sum(childa==1 & childb==1) # A和B都是女孩
-n.ab/n.b # P(S|C2)
-n.ab/n.b2 # P(S|C1)
-</code></pre>
+<pre class=" language-lang-R"><code class="language-lang-R">n <- 10^5="" childa="" <-="" sample(2,n,replace="TRUE)" childb="" n.b="" sum(childa="=1)" #="" a是女孩="" n.b2="" |="" 至少一个女孩="" n.ab="" &="" a和b都是女孩="" p(s|c2)="" p(s|c1)="" <="" code=""></-></code></pre>
 <p>&emsp;&emsp;得到两个值一个接近0.33，另一个接近0.5，模拟完成。</p>
 <h2 id="三门问题模拟"><a href="#三门问题模拟" class="headerlink" title="三门问题模拟"></a>三门问题模拟</h2><p>&emsp;&emsp;三门问题又称<em>Monty Hall</em>问题，比较经典的一个条件概率问题，在这里就不介绍了上网可以查到，可能之后会补充。先放一个书上的R语言版本，他加了一点交互式来进行模拟游戏：</p>
-<pre class=" language-lang-R"><code class="language-lang-R">monty <- function() {
-    doors <- 1:3
-
-    # randomly pick where the car is
-    cardoor <- sample(doors,1)
-
-    # prompt player
-    print("Monty Hall says ‘Pick a door, any door!’")
-
-    # receive the player’s choice of door (should be 1,2, or 3)
-    chosen <- scan(what = integer(), nlines = 1, quiet = TRUE)
-
-    # pick Monty’s door (can’t be the player’s door or the car door)
-    if (chosen != cardoor) montydoor <- doors[-c(chosen, cardoor)]
-    else montydoor <- sample(doors[-chosen],1)
-
-    # find out whether the player wants to switch doors
-    print(paste("Monty opens door ", montydoor, "!", sep=""))
-    print("Would you like to switch (y/n)?")
-    reply <- scan(what = character(), nlines = 1, quiet = TRUE)
-
-    # interpret what player wrote as "yes" if it starts with "y"
-    if (substr(reply,1,1) == "y") chosen <- doors[-c(chosen,montydoor)]
-
-    # announce the result of the game!
-    if (chosen == cardoor) print("You won!")
-    else print("You lost!")
-}
-</code></pre>
+<pre class=" language-lang-R"><code class="language-lang-R">monty <- function()="" {="" doors="" <-="" 1:3="" #="" randomly="" pick="" where="" the="" car="" is="" cardoor="" sample(doors,1)="" prompt="" player="" print("monty="" hall="" says="" ‘pick="" a="" door,="" any="" door!’")="" receive="" player’s="" choice="" of="" door="" (should="" be="" 1,2,="" or="" 3)="" chosen="" scan(what="integer()," nlines="1," quiet="TRUE)" monty’s="" (can’t="" door)="" if="" (chosen="" !="cardoor)" montydoor="" doors[-c(chosen,="" cardoor)]="" else="" sample(doors[-chosen],1)="" find="" out="" whether="" wants="" to="" switch="" print(paste("monty="" opens="" ",="" montydoor,="" "!",="" sep="" ))="" print("would="" you="" like="" (y="" n)?")="" reply="" interpret="" what="" wrote="" as="" "yes"="" it="" starts="" with="" "y"="" (substr(reply,1,1)="=" "y")="" doors[-c(chosen,montydoor)]="" announce="" result="" game!="" cardoor)="" print("you="" won!")="" lost!")="" }="" <="" code=""></-></code></pre>
 <p>&emsp;&emsp;R的代码用来写这种程序实在是…有点尴尬，交互和代码可读性过于差了。我的话，是尝试利用频率派的方式模拟，来计算多次三门问题分别在使用了 <strong>策略1： 一直换门 </strong> 和 <strong>策略2：绝不换门</strong> 之下的概率，感觉这样对比更有实际意义。</p>
 <p><strong>Python：</strong></p>
 <pre class=" language-lang-python"><code class="language-lang-python">import random
@@ -462,32 +422,7 @@ for i in range(10**5):
 print('Prob of not changed', count/10**5)
 </code></pre>
 <p><strong>R：</strong></p>
-<pre class=" language-lang-R"><code class="language-lang-R">monty <- function(n_selected, is_change) {
-    n_car <- sample(3,1)
-    if(is_change){
-        if(n_car == n_selected){
-            return(FALSE)
-        }else{
-            return(TRUE)
-        }
-    }
-    else{
-        if(n_car == n_selected){
-            return(TRUE)
-        }else{
-            return(FALSE)
-        }
-    }
-}
-
-# Strategy of always changing doors
-r <- replicate(n=10^4,monty(sample(3,1),TRUE))
-sum(r/10^4)
-
-# Strategy of always NOT changing doors
-r <- replicate(n=10^4,monty(sample(3,1),FALSE))
-sum(r/10^4)
-</code></pre>
+<pre class=" language-lang-R"><code class="language-lang-R">monty <- function(n_selected,="" is_change)="" {="" n_car="" <-="" sample(3,1)="" if(is_change){="" if(n_car="=" n_selected){="" return(false)="" }else{="" return(true)="" }="" else{="" #="" strategy="" of="" always="" changing="" doors="" r="" replicate(n="10^4,monty(sample(3,1),TRUE))" sum(r="" 10^4)="" not="" <="" code=""></-></code></pre>
 <p>&emsp;&emsp;得到两个值一个接近0.33，另一个接近0.66，完事了。</p>
 <p>&emsp;&emsp;不过从这代码啊就可以看出来，Python相较于R还是更加万金油一点，Python写循环写嵌套都是比较清晰的，R这个语法就写这么个小函数却实在把用惯Java，Python之类语言的我糊弄的难顶。（扶额）</p>
 <h1 id="Chapter-03"><a href="#Chapter-03" class="headerlink" title="Chapter 03"></a>Chapter 03</h1><p>&emsp;&emsp;对应原文3.11内容。</p>
