@@ -241,10 +241,10 @@
 <p>首先由于HttpURLConnection的局限性（他只是一个抽象类，没有什么特别的集成），对于上传文件这类”multipart/form-data”类型的请求类型只能由我们手动拼接Header <del>（我来组成头部！）</del>，所以在说如何用HttpURLConnection进行上传文件前先说说上传时的Header：</p>
 <p>可见在这用POST上传图片实际上就是模拟表单上传，而这时需要有拼接请求体：<br><img src="/2018/10/13/http-easy/images/header.png" alt="Http Header"></p>
 <ol>
-<li>请求体中需要先以”——-一串随机数字(代码中用的是UUID的随机序列)\r\n(\r\n的作用是换行)”来上下分隔。所以在前后都要加上boundary</li>
+<li>请求体中需要先以”—–一串随机数字(代码中用的是UUID的随机序列)\r\n(\r\n的作用是换行)”来上下分隔。所以在前后都要加上boundary</li>
 <li>然后写入Content-Disposition:form-data;name=”<strong>(此处需要与服务器约定)</strong>“;filename=”<strong>文件名</strong>“;</li>
 <li>通过InputStream写入HttpURLConnection的OutputStream中。</li>
-<li>最后以”——-那一串数字—\r\n”结尾。</li>
+<li>最后以”—–那一串数字–\r\n”结尾。</li>
 </ol>
 <pre><code>public String uploadByConnection(String str) throws IOException{
     //1.创建连接
