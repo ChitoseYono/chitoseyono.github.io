@@ -86,17 +86,29 @@ $(function () {
         $('body,html').animate({scrollTop: 0}, 400);
         return false;
     });
+	
+	var last=0, now=0, status=true;
 
     /*监听滚动条位置*/
     $(window).scroll(function () {
         /*回到顶部按钮根据滚动条的位置的显示和隐藏*/
-        if ($(window).scrollTop() < 100) {
+		now = $(window).scrollTop();
+        if (now < 100) {
             $('#headNav').addClass('nav-transparent');
             $('.top-scroll').slideUp(300);
         } else {
             $('#headNav').removeClass('nav-transparent');
             $('.top-scroll').slideDown(300);
         }
+		if (now>last && status){
+			$('#headNav').slideUp(300);
+			status = false;
+		}
+		if (now<last && !status){
+			$('#headNav').slideDown(300);
+			status = true;
+		}
+		last = now;
     });
 });
 
