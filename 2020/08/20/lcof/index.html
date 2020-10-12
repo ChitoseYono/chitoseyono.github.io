@@ -487,10 +487,7 @@
     def push(self, x: int) -> None:
         self.stack1.append(x)
         # 关键在此，stack2装载的是递减的数据，最后进去的一定为最小值
-        if not self.stack2 or x <= self.stack2[-1]:
-            self.stack2.append(x)
-
-    def pop(self) -> None:
+        if not self.stack2 or x <= self.stack2[-1]:="" self.stack2.append(x)="" def="" pop(self)="" -=""> None:
         tmp = self.stack1.pop()
         if self.stack2 and self.stack2[-1] == tmp:
             self.stack2.pop()
@@ -500,7 +497,7 @@
 
     def min(self) -> int:
         return self.stack2[-1] if self.stack2 else None
-</code></pre>
+</=></code></pre>
 <h3 id="31-栈的压入、弹出序列"><a href="#31-栈的压入、弹出序列" class="headerlink" title="31 栈的压入、弹出序列"></a>31 <a href="https://leetcode-cn.com/problems/zhan-de-ya-ru-dan-chu-xu-lie-lcof/" target="_blank" rel="noopener">栈的压入、弹出序列</a></h3><p>输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否为该栈的弹出顺序。假设压入栈的所有数字均不相等。例如，序列 {1,2,3,4,5} 是某栈的压栈序列，序列 {4,5,3,2,1} 是该压栈序列对应的一个弹出序列，但 {4,3,5,1,2} 就不可能是该压栈序列的弹出序列。</p>
 <h4 id="模拟法O-n-☆☆☆☆"><a href="#模拟法O-n-☆☆☆☆" class="headerlink" title="模拟法O(n)            ☆☆☆☆"></a>模拟法O(n)            ☆☆☆☆</h4><pre class=" language-lang-python"><code class="language-lang-python">class Solution:
     def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
@@ -546,24 +543,7 @@
         aux, res = [nums[0]], []
         # 初始化窗口
         for i in range(1, k):
-            if aux[-1] <= nums[i]:
-                aux.append(nums[i])
-        res.append(aux[-1])
-        # 窗口移动
-        for i in range(1, len(nums) - k + 1):
-            if nums[i - 1] == aux[0]:
-                aux.pop(0)
-            if aux:            # 判定窗口是否加入新元素
-                if aux[-1] <= nums[i + k - 1]:
-                    aux.append(nums[i + k - 1])
-            else:            # 窗口为空，重新入窗
-                aux.append(nums[i])
-                for j in range(i+1, i + k):
-                    if aux[-1] <= nums[j]:
-                        aux.append(nums[j])
-            res.append(aux[-1])
-        return res
-</code></pre>
+            if aux[-1] <= nums[i]:="" aux.append(nums[i])="" res.append(aux[-1])="" #="" 窗口移动="" for="" i="" in="" range(1,="" len(nums)="" -="" k="" +="" 1):="" if="" nums[i="" 1]="=" aux[0]:="" aux.pop(0)="" aux:="" 判定窗口是否加入新元素="" aux[-1]="" <="nums[i" 1]:="" aux.append(nums[i="" 1])="" else:="" 窗口为空，重新入窗="" j="" range(i+1,="" k):="" aux.append(nums[j])="" return="" res="" code=""></=></code></pre>
 <h4 id="妙法O-n-☆☆☆☆☆"><a href="#妙法O-n-☆☆☆☆☆" class="headerlink" title="妙法O(n)            ☆☆☆☆☆"></a>妙法O(n)            ☆☆☆☆☆</h4><pre class=" language-lang-python"><code class="language-lang-python">class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
         n = len(nums)
@@ -891,9 +871,7 @@ class Solution:
         if not root:
             return True
         if self.isBalanced(root.left) and self.isBalanced(root.right):        # 子树是否平衡
-            return abs(self.getDepth(root.left) - self.getDepth(root.right)) <= 1    # 自己是否平衡
-        return False
-</code></pre>
+            return abs(self.getDepth(root.left) - self.getDepth(root.right)) <= 1="" #="" 自己是否平衡="" return="" false="" <="" code=""></=></code></pre>
 <h4 id="后序遍历-剪枝O-n-☆☆☆☆"><a href="#后序遍历-剪枝O-n-☆☆☆☆" class="headerlink" title="后序遍历 + 剪枝O(n)            ☆☆☆☆"></a>后序遍历 + 剪枝O(n)            ☆☆☆☆</h4><pre class=" language-lang-python"><code class="language-lang-python">class Solution:
     def isBalanced(self, root: TreeNode) -> bool:
         def recur(root):
@@ -905,9 +883,7 @@ class Solution:
             right = recur(root.right)    # 右
             if right == -1: 
                 return -1
-            return max(left, right) + 1 if abs(left - right) <= 1 else -1    # 若不平衡直接剪枝
-        return recur(root) != -1
-</code></pre>
+            return max(left, right) + 1 if abs(left - right) <= 1="" else="" -1="" #="" 若不平衡直接剪枝="" return="" recur(root)="" !="-1" <="" code=""></=></code></pre>
 <h3 id="68-1-二叉搜索树的最近公共祖先"><a href="#68-1-二叉搜索树的最近公共祖先" class="headerlink" title="68-1 二叉搜索树的最近公共祖先"></a>68-1 <a href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof/" target="_blank" rel="noopener">二叉搜索树的最近公共祖先</a></h3><p>给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。</p>
 <p>最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”</p>
 <blockquote>
@@ -992,9 +968,7 @@ class Solution:
             m = len(matrix[0])
             left, right = 0, m-1
             for i in range(n):
-                while left <= right:
-                    mid = (left+right+1)//2
-                    if matrix[i][mid] > target:
+                while left <= right:="" mid="(left+right+1)//2" if="" matrix[i][mid]=""> target:
                         right = mid-1
                     elif matrix[i][mid] == target:
                         return True
@@ -1002,7 +976,7 @@ class Solution:
                         left = mid+1
                 left = 0
             return False
-</code></pre>
+</=></code></pre>
 <h3 id="11-旋转数组的最小数字"><a href="#11-旋转数组的最小数字" class="headerlink" title="11 旋转数组的最小数字"></a>11 <a href="https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/" target="_blank" rel="noopener">旋转数组的最小数字</a></h3><h4 id="二分查找-O-logn-☆☆☆☆"><a href="#二分查找-O-logn-☆☆☆☆" class="headerlink" title="二分查找 O(logn)                ☆☆☆☆"></a>二分查找 O(logn)                ☆☆☆☆</h4><pre class=" language-lang-python"><code class="language-lang-python">class Solution:
     def minArray(self, numbers: List[int]) -> int:
         l,r = 0, len(numbers)-1
@@ -1010,12 +984,7 @@ class Solution:
             m = (l+r)//2
             if numbers[m]>numbers[r]:
                 l = m+1                    # 最小点在右半部分[m+1, r]
-            elif numbers[m]<numbers[r]:
-                r = m                    # 最小点在左半部分[l,m]
-            else:
-                r -= 1        # 相同时无法判断在哪，遂缩小范围，但不能缩l，因为m可能为l但不为r
-        return numbers[l]
-</code></pre>
+            elif numbers[m]<numbers[r]: r="m" #="" 最小点在左半部分[l,m]="" else:="" -="1" 相同时无法判断在哪，遂缩小范围，但不能缩l，因为m可能为l但不为r="" return="" numbers[l]="" <="" code=""></numbers[r]:></code></pre>
 <h3 id="39-数组中出现次数超过一半的数字"><a href="#39-数组中出现次数超过一半的数字" class="headerlink" title="39 数组中出现次数超过一半的数字"></a>39 <a href="https://leetcode-cn.com/problems/shu-zu-zhong-chu-xian-ci-shu-chao-guo-yi-ban-de-shu-zi-lcof/" target="_blank" rel="noopener">数组中出现次数超过一半的数字</a></h3><p>数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。</p>
 <h4 id="哈希-O-n-☆☆"><a href="#哈希-O-n-☆☆" class="headerlink" title="哈希 O(n)            ☆☆"></a>哈希 O(n)            ☆☆</h4><pre class=" language-lang-python"><code class="language-lang-python">class Solution:
     def majorityElement(self, nums: List[int]) -> int:
@@ -1063,55 +1032,29 @@ class Solution:
 <h4 id="二分查找-O-logn-☆☆"><a href="#二分查找-O-logn-☆☆" class="headerlink" title="二分查找 O(logn)            ☆☆"></a>二分查找 O(logn)            ☆☆</h4><pre class=" language-lang-python"><code class="language-lang-python">class Solution:
     def search(self, nums: List[int], target: int) -> int:
         l,r,length = 0,len(nums)-1,len(nums)-1
-        while l<=r:
-            m = (l+r)//2            # 二分找到target点
-            if nums[m]<target:
-                l=m+1
-            elif nums[m]>target:
+        while l<=r: m="(l+r)//2" #="" 二分找到target点="" if="" nums[m]<target:="" l="m+1" elif="" nums[m]="">target:
                 r=m-1
             elif nums[m] == target:
                 l = m-1
                 while l>=0 and nums[l]==target:            # target往左找左边界
                     l-=1
                 r = m +1
-                while r<=length and nums[r]==target:    # target往右找右边界
-                    r+=1
-                break
-        return r-l-1 if l<r else 0                        # 避免找不到的情况
-</code></pre>
+                while r<=length 0="" and="" nums[r]="=target:" #="" target往右找右边界="" r+="1" break="" return="" r-l-1="" if="" l<r="" else="" 避免找不到的情况="" <="" code=""></=length></=r:></code></pre>
 <h4 id="二分查找·改-O-logn-☆☆☆☆"><a href="#二分查找·改-O-logn-☆☆☆☆" class="headerlink" title="二分查找·改 O(logn)            ☆☆☆☆"></a>二分查找·改 O(logn)            ☆☆☆☆</h4><pre class=" language-lang-python"><code class="language-lang-python">class Solution:
     def search(self, nums: [int], target: int) -> int:
         def helper(tar):
             i, j = 0, len(nums) - 1
-            while i <= j:
-                m = (i + j) // 2
-                if nums[m] <= tar: i = m + 1            # 修改条件，直接找右边界
-                else: j = m - 1
-            return i
-        return helper(target) - helper(target - 1)        # 两次二分完成
-</code></pre>
+            while i <= 1="" 2="" j:="" m="(i" +="" j)="" if="" nums[m]="" <="tar:" i="m" #="" 修改条件，直接找右边界="" else:="" j="m" -="" return="" helper(target)="" helper(target="" 1)="" 两次二分完成="" code=""></=></code></pre>
 <h3 id="53-2-0～n-1中缺失的数字"><a href="#53-2-0～n-1中缺失的数字" class="headerlink" title="53-2  0～n-1中缺失的数字"></a>53-2 <a href="https://leetcode-cn.com/problems/que-shi-de-shu-zi-lcof/" target="_blank" rel="noopener"> 0～n-1中缺失的数字</a></h3><p>一个长度为n-1的递增排序数组中的所有数字都是唯一的，并且每个数字都在范围0～n-1之内。在范围0～n-1内的n个数字中有且只有一个数字不在该数组中，请找出这个数字。</p>
 <h4 id="二分查找O-logn-☆☆"><a href="#二分查找O-logn-☆☆" class="headerlink" title="二分查找O(logn)            ☆☆"></a>二分查找O(logn)            ☆☆</h4><pre class=" language-lang-python"><code class="language-lang-python">class Solution:
     def missingNumber(self, nums: List[int]) -> int:
         i, j = 0, len(nums) - 1
-        while i <= j:
-            m = (i + j) // 2
-            if nums[m] == m:         # 想到这个条件就完事了
-                i = m + 1
-            else: 
-                j = m - 1
-        return i
-</code></pre>
+        while i <= 1="" 2="" j:="" m="(i" +="" j)="" if="" nums[m]="=" m:="" #="" 想到这个条件就完事了="" i="m" else:="" j="m" -="" return="" <="" code=""></=></code></pre>
 <h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="21-调整数组顺序使奇数位于偶数前面"><a href="#21-调整数组顺序使奇数位于偶数前面" class="headerlink" title="21 调整数组顺序使奇数位于偶数前面"></a>21 <a href="https://leetcode-cn.com/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/" target="_blank" rel="noopener">调整数组顺序使奇数位于偶数前面</a></h3><p>输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有奇数位于数组的前半部分，所有偶数位于数组的后半部分。</p>
 <h4 id="双指针法-O-n"><a href="#双指针法-O-n" class="headerlink" title="双指针法 O(n)"></a>双指针法 O(n)</h4><pre class=" language-lang-python"><code class="language-lang-python">class Solution:
     def exchange(self, nums: List[int]) -> List[int]:
         i,j = 0, len(nums)-1
-        while i<j:            # 操作十分像快速排序
-            while i < j and nums[i] & 1 == 1: i += 1
-            while i < j and nums[j] & 1 == 0: j -= 1
-            nums[i], nums[j] = nums[j], nums[i]
-        return nums
-</code></pre>
+        while i<j: 1="=" #="" 操作十分像快速排序="" while="" i="" <="" j="" and="" nums[i]="" &="" 1:="" +="1" nums[j]="" 0:="" -="1" nums[i],="" return="" nums="" code=""></j:></code></pre>
 <h3 id="40-最小的k个数"><a href="#40-最小的k个数" class="headerlink" title="40 最小的k个数"></a>40 <a href="https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/" target="_blank" rel="noopener">最小的k个数</a></h3><p>输入整数数组 <code>arr</code> ，找出其中最小的 <code>k</code> 个数。例如，输入4、5、1、6、2、7、3、8这8个数字，则最小的4个数字是1、2、3、4。</p>
 <blockquote>
 <p>输入：arr = [3,2,1], k = 2<br>        输出：[1,2] 或者 [2,1]</p>
@@ -1122,23 +1065,7 @@ class Solution:
         pivot = nums[r]
         i = l - 1
         for j in range(l, r):
-            if nums[j] <= pivot:
-                i += 1
-                nums[i], nums[j] = nums[j], nums[i]
-        nums[i + 1], nums[r] = nums[r], nums[i + 1]
-        return i + 1
-
-    def randomized_partition(self, nums, l, r):
-        i = random.randint(l, r)
-        nums[r], nums[i] = nums[i], nums[r]
-        return self.partition(nums, l, r)
-
-    def randomized_selected(self, arr, l, r, k):
-        pos = self.randomized_partition(arr, l, r)
-        num = pos - l + 1
-        if k < num:
-            self.randomized_selected(arr, l, pos - 1, k)
-        elif k > num:
+            if nums[j] <= 1="" pivot:="" i="" +="1" nums[i],="" nums[j]="nums[j]," nums[i]="" nums[i="" 1],="" nums[r]="nums[r]," 1]="" return="" def="" randomized_partition(self,="" nums,="" l,="" r):="" r)="" nums[r],="" self.partition(nums,="" randomized_selected(self,="" arr,="" r,="" k):="" pos="self.randomized_partition(arr," num="pos" -="" l="" if="" k="" <="" num:="" self.randomized_selected(arr,="" 1,="" k)="" elif=""> num:
             self.randomized_selected(arr, pos + 1, r, k - num)
 
     def getLeastNumbers(self, arr: List[int], k: int) -> List[int]:
@@ -1146,7 +1073,7 @@ class Solution:
             return list()
         self.randomized_selected(arr, 0, len(arr) - 1, k)
         return arr[:k]
-</code></pre>
+</=></code></pre>
 <h4 id="哈希-计数排序-O-M-对本题是最快的，但有局限性（因为范围给定了，不大且是整数）"><a href="#哈希-计数排序-O-M-对本题是最快的，但有局限性（因为范围给定了，不大且是整数）" class="headerlink" title="哈希/计数排序 O(M)            对本题是最快的，但有局限性（因为范围给定了，不大且是整数）"></a>哈希/计数排序 O(M)            对本题是最快的，但有局限性<em>（因为范围给定了，不大且是整数）</em></h4><pre class=" language-lang-python"><code class="language-lang-python">class Solution:
     def getLeastNumbers(self, arr: List[int], k: int) -> List[int]:
         nums = [0] * 10000
@@ -1194,14 +1121,13 @@ class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         l,r = 0,len(nums)-1
         s = nums[l]+nums[r]
-        while s!=target and l<r:
-            if s>target:
+        while s!=target and l<r: if="" s="">target:
                 r-=1
             else:
                 l+=1
             s = nums[l]+nums[r]
         return [nums[l],nums[r]]
-</code></pre>
+</r:></code></pre>
 <h2 id="回溯"><a href="#回溯" class="headerlink" title="回溯"></a>回溯</h2><h3 id="12-矩阵中的路径"><a href="#12-矩阵中的路径" class="headerlink" title="12 矩阵中的路径"></a>12 <a href="https://leetcode-cn.com/problems/ju-zhen-zhong-de-lu-jing-lcof/" target="_blank" rel="noopener">矩阵中的路径</a></h3><p>请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中的任意一格开始，每一步可以在矩阵中向左、右、上、下移动一格。如果一条路径经过了矩阵的某一格，那么该路径不能再次进入该格子。例如，在下面的3×4的矩阵中包含一条字符串“bfce”的路径（路径中的字母用加粗标出）。</p>
 <p>[[“a”,”b”,”c”,”e”],<br>        [“s”,”f”,”c”,”s”],<br>        [“a”,”d”,”e”,”e”]]</p>
 <p>但矩阵中不包含字符串“abfb”的路径，因为字符串的第一个字符b占据了矩阵中的第一行第二个格子之后，路径不能再次进入这个格子。</p>
@@ -1209,7 +1135,7 @@ class Solution:
     def exist(self, board: List[List[str]], word: str) -> bool:
         row,col,length = len(board)-1,len(board[0])-1,len(word)-1
         def dfs(x,y,k):
-            if x<0 or x>row or y<0 or y>col or board[x][y] != word[k]:
+            if x<0 or="" x="">row or y<0 or="" y="">col or board[x][y] != word[k]:
                 return False
             if not k-length:
                 return True
@@ -1224,7 +1150,7 @@ class Solution:
                 if dfs(i,j,0):
                     return True
         return False
-</code></pre>
+</0></0></code></pre>
 <h3 id="13-机器人的运动范围"><a href="#13-机器人的运动范围" class="headerlink" title="13 机器人的运动范围"></a>13 <a href="https://leetcode-cn.com/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof/" target="_blank" rel="noopener">机器人的运动范围</a></h3><p>地上有一个m行n列的方格，从坐标 [0,0] 到坐标 [m-1,n-1] 。一个机器人从坐标 [0, 0] 的格子开始移动，它每次可以向左、右、上、下移动一格（不能移动到方格外），也不能进入行坐标和列坐标的数位之和大于k的格子。例如，当k为18时，机器人能够进入方格 [35, 37] ，因为3+5+3+7=18。但它不能进入方格 [35, 38]，因为3+5+3+8=19。请问该机器人能够到达多少个格子？</p>
 <p>这题的两个重点：</p>
 <ul>
@@ -1316,15 +1242,7 @@ class Solution:
         ret = functools.reduce(lambda x,y:x ^ y, nums)
         d = 1
         while d & ret == 0:
-            d <<= 1
-        a, b = 0, 0
-        for i in nums:
-            if i & d:
-                a ^= i
-            else:
-                b ^= i
-        return [a, b]
-</code></pre>
+            d <<= 0="" 1="" a,="" b="0," for="" i="" in="" nums:="" if="" &="" d:="" a="" ^="i" else:="" return="" [a,="" b]="" <="" code=""></=></code></pre>
 <h3 id="56-2-数组中数字出现的次数-II"><a href="#56-2-数组中数字出现的次数-II" class="headerlink" title="56-2 数组中数字出现的次数 II"></a>56-2 <a href="https://leetcode-cn.com/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-ii-lcof/" target="_blank" rel="noopener">数组中数字出现的次数 II</a></h3><p>一个整型数组 <code>nums</code> 里除一个数字之外，其他数字都出现了三次。请写程序找出这个只出现一次的数字。</p>
 <h3 id="64-求1-2-…-n"><a href="#64-求1-2-…-n" class="headerlink" title="64 求1+2+…+n"></a>64 <a href="https://leetcode-cn.com/problems/qiu-12n-lcof/" target="_blank" rel="noopener">求1+2+…+n</a></h3><p>求 <code>1+2+...+n</code> ，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）</p>
 <h4 id="钻空子-没必要"><a href="#钻空子-没必要" class="headerlink" title="钻空子            (没必要)"></a>钻空子            (没必要)</h4><pre class=" language-lang-python"><code class="language-lang-python">class Solution:
@@ -1359,10 +1277,7 @@ class Solution:
 <h4 id="递归法O-n-☆☆☆-其实就是递归写动态规划，也可以加记忆化"><a href="#递归法O-n-☆☆☆-其实就是递归写动态规划，也可以加记忆化" class="headerlink" title="递归法O(n)            ☆☆☆(其实就是递归写动态规划，也可以加记忆化)"></a>递归法O(n)            ☆☆☆(其实就是递归写动态规划，也可以加记忆化)</h4><pre class=" language-lang-python"><code class="language-lang-python">class Solution:
     @lru_cache(None)    # 用于定义递归的深度为无限
     def fib(self, n: int) -> int:
-        if n<2:
-            return n
-        return (self.fib(n-1)+self.fib(n-2))%1000000007
-</code></pre>
+        if n<2: return="" n="" (self.fib(n-1)+self.fib(n-2))%1000000007="" <="" code=""></2:></code></pre>
 <h3 id="10-2-青蛙跳台阶问题"><a href="#10-2-青蛙跳台阶问题" class="headerlink" title="10-2 青蛙跳台阶问题"></a>10-2 <a href="https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/" target="_blank" rel="noopener">青蛙跳台阶问题</a></h3><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个 <code>n</code> 级的台阶总共有多少种跳法。答案需要取模 1e9+7。(0&lt;=n&lt;=100)</p>
 <p>由于此题一样是有$f(n)=f(n-1)+f(n-2)$，上述的动态规划法基本改改初始值搬下来就能用就不重复写了。</p>
 <h4 id="递归法O-n-☆☆☆-2"><a href="#递归法O-n-☆☆☆-2" class="headerlink" title="递归法O(n)            ☆☆☆"></a>递归法O(n)            ☆☆☆</h4><pre><code>class Solution:
@@ -1479,12 +1394,7 @@ class Solution:
     sum = 0 # 滑动窗口中数字的和
     res = []
 
-    while i <= target // 2:
-        if sum < target:
-            # 右边界向右移动
-            sum += j
-            j += 1
-        elif sum > target:
+    while i <= target="" 2:="" if="" sum="" <="" target:="" #="" 右边界向右移动="" +="j" j="" elif=""> target:
             # 左边界向右移动
             sum -= i
             i += 1
@@ -1497,7 +1407,7 @@ class Solution:
             i += 1
 
     return res
-</code></pre>
+</=></code></pre>
 <h3 id="58-2-左旋转字符串"><a href="#58-2-左旋转字符串" class="headerlink" title="58-2 左旋转字符串"></a>58-2 <a href="https://leetcode-cn.com/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/" target="_blank" rel="noopener">左旋转字符串</a></h3><p>字符串的左旋转操作是把字符串前面的若干个字符转移到字符串的尾部。请定义一个函数实现字符串左旋转操作的功能。比如，输入字符串”abcdefg”和数字2，该函数将返回左旋转两位得到的结果”cdefgab”。</p>
 <h4 id="切片-☆"><a href="#切片-☆" class="headerlink" title="切片            ☆"></a>切片            ☆</h4><pre class=" language-lang-python"><code class="language-lang-python">class Solution:
     def reverseLeftWords(self, s: str, n: int) -> str:
@@ -1565,21 +1475,13 @@ class Solution:
             pass
         elif s[0] == '-':
             sign = -1
-        elif '0' <= s[0] <= '9':
-            res = ord(s[0]) - ord('0')
-        else:
-            return res
-
-        for c in s[1:]:
-            if '0' <= c <= '9':
-                # 数字越界处理
-                if res > bndry or res == bndry and c > '7': 
+        elif '0' <= s[0]="" <="9" :="" res="ord(s[0])" -="" ord('0')="" else:="" return="" for="" c="" in="" s[1:]:="" if="" '0'="" #="" 数字越界处理=""> bndry or res == bndry and c > '7': 
                     return int_max if sign>0 else int_min
                 res = res * 10 + ord(c) - ord('0')
             else:
                 break
         return res * sign
-</code></pre>
+</=></code></pre>
 
                 </div>
                 <hr/>
