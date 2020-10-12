@@ -93,22 +93,24 @@ $(function () {
     $(window).scroll(function () {
         /*回到顶部按钮根据滚动条的位置的显示和隐藏*/
 		now = $(window).scrollTop();
-        if (now < 100) {
-			$('#headNav').addClass("nav-transparent")
-            $('.top-scroll').slideUp(300);
-        } else {
-			$('#headNav').removeClass("nav-transparent")
-            $('.top-scroll').slideDown(300);
-        }
 		if (now>last && status){
-			$('#headNav').slideUp(500);
+			$('#headNav').slideUp(100);
+			console.log("hideup");
 			status = false;
 		}
-		if (now<last && !status){
-			$('#headNav').slideDown(500);
+		else if (now<last && !status){
+			$('#headNav').slideDown(100);
 			status = true;
+			console.log("show down");
 		}
 		last = now;
+		if (now < 100) {
+			$('#headNav').addClass("nav-transparent");		
+		    $('.top-scroll').slideUp(100);
+		} else {
+			setTimeout("$('#headNav').removeClass(\"nav-transparent\");",100);
+			$('.top-scroll').slideDown(100);
+		}
     });
 });
 
