@@ -241,10 +241,10 @@
 <p>首先由于HttpURLConnection的局限性（他只是一个抽象类，没有什么特别的集成），对于上传文件这类”multipart/form-data”类型的请求类型只能由我们手动拼接Header <del>（我来组成头部！）</del>，所以在说如何用HttpURLConnection进行上传文件前先说说上传时的Header：</p>
 <p>可见在这用POST上传图片实际上就是模拟表单上传，而这时需要有拼接请求体：<br><img src="/2018/10/13/http-easy/images/header.png" alt="Http Header"></p>
 <ol>
-<li>请求体中需要先以”——-一串随机数字(代码中用的是UUID的随机序列)\r\n(\r\n的作用是换行)”来上下分隔。所以在前后都要加上boundary</li>
+<li>请求体中需要先以”—–一串随机数字(代码中用的是UUID的随机序列)\r\n(\r\n的作用是换行)”来上下分隔。所以在前后都要加上boundary</li>
 <li>然后写入Content-Disposition:form-data;name=”<strong>(此处需要与服务器约定)</strong>“;filename=”<strong>文件名</strong>“;</li>
 <li>通过InputStream写入HttpURLConnection的OutputStream中。</li>
-<li>最后以”——-那一串数字—\r\n”结尾。</li>
+<li>最后以”—–那一串数字–\r\n”结尾。</li>
 </ol>
 <pre><code>public String uploadByConnection(String str) throws IOException{
     //1.创建连接
@@ -485,9 +485,9 @@ gitment.render('gitment-content');
                     
                     <div class="card-action article-tags">
                         
-                        <a href="https://chitoseyono.com/tags/Java/"><span class="chip bg-color">Java</span></a>
-                        
                         <a href="https://chitoseyono.com/tags/Json/"><span class="chip bg-color">Json</span></a>
+                        
+                        <a href="https://chitoseyono.com/tags/Java/"><span class="chip bg-color">Java</span></a>
                         
                     </div>
                     
@@ -551,10 +551,13 @@ gitment.render('gitment-content');
 <script src="/libs/materialize/js/materialize.min.js"></script>
 <script src="/libs/masonry/masonry.pkgd.min.js"></script>
 <script src="/libs/aos/aos.js"></script>
+<script src="/libs/jquery/jquery-ui.js"></script>
+<link rel="stylesheet" href="/libs/jquery/jquery-ui.css" />
 <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
 <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
 <script src="/js/matery.js"></script>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 <link rel="stylesheet" href="/dist/APlayer.min.css">
 <div id="aplayer"></div>
 <script type="text/javascript" src="/dist/APlayer.min.js"></script>

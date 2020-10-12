@@ -94,18 +94,18 @@ $(function () {
         /*回到顶部按钮根据滚动条的位置的显示和隐藏*/
 		now = $(window).scrollTop();
         if (now < 100) {
-            $('#headNav').addClass('nav-transparent');
+			$('#headNav').addClass("nav-transparent")
             $('.top-scroll').slideUp(300);
         } else {
-            $('#headNav').removeClass('nav-transparent');
+			$('#headNav').removeClass("nav-transparent")
             $('.top-scroll').slideDown(300);
         }
 		if (now>last && status){
-			$('#headNav').slideUp(300);
+			$('#headNav').slideUp(500);
 			status = false;
 		}
 		if (now<last && !status){
-			$('#headNav').slideDown(300);
+			$('#headNav').slideDown(500);
 			status = true;
 		}
 		last = now;
