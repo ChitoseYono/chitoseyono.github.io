@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN,en,default">
 <head>
-    <head>
+    <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="java,android,music,emotion,Chitose Yono, hexo-theme-matery">
     <meta name="description" content="我所追寻的自己，可能不存在梦里">
@@ -304,8 +304,7 @@ public static void main(String[] args) {
 <blockquote>
 <p>其中newCacheThreadPool(), newFixedThreadPool(int nThreads), newSingleThreadExecutor()是ExecutorService对象，而newScheduledThreadPool(int corePoolSize), newSingleScheduledThreadPool()为ScheduledExecutorService对象，下面我会为前三个常用的做简单的例子。</p>
 </blockquote>
-<p>###<strong>FixedThreadPool</strong>：</p>
-<pre><code>    public class PoolTest {
+<h3 id="FixedThreadPool："><a href="#FixedThreadPool：" class="headerlink" title="FixedThreadPool："></a><strong>FixedThreadPool</strong>：</h3><pre><code>    public class PoolTest {
         static class PoolRunnable implements Runnable{
             private int i;
             public void run() {
@@ -331,8 +330,7 @@ public static void main(String[] args) {
 <blockquote>
 <p>CachedThreadPool在程序执行过程中通常会创建与所需数量相同的线程，然后在它回收旧线程的时候停止创建新线程，因此它是合理的Executor首选。只有在这种方式会引发问题的时候，才需要用到FixedThreadPool。<br>FixedThreadPool可以一次性预先执行代价高昂的线程分配，然后限制现成的数量不用每个任务都要付出创建线程的开销，直接从池中获取线程，且不会滥用可获得的资源。<br>SingleThreadExecutor就像是数量为1的FixedThreadPool，如果向它提交了多个任务，这些任务都将排队，所有任务将使用同一个进程。（但还是有区别，他提供了一种重要的并发保证，保证不会有两个线程被并发调用）</p>
 </blockquote>
-<p>###<strong>SingleThreadExecutord</strong>：</p>
-<pre><code>public class PoolTest2 {
+<h3 id="SingleThreadExecutord："><a href="#SingleThreadExecutord：" class="headerlink" title="SingleThreadExecutord："></a><strong>SingleThreadExecutord</strong>：</h3><pre><code>public class PoolTest2 {
     static class PoolRunnable2 implements Runnable{
         public void run() {
             int random = (int) Math.round(Math.random()*9+1);
@@ -360,7 +358,7 @@ public static void main(String[] args) {
 <p>我是pool-1-thread-1, 我先睡6秒<br>pool-1-thread-1已经溜了<br>我是pool-1-thread-1, 我先睡6秒<br>pool-1-thread-1已经溜了<br>我是pool-1-thread-1, 我先睡7秒<br>pool-1-thread-1已经溜了<br>我是pool-1-thread-1, 我先睡6秒<br>pool-1-thread-1已经溜了<br>我是pool-1-thread-1, 我先睡5秒<br>pool-1-thread-1已经溜了</p>
 </blockquote>
 <p>可见该线程池中始终只有一个线程，一直使用的也是那一个线程。</p>
-<p>###<strong>CacheThreadPool</strong><br>在利用线程池创建线程的时候我们很容易发现，几种创建线程池的方式都可以传入类型为ThreadFactory的参数，实际上线程池默认会有一个ThreadFactory的成员属性，当我们不传这个参数时默认为Executors.defaultThreadFactory()，里面包含了他所规定的创建线程时的操作：</p>
+<h3 id="CacheThreadPool"><a href="#CacheThreadPool" class="headerlink" title="CacheThreadPool"></a><strong>CacheThreadPool</strong></h3><p>在利用线程池创建线程的时候我们很容易发现，几种创建线程池的方式都可以传入类型为ThreadFactory的参数，实际上线程池默认会有一个ThreadFactory的成员属性，当我们不传这个参数时默认为Executors.defaultThreadFactory()，里面包含了他所规定的创建线程时的操作：</p>
 <pre><code>    static class DefaultThreadFactory implements ThreadFactory {
         private static final AtomicInteger poolNumber = new AtomicInteger(1);
         private final ThreadGroup group;

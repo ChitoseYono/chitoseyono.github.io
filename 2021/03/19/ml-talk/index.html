@@ -1,0 +1,519 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN,en,default">
+<head>
+    <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="java,android,music,emotion,Chitose Yono, hexo-theme-matery">
+    <meta name="description" content="我所追寻的自己，可能不存在梦里">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>White Noise -Chitose Yono Offical Blog-</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/gitment/gitment-default.css">
+    <link rel="stylesheet" type="text/css" href="/libs/gitment/gitment.js">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/gitment.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span"></span>
+                    </a>
+                </div>
+
+                <a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">Index</a>
+    </li>
+    
+    
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">Tags</a>
+    </li>
+    
+    
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">Archives</a>
+    </li>
+    
+    
+    
+    <li class="hide-on-med-and-down">
+        <a href="/guestbook" class="waves-effect waves-light">Guestbook</a>
+    </li>
+    
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/sublogo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">White Noise</div>
+        <div class="logo-desc">
+            
+            我所追寻的自己，可能不存在梦里
+            
+        </div>
+    </div>
+    <ul class="menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                <i class="fa fa-link fa-lg fa-fw"></i>Index
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                <i class="fa fa-link fa-lg fa-fw"></i>Tags
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                <i class="fa fa-link fa-lg fa-fw"></i>Archives
+            </a>
+        </li>
+        
+        <li>
+            <a href="/guestbook" class="waves-effect waves-light">
+                <i class="fa fa-link fa-lg fa-fw"></i>Guestbook
+            </a>
+        </li>
+        
+    </ul>
+    <div class="social-link">
+        <a href="https://github.com/chitoseyono" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub"
+           data-position="top" data-delay="50">
+            <i class="fa fa-github fa-lg"></i>
+        </a>
+        <a href="mailto:chitoseyono@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我"
+           data-position="top" data-delay="50">
+            <i class="fa fa-envelope fa-lg"></i>
+        </a>
+        <a href="https://weibo.com/2818513061/profile" class="tooltipped" data-tooltip="访问我的微博"
+           data-position="top" data-delay="50">
+            <i class="fa fa-weibo fa-lg"></i>
+        </a>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/images/ml_talk.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        <font size="6">聊聊机器学习——学习、资源与前景</font>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="content">
+
+    <!-- 目录内容 -->
+         
+
+    <!-- 文章内容详情 -->
+    <div id="artDetail" class="container">
+        <div class="card">
+            <div class="card-content article-info">
+                
+                <div class="article-tag">
+                    
+                    <a href="https://chitoseyono.com/tags/机器学习/" target="_blank"><span class="chip bg-color">机器学习</span></a>
+                    
+                </div>
+                
+                <div class="author-info">
+                    <span>
+                        <i class="fa fa-calendar fa-fw"></i>2021-03-19
+                    </span>
+                </div>
+            </div>
+            <hr>
+            <div class="card-content article-card-content">
+                <div id="articleContent">
+                    <script src="/assets/js/APlayer.min.js"> </script><blockquote>
+<p>Hi，好久不见，这里是千歲世野。由于被各种琐事拖占，我已经很久没有在这里发过技术博客了，虽然偶尔我也会有记录学习过程或者做知识的积累，但是暂时大部分都还没有到能让我值得将他们分享的地步。</p>
+</blockquote>
+<p>这次的文章将着重讨论一个近年来，计算机/互联网行业的热点——人工智能，又或者换个稍微专业一点的名字机器学习。这一篇文章主要是面向对机器学习有些许兴趣但基本没有接触过的人群，这篇文章以后也同样将作为我的一个机器学习知识总结的开场白。这篇内容主要包含：</p>
+<ol>
+<li>分享机器学习这一领域究竟在做什么；</li>
+<li>对感兴趣的朋友分享资源；</li>
+<li>从行业/知识体系/现状上给出由衷的建议。</li>
+</ol>
+<h1 id="机器学习是什么？"><a href="#机器学习是什么？" class="headerlink" title="机器学习是什么？"></a>机器学习是什么？</h1><p>在此之前，我们先看几个生活中能见到的例子。</p>
+<p>简单任务：</p>
+<p>垃圾邮件/欺诈检测/交通预测</p>
+<p>推荐系统：</p>
+<p>音乐/商品/广告</p>
+<p>计算机视觉：</p>
+<p>行人识别/deepfake换头/AI自动上色/风格转移：</p>
+<p>声音语言：</p>
+<p>随机写小说/Siri/伴奏分离/机器作曲</p>
+<p>深入内容：</p>
+<p>病患X射线检测肺炎(CheXNet)/DNA测序/蛋白质重构/网络安全/大数据分析…</p>
+<p>看到这里，关于人工智能到底是什么，有没有一点头绪呢？是的，目前这一领域做的事情，就是让<strong>机器</strong>去做原本由人来做的事情，无论是多小的一件事情，所有这一切任务与“人”的概念都无法脱离。这些机器学习任务人可以做到吗？当然可以。分辨哪个是垃圾邮件，给朋友推荐朋友可能喜欢的歌这类事情，一般人来做的话还要更加准确。再换一个领域来说，目前来说，机器写的小说/歌/文字那是能看的吗？非要说成是艺术的话也过于意识流/无厘头了。完全都还无法达到业界的水准。那机器与人的差别是什么呢？为什么要让机器去学习呢？</p>
+<p>AI的作画/deep dream</p>
+<p>原因很简单。首先，与人相比，机器的运算速度要比人类高上无数倍，而这个差别，是无法鸿越的。人可能一辈子能精通一件事情已经算是极其成功的人生了，可是AlphaGo通过相比起来很短的对棋局的学习时间，便能碾压连续20多次夺得世界第一的围棋手柯洁。其次，在你休息娱乐的一天，放在一旁的GPU可能已经跑了上兆亿次的运算了。将一个同样流程，譬如分拣邮件/推荐商品做上无数次对于人类来说是巨大的劳动力耗费，而对机器来说不过是小事一桩，这样的可重复性也是机器的优势。</p>
+<p>人工智能这一领域在过去，是饱受争议的。出现在科幻小说电影里对其描绘的天马行空的同时，业界却没有办法回应大众的期待，很多时候所谓人工智能算法的效果甚至不如穷举，以至于很长一段时间，或者从那之后，业内研究人员几乎不会以”人工智能“标榜自己正在做的事情，而且因为看不到前景也致使了许多研究人员转而去其他领域研究。</p>
+<p>但如今，到了算力爆棚到币圈都爆火的时代，机器学习的很多过去只停留在理论层面的内容得以实现，机器学习才终于能成为一波热潮。那机器学习算法是怎么实现的呢？</p>
+<p>在这个篇幅里想要解释好任何一个算法都可能不太足够，那我举一个最最简单的例子好了。</p>
+<p>关键两点：数据/算法</p>
+<p>举人的学习过程：我们在学习解一道数学题可能要做上好几次同类的题目，才能理解这类数学题的通用解法。在此通用解法就是机器学习中学到的算法，而做过的题目就是机器学习输入的数据。基本上每一个机器学习算法都是以这样的流程进行的。</p>
+<p>但即使是发展到现在，我们也很少会说，机器学习就是”人工智能“，为什么呢？因为人工智能听起来过于牛逼了。我们能看到机器学习算法大多都只是在处理单一的任务，而根本没有达到如电影小说中与人为敌控制世界，又或者各界哲学家纸上谈书所诉说的“伦理问题”之类的程度（看了一看我做的人工智障，到现在还认猫为狗呢）。</p>
+<p>猫-&gt;Dog</p>
+<p>又或者你说，人工智能的定义就是让机器去解决平时由人来解决的事情的话，那我们用计算器处理1+1=2是不是也能说是人工智能呢？其实是可以的，但是语义上我们会觉得这种任务不够“智能”，说白了不够牛逼。所以一般我们用机器学习，来指代以数学方法为背景的处理相较于简单任务更加复杂的方法。深度学习也是同样的道理，下图很好的阐述了他们之间的关系：</p>
+<p><img src="/2021/03/19/ml-talk/relation.jpg" alt="preview"></p>
+<p>为了更好区分它们，业内人会更具体化一些，以“机器学习”来称呼自己在做的内容，很多时候看各种机器学习相关的论文就能看到了，例如什么”研究不同的在线学习森林算法在脑电信号异常检测上的作用“（随便编的，反正差不多就是这样，实际情况还要更加具体）。</p>
+<p>总之我的观点是：当前是机器学习领域极速发展的元年！无论是数据量还是算力，无论网络上的学习资源还是社会趋势，都指向一件事情——现在就是最适合机器学习发展的时代。</p>
+<p>那要怎么进入这一领域呢？</p>
+<h1 id="如何学习机器学习？"><a href="#如何学习机器学习？" class="headerlink" title="如何学习机器学习？"></a>如何学习机器学习？</h1><p>学习方法：资料+推导+实践+比较</p>
+<p><strong>英语</strong>：</p>
+<p>虽然中文领域还是有那么几本不错的书，但暂时前沿知识都由英文文献占据，如果你阅读翻译的书籍还可能遭遇大量的翻译问题。而且如果你深入到这一领域的时候，你会接触到的内容很有可能全是英文…写的论文是英文，发表学术报告是英文，甚至还要经常跟学术界不同国籍的人们打交道。学好英文，绝对让你学习道路上顺畅很多。</p>
+<p><strong>数学</strong>：</p>
+<p>开始想要接触机器学习时，大家应该都会觉得数学内容很多公式很多，不学数学没法学下去。我认为不无道理，但千万不要等全部学完了再学（这样我们离目的太远，要花很长时间才得到效果），毕竟就重要的数学部分就有高数，线代，概论，凸优化等等，等你精通这些估计得花上不少时间，我完全建议有兴趣进入机器学习这一行的人，先一边学机器学习基础算法，如kNN，线回，逻辑回，SVM，NB等等，在学习过程中遇到的不会的数学的部分再去摸索，譬如各个算法用极大似然优化时你可能得要了解条件概率，贝叶斯定理，矩估计之类的概率统计知识；你从一维拓展到多维你要去了解矩阵相关的线代知识；你去优化这些算法时你也得把偏导阿，积分之类的找回来…这样子你既能慢慢学会机器学习的基础算法，也把数学有所补充。</p>
+<p>资源建议：</p>
+<ul>
+<li>微积分：小提琴书（James Stewart《Calculus》</li>
+<li>线代：<ul>
+<li>3B1B</li>
+<li>MIT 18.06 搭配 Gilbert Strang, Introduction to Linear Algebra</li>
+</ul>
+</li>
+<li>概率统计<ul>
+<li>STAT110 搭配 Introduction to Probability Joseph K. Blitzstein （译本：概率论导论）</li>
+<li>同济小蓝书内容覆盖面不错，但是不够深入浅出</li>
+</ul>
+</li>
+</ul>
+<p><strong>编程</strong>：</p>
+<p>机器学习领域里，编程绝对是非必须的。但一点点的编程能力能给你带来巨大的帮助。比如想要把刚学会的算法实现一下加深印象，或者把算法应用到真实场景里，又或者是实验所需…编程能力绝对都能带来巨大的帮助。无论用的是Python还是R还是Matlab还是C++，选一门语言去用就对了。网上的资料很多很多，但学一门语言的基本语法（对！只学语法！暂时不需要的东西不要去学）真的花不了多长时间，一周基本上都能搞定（搞不定的绝对不是能力问题，是方法错了）</p>
+<p><strong>资源检索能力</strong>：</p>
+<p>无论是做研究，还是学习，你需要寻找的资源可能成千上万，想做伸手党让别人完全告诉你要学什么要做好什么，哪些需要哪些不需要是基本不可能的。论文库/搜索引擎等等，这些都一定要好好的利用好，习惯于自给自足丰衣足食。</p>
+<p><strong>机器学习</strong>：</p>
+<p>机器学习有很多优秀的内容，但他们无一不能一本带过，各有重点各有好处，一个概念的理解很可能需要结合各个资料，在这里分享用过/口碑极好的资源</p>
+<ul>
+<li>周志华，西瓜书 + 南瓜书：西瓜书科普，南瓜书深入解释</li>
+<li>Ian GoodFellow, Deep Learning花书：深度学习圣经</li>
+<li>李航，统计学习方法（入门良好）：以统计学角度解释一些基础的机器学习算法</li>
+<li>T. Hastie, The Elements of Statistical Learning：以频率学派角度阐述大多机器学习算法</li>
+<li>Gareth J. ,Introduction to Statistical Learning with R（译本：统计学习导论:基于R应用）</li>
+<li>Richard S. Sutton, Reinforcement Learning: An Introduction：强化学习圣经</li>
+<li>Sebastian Raschka, Python Machine Learning(译本:Python深度学习)：Python的sklearn框架实践上手专用，省去了大量的理论学习</li>
+<li>Aston Zhang, 李沐, Dive into deep learning (译本：动手学机器学习)</li>
+<li>概率论与数理统计（没错，这本居然覆盖面超广，但是大学一般讲不到的数理统计却是很多机器学习的基础内容）</li>
+<li>Bishop，PRML：模式识别的经典</li>
+</ul>
+<p>避雷：</p>
+<ul>
+<li>机器学习实战</li>
+<li>Python神经网络编程（不是不好，是太过于基础了，没必要这样去学，高中生入门用）</li>
+<li>Kevin P. Murphy, Machine Learning（内容覆盖面很广，但是解释的不太好，而且不少typo。）</li>
+</ul>
+<p>看课是好，但是不要浪费时间：</p>
+<ul>
+<li>CS229：很基础的内容但是很深入，覆盖面不广，部分知识如NN已过时</li>
+<li>Ng -ML：非常基础，极度入门，但是不深入，初学者可以看看，但是上面的所有内容可能只是走马观花没法形成概念，更加相当于科普</li>
+<li>Ng - NN：讲的不错，偏入门，建议上coursera看，有作业，无论是数学还是编码相关都浅尝辄止，作业量不多（也不难），必须自觉去学习才行</li>
+<li>机器学习白板：讲的特别好，但是数学基础不够的同学可能会看的云里雾里不知所云，不建议立即入手，建议学够一阵子之后，在学习机器学习算法时不懂再去看用来补充，会醍醐灌顶</li>
+<li>李宏毅的各种课程：内容极广，而且比较前沿，可以作为补充来学习</li>
+</ul>
+<p>极度不推荐购买那些<strong>纯敲代码</strong>的书！无论对方标榜自己是什么谷歌/美团等大厂专家，都不要买。那样学习没有用处，因为代码网上都有，一开始入门都是调库，如果是要买来提升自己理解，只建议上面的那几本(python机器学习，动手学深度学习）。</p>
+<p>在校的学生一定要好好利用自己的图书馆…因为这些书确实都很贵很难在其他地方看到的。书再多不怕，放着随时用来参考，太多了用来垫桌角都没问题。</p>
+<p>关于以上内容，我还必须说一点。他们的先后关系是存在的，例如如果你对机器学习的框架都没有自己的理解就去碰深度学习，又或者随机过程都没听过就去捣鼓强化学习…这样肯定是不行的，但难道要先把他们学完？先把英语这一门语言学好来再去学这些？又或者把数学内容都学起来再去学机器学习的内容？那首先你会不会先花上三五年都还没碰到机器学习先不说，就你在学习数学的理论的过程中也绝对会因为将数学理论变现的等待时间过长而逐渐放弃。</p>
+<p>说到这里了可以看到机器学习这一领域内容繁多，且深度很大，不知道大家有没有被劝退呢？如果没有的话，那再看下去吧。</p>
+<h1 id="机器学习相关建议"><a href="#机器学习相关建议" class="headerlink" title="机器学习相关建议"></a>机器学习相关建议</h1><p>说实话机器学习，对大多数人来说不太实际。ML可谓是任何行业的强心剂，是任何行业的reinforcement，但他并不是刚需，所以没有足够资本的公司/与人工智能无关的公司一般都不需要这方向的发展、也不需要这类的人才，而那些需要的大公司虽然工资超高，对你的要求也会超级高。</p>
+<p>机器学习本身学习难度很大，学习曲线波折，分支极其多，中文的资料相对欠缺，就我个人已经有一定数学与英语基础的人来说，我入门就已经花了一年多。</p>
+<p>以这一领域就业的人群，大部分还是在高校中继续进行研究的，每天在实验室度过，靠论文评职称，投入产出的路线也十分曲折。如果说是工业界就一般行业硕博起步，而且如果你没几篇顶会论文（其难度参照几篇顶会吧：GPT-3,fasterRCNN…），也没什么实践化成果的话，实在很难踏入这一行。</p>
+<p>想做的出色，不但需要巨大的理论学习投入，还需要大量的创新/实践/实验…相比于任何传统行业，这都是一条异常辛苦的路线，所以建议，要想在这一行能干下去，需要极高的热情，足够的学习与思辨能力，同时对业界有足够的踏足理解。</p>
+<p>这是一个差距极其明显的一门学科，做的好的人极少但特别的出色特别牛逼，而此外的人与外行基本没有什么区别。所以，如果你没有“以此就业”极强的向往，十分建议只是把机器学习当做一门乐器，一个兴趣爱好，偶尔了解一下，调库玩玩看看效果，使用别人做好的API融合到自己项目中，这样也能很好的利用其对自己有提升。</p>
+<p>所以我的意见是：</p>
+<ol>
+<li>成年人了，不建议跟风，不要被一时的新鲜感带跑，明确自己能力/人生规划/收益预期；</li>
+<li>更不要一头钻到这里面去，必须有一个明确的目标才行（做研究？做工业化？做什么方向？），不然很容易迷失自己，到头来有用的都没学到；</li>
+<li>甚至我认为你可以去把它当做副业，成为你事业的增强剂吧。</li>
+</ol>
+<p>加油。祝一路顺风。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><ol>
+<li>机器学习 周志华</li>
+<li>风格迁移：<a href="https://arxiv.org/abs/1703.07511" target="_blank" rel="noopener">https://arxiv.org/abs/1703.07511</a></li>
+<li>style2paint：<a href="http://lllyasviel.github.io/SplitFilling/" target="_blank" rel="noopener">http://lllyasviel.github.io/SplitFilling/</a></li>
+<li>彩云小梦：<a href="http://if.caiyunai.com/dream/" target="_blank" rel="noopener">http://if.caiyunai.com/dream/</a></li>
+<li>Siri: <a href="https://machinelearning.apple.com/research/siri-voices" target="_blank" rel="noopener">https://machinelearning.apple.com/research/siri-voices</a></li>
+<li>deep dream:<a href="https://github.com/google/deepdream" target="_blank" rel="noopener">https://github.com/google/deepdream</a></li>
+<li>伴奏分离：<a href="https://www.lalal.ai/" target="_blank" rel="noopener">https://www.lalal.ai/</a></li>
+<li>chaxnet:<a href="https://stanfordmlgroup.github.io/projects/chexnet/" target="_blank" rel="noopener">https://stanfordmlgroup.github.io/projects/chexnet/</a></li>
+<li>WaveNet:<a href="https://magenta.tensorflow.org/nsynth-instrument" target="_blank" rel="noopener">https://magenta.tensorflow.org/nsynth-instrument</a></li>
+<li>DNA测序：<a href="https://arxiv.org/abs/1802.00810" target="_blank" rel="noopener">https://arxiv.org/abs/1802.00810</a></li>
+<li>FasterRCNN:<a href="https://papers.nips.cc/paper/2015/file/14bfa6bb14875e45bba028a21ed38046-Paper.pdf" target="_blank" rel="noopener">https://papers.nips.cc/paper/2015/file/14bfa6bb14875e45bba028a21ed38046-Paper.pdf</a></li>
+<li>动手学深度学习在线阅读：<a href="https://zh.d2l.ai/" target="_blank" rel="noopener">https://zh.d2l.ai/</a></li>
+<li>白板机器学习：<a href="https://space.bilibili.com/97068901" target="_blank" rel="noopener">https://space.bilibili.com/97068901</a></li>
+<li>YOLOv4:<a href="https://arxiv.org/abs/2004.10934" target="_blank" rel="noopener">https://arxiv.org/abs/2004.10934</a></li>
+</ol>
+
+                </div>
+                <hr/>
+
+                <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone, qq, weibo, douban"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+                <div class="reprint">
+                    <p>
+                        <span class="reprint-tip">转载请注明: </span>
+                        <a href="https://chitoseyono.com" class="b-link-green">White Noise -Chitose Yono Offical Blog-</a>
+                        <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                        <a href="/2021/03/19/ml-talk/" class="b-link-green">聊聊机器学习——学习、资源与前景</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        
+        <link rel="stylesheet" href="/libs/gitment/gitment-default.css">
+<link rel="stylesheet" href="/css/gitment.css">
+
+<div class="gitment-card card" data-aos="fade-up">
+    <div id="gitment-content" class="card-content"></div>
+</div>
+
+<script src="/libs/gitment/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Fri Mar 19 2021 11:05:06 GMT+0800',
+    owner: 'ChitoseYono',
+    repo: 'chitoseyono.github.io',
+    oauth: {
+        client_id: '999f7c73059996845f36',
+        client_secret: '8c466460b56a73683ea40833c9d5dca6f530ce9c'
+    }
+});
+
+gitment.render('gitment-content');
+</script>
+        
+
+        
+
+        
+
+<article id="articles" class="container prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">本篇</div>
+            <div class="card">
+                <a href="/2021/03/19/ml-talk/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/images/ml_talk.jpg" class="responsive-img" alt="聊聊机器学习——学习、资源与前景">
+                        
+                        <span class="card-title">聊聊机器学习——学习、资源与前景</span>
+                    </div>
+
+                    <div class="card-content article-content">
+                        <div class="summary"> 
+Hi，好久不见，这里是千歲世野。由于被各种琐事拖占，我已经很久没有在这里发过技术博客了，虽然偶尔我也会有记录学习过程或者做知识的积累，但是暂时大部分都还没有到能让我值得将他们分享的地步。
+
+这次的文章将着重讨论一个近年来，计算机/互联网</div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw"></i>2021-03-19
+                            </span>
+                            <span class="publish-author">
+                                <i class="fa fa-user fa-fw"></i>
+                                
+                                Chitose Yono
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="https://chitoseyono.com/tags/机器学习/"><span class="chip bg-color">机器学习</span></a>
+                        
+                    </div>
+                    
+                </a>
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">下一篇</div>
+            <div class="card">
+                <a href="/2020/08/20/lcof/">
+                    <div class="card-image">
+                        
+                        <img src="/medias/images/lcof.jpg" class="responsive-img" alt="剑指Offer刷题总结">
+                        
+                        <span class="card-title">剑指Offer刷题总结</span>
+                    </div>
+                    <div class="card-content article-content">
+                        <div class="summary">
+                             
+这篇文章用于记录《剑指Offer》刷题的总结，对不同类型题目分类，对题目会进行多个方法解题，并分析方法的难度（以星号表示）、时间复杂度等。刷题使用的是Leetcode，部分代码来源于讨论区：https://leetcode-cn.com
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-calendar fa-fw"></i>2020-08-20
+                            </span>
+                            <span class="publish-author">
+                                <i class="fa fa-user fa-fw"></i>
+                                
+                                Chitose Yono
+                                
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="https://chitoseyono.com/tags/算法/"><span class="chip bg-color">算法</span></a>
+                        
+                    </div>
+                    
+                </a>
+            </div>
+        </div>
+        
+    </div>
+</article>
+    </div>
+</main>
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;<a href="http://chitoseyono.com" target="_blank">&nbsp;Chitose Yono</a>&nbsp;|
+            Published with <a href="https://hexo.io/" target="_blank">Hexo</a>&nbsp;|
+            Theme by <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>&nbsp;|
+            Visited <span id="busuanzi_value_site_uv"></span> times<br>
+        </div>
+        <div class="col s12 m4 l4 social-link">
+            <a href="https://github.com/chitoseyono" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+                <i class="fa fa-github fa-lg"></i>
+            </a>
+            <a href="mailto:chitoseyono@gmail.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+                <i class="fa fa-envelope fa-lg"></i>
+            </a>
+            <a href="https://weibo.com/2818513061/profile" class="tooltipped" data-tooltip="访问我的Weibo" data-position="top" data-delay="50">
+                <i class="fa fa-weibo fa-lg"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title">搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input" autofocus="">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-double-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/js/music.js"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+</body>
+</html>

@@ -31,7 +31,7 @@ const ap = new APlayer({
       {
         name: "alone,,again",
         artist: 'elijah who',
-        url: 'http://music.163.com/song/media/outer/url?id=3495218039',
+        url: 'http://music.163.com/song/media/outer/url?id=495218039',
         cover: 'http://p2.music.126.net/qJRzJOtNhcPlkTaljwI-0w==/19106213556171653.jpg',
       }
     ]
