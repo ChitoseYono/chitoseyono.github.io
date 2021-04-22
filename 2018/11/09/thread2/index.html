@@ -483,9 +483,9 @@ public static synchronized DoubleLazySingletonExample getInstance(){
 <p><img src="/2018/11/09/thread2/ConstantPool.jfif" alt="img"></p>
 <p>比较麻烦的是字符串常量：在编译阶段就把所有的字符串文字放到一个常量池中。</p>
 <p>那么对于以下代码：</p>
-<pre class=" language-lang-java"><code class="language-lang-java">     String str1 = "abcd";
-     String str2 = new String("abcd");
-     System.out.println(str1==str2);//false
+<pre class=" language-java"><code class="language-java">     String str1 <span class="token operator">=</span> <span class="token string">"abcd"</span><span class="token punctuation">;</span>
+     String str2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span><span class="token string">"abcd"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str1<span class="token operator">==</span>str2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//false</span>
 </code></pre>
 <p>解释就很清晰，第一行直接从常量池中取出对象，而第二行是在堆中创建了新的对象。</p>
 <h3 id="计算机硬件架构的图示"><a href="#计算机硬件架构的图示" class="headerlink" title="计算机硬件架构的图示"></a>计算机硬件架构的图示</h3><p><img src="/2018/11/09/thread2/cpu.jpg" alt="CPU"><br>&nbsp;&nbsp;&nbsp;&nbsp;由于计算机的存储设备与处理器的运算能力之间有几个数量级的差距，所以现代计算机系统都不得不加入一层读写速度尽可能接近处理器运算速度的高速缓存（cache）来作为内存与处理器之间的缓冲：将运算需要使用到的数据复制到缓存中，让运算能快速进行，当运算结束后再从缓存同步回内存之中没这样处理器就无需等待缓慢的内存读写了。但这里就会有一个问题，多个处理器进行处理如果发生同步的操作的时候就可能会出现数据错误，这时就需要有MESI这类缓存一致性协议了。具体可参考：<a href="https://en.wikipedia.org/wiki/MESI_protocol" target="_blank" rel="noopener">维基百科对缓存一致性的介绍</a></p>

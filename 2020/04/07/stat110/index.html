@@ -196,15 +196,14 @@
 <p>&emsp;&emsp;第一章主要讲了一些基础的概率论知识，诸如：朴素概率定义（其实就是古典概型）和他的一些重复运算的解决方法，以及一些概率的性质而已。</p>
 <p>&emsp;&emsp;比较特别的是，第一单元里讲了一些Story Proof（故事论证）之类的东西让一些二项式系数公式的记忆变得尤为方便，而且里面举的很多例子都是很好帮助理解的内容，这是跟国内的教学差别很大的地方。</p>
 <h2 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h2><p><strong>Python：</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">v = np.array([3,1,4,1,5,9]) # 将v定义为一组向量[3,1,4,1,5,9]
+<pre class=" language-python"><code class="language-python">v <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 将v定义为一组向量[3,1,4,1,5,9]</span>
 </code></pre>
 <p><strong>R：</strong></p>
-<pre class=" language-lang-R"><code class="language-lang-R">v <- c(3,1,4,1,5,9) # 将v定义为一组向量(3,1,4,1,5,9),c代表concatenate
+<pre class=" language-R"><code class="language-R">v <- c(3,1,4,1,5,9) # 将v定义为一组向量(3,1,4,1,5,9),c代表concatenate
 </code></pre>
 <p>&emsp;&emsp;在Python里面此处用Numpy的数组做向量。与Python不同，R语言是建立在向量之上的，就算是简单的 <code>n &lt;- 100</code> 都被R视为一个长度为1的向量。</p>
 <p>&emsp;&emsp;当然在R里面稍有不同的是，”=”与”&lt;-“使用上稍有不同，在函数调用中，func(x=1)与func(x&lt;-1)是有区别的，前者调用完后变量x不会被保留，而后者会在工作区里保留变量x=1。</p>
 <p>&emsp;&emsp;R与Python不同的地方还是有挺多的：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -241,9 +240,7 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>&emsp;&emsp;在元素获取上，两者区别还是挺大的，最大区别还是从0还是1开始数：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -275,26 +272,24 @@
 </tr>
 </tbody>
 </table>
-</div>
 <h2 id="阶乘与二项式"><a href="#阶乘与二项式" class="headerlink" title="阶乘与二项式"></a>阶乘与二项式</h2><p>&emsp;&emsp;在本来并不用于计算的Python中，运算这种需要调用别的库，例如阶乘：</p>
 <p><strong>Python：</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">import math
-math.factorial(n)
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> math
+math<span class="token punctuation">.</span>factorial<span class="token punctuation">(</span>n<span class="token punctuation">)</span>
 </code></pre>
 <p><strong>R：</strong></p>
-<pre class=" language-lang-R"><code class="language-lang-R">factorial(n)
+<pre class=" language-R"><code class="language-R">factorial(n)
 </code></pre>
 <p>&emsp;&emsp;同样的也有像二项式，一般Python图方便会直接自己写一个函数，不过实在要调用也是可以的。</p>
 <p><strong>Python</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">from scipy.special import comb
-comb(n,k)
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> scipy<span class="token punctuation">.</span>special <span class="token keyword">import</span> comb
+comb<span class="token punctuation">(</span>n<span class="token punctuation">,</span>k<span class="token punctuation">)</span>
 </code></pre>
 <p><strong>R：</strong></p>
-<pre class=" language-lang-R"><code class="language-lang-R">choose(n,k)
+<pre class=" language-R"><code class="language-R">choose(n,k)
 </code></pre>
 <p>&emsp;&emsp;R相较之下真的太方便了。此外R还有lchoose(n,k)，lfactorial(n)用来运算log值，方便进行乘法转换加法。</p>
 <h2 id="取样模拟"><a href="#取样模拟" class="headerlink" title="取样模拟"></a>取样模拟</h2><p>&emsp;&emsp;这方面二者用法是很相似的，直接上表格吧。</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -326,33 +321,32 @@ comb(n,k)
 </tr>
 </tbody>
 </table>
-</div>
 <h2 id="de-Montmort‘s-配对问题"><a href="#de-Montmort‘s-配对问题" class="headerlink" title="de Montmort‘s 配对问题"></a>de Montmort‘s 配对问题</h2><p>&emsp;&emsp;de Montmort’s配对问题指的是一堆卡片标有1-n的数字，打乱后一张一张的掀开，第k次掀开的若对应的数字正好为k，那么则视为成功，求的是整套卡片翻完的至少成功一次的概率。</p>
 <p>&emsp;&emsp;单纯的运算需要运用Inclusion-exclusion公式：</p>
 <p><img src="/2020/04/07/stat110/1-1.png" alt="de Montmort‘s"></p>
 <p>&emsp;&emsp;而在代码里我们可以做simulation模拟。</p>
 <p><strong>Python：</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">n = 100
-count = 0
-for i in range(10**4):
-    r = sum(np.random.choice(range(1,n+1),n,replace=False)==range(1,n+1))
-    if r>=1:
-        count+=1
+<pre class=" language-python"><code class="language-python">n <span class="token operator">=</span> <span class="token number">100</span>
+count <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">10</span><span class="token operator">**</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    r <span class="token operator">=</span> sum<span class="token punctuation">(</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>n<span class="token punctuation">,</span>replace<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span><span class="token operator">==</span>range<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> r<span class="token operator">>=</span><span class="token number">1</span><span class="token punctuation">:</span>
+        count<span class="token operator">+=</span><span class="token number">1</span>
 
-print(count/10**4)
+<span class="token keyword">print</span><span class="token punctuation">(</span>count<span class="token operator">/</span><span class="token number">10</span><span class="token operator">**</span><span class="token number">4</span><span class="token punctuation">)</span>
 </code></pre>
 <p><strong>R：</strong></p>
-<pre class=" language-lang-R"><code class="language-lang-R">n <- 100
+<pre class=" language-R"><code class="language-R">n <- 100
 r <- replicate(10^4,sum(sample(n)==(1:n))) # 重复10^4次，计算n个不重复取样与1:n的相同个数总数
 sum(r>=1)/10^4
 </code></pre>
 <p>&emsp;&emsp;R是真的简短很多，不愧是数字科学专用语言…不过说真的，python的代码相比之下更加友好。</p>
 <h2 id="生日问题"><a href="#生日问题" class="headerlink" title="生日问题"></a>生日问题</h2><p>&emsp;&emsp;对于生日问题的概率计算，Python，所幸numpy也支持prod。</p>
 <p><strong>Python：</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">1-np.prod((365-k+1,365+1))/365**k
+<pre class=" language-python"><code class="language-python"><span class="token number">1</span><span class="token operator">-</span>np<span class="token punctuation">.</span>prod<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">365</span><span class="token operator">-</span>k<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">365</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">365</span><span class="token operator">**</span>k
 </code></pre>
 <p><strong>R的话有两种方式：</strong></p>
-<pre class=" language-lang-R"><code class="language-lang-R">1-prod((365-k+1):365)/365^k # 1.直接计算
+<pre class=" language-R"><code class="language-R">1-prod((365-k+1):365)/365^k # 1.直接计算
 pbirthday(k) # 2.使用内置的函数
 </code></pre>
 <p>&emsp;&emsp;还挺犯规的，生日问题都内置了。而且R还能用<code>qbirthday(n)</code>来计算达到n概率两人以上相同生日所需要的人数。而且对于这两个函数，还能加上coincident参数来指定特定多少人同一天生日，在这就不做示范了。</p>
@@ -364,7 +358,7 @@ for i in range(10**4):
         count += 1
 print(count/10**4)
 </code></pre><p><strong>R：</strong></p>
-<pre class=" language-lang-R"><code class="language-lang-R">r <- replicate(10^4, max(tabulate(sample(1:365,23,replace=TRUE)))) # 重复10^4次，计算23次从365个数重复取样取得相同次数最多的个数
+<pre class=" language-R"><code class="language-R">r <- replicate(10^4, max(tabulate(sample(1:365,23,replace=TRUE)))) # 重复10^4次，计算23次从365个数重复取样取得相同次数最多的个数
 sum(r>=2)/10^4
 </code></pre>
 <h1 id="Chapter-02"><a href="#Chapter-02" class="headerlink" title="Chapter 02"></a>Chapter 02</h1><p>&emsp;&emsp;对应原文2.10的内容</p>
@@ -375,7 +369,7 @@ sum(r>=2)/10^4
 <p>&emsp;&emsp;一个家庭两小孩（$A$和$B$），在 ($C_1$) 已知至少有一个是女孩 和 ($C_2$) 已知有一个姐姐 分别的条件下，求两人都是女孩的条件概率，设事件$S$为两人都是女孩。</p>
 <p>&emsp;&emsp;这道题实际上就是求$P(S|C_1)$和$P(S|C_2)$。且因为前者是$\frac{1}{3}$而后者为$\frac{1}{2}$，让人觉得这道题的答案比较反直觉，但是其实却很合理。频率派的理解就是用大量实验去叠，那只需要取很多（这里取了$10^5$）个样就行。</p>
 <p><strong>Python:</strong></p>
-<pre class=" language-lang-Python"><code class="language-lang-Python">n = 10**5
+<pre class=" language-Python"><code class="language-Python">n = 10**5
 childa = np.random.choice([1,2],n,True)
 childb = np.random.choice([1,2],n,True)
 a = (childa==1) # 小孩A是女孩
@@ -388,7 +382,7 @@ p_2 = n_s/n_c2 # P(S|C2)
 print('P(S|C1)=%f,P(S|C2)=%f' % (p_1,p_2))
 </code></pre>
 <p><strong>R：</strong></p>
-<pre class=" language-lang-R"><code class="language-lang-R">n <- 10^5
+<pre class=" language-R"><code class="language-R">n <- 10^5
 childa <- sample(2,n,replace=TRUE)
 childb <- sample(2,n,replace=TRUE)
 n.b <- sum(childa==1) # A是女孩
@@ -399,7 +393,7 @@ n.ab/n.b2 # P(S|C1)
 </code></pre>
 <p>&emsp;&emsp;得到两个值一个接近0.33，另一个接近0.5，模拟完成。</p>
 <h2 id="三门问题模拟"><a href="#三门问题模拟" class="headerlink" title="三门问题模拟"></a>三门问题模拟</h2><p>&emsp;&emsp;三门问题又称<em>Monty Hall</em>问题，比较经典的一个条件概率问题，在这里就不介绍了上网可以查到，可能之后会补充。先放一个书上的R语言版本，他加了一点交互式来进行模拟游戏：</p>
-<pre class=" language-lang-R"><code class="language-lang-R">monty <- function() {
+<pre class=" language-R"><code class="language-R">monty <- function() {
     doors <- 1:3
 
     # randomly pick where the car is
@@ -430,39 +424,39 @@ n.ab/n.b2 # P(S|C1)
 </code></pre>
 <p>&emsp;&emsp;R的代码用来写这种程序实在是…有点尴尬，交互和代码可读性过于差了。我的话，是尝试利用频率派的方式模拟，来计算多次三门问题分别在使用了 <strong>策略1： 一直换门 </strong> 和 <strong>策略2：绝不换门</strong> 之下的概率，感觉这样对比更有实际意义。</p>
 <p><strong>Python：</strong></p>
-<pre class=" language-lang-python"><code class="language-lang-python">import random
+<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> random
 
-def MontyHall(n_select, is_change):
-    n_car = random.randint(1, 3)
-    if n_select == n_car:
-        if is_change:
-            return False
-        else:
-            return True
-    else:
-        if is_change:
-            return True
-        else:
-            return False
+<span class="token keyword">def</span> <span class="token function">MontyHall</span><span class="token punctuation">(</span>n_select<span class="token punctuation">,</span> is_change<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n_car <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> n_select <span class="token operator">==</span> n_car<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> is_change<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">True</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> is_change<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">True</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token boolean">False</span>
 
-# strategy of always changing doors    
-count = 0
-for i in range(10**5):
-    n_select = random.randint(1, 3)
-    if MontyHall(n_select, True):
-        count += 1
-print('Prob of changed', count/10**5)
+<span class="token comment" spellcheck="true"># strategy of always changing doors    </span>
+count <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">10</span><span class="token operator">**</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n_select <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> MontyHall<span class="token punctuation">(</span>n_select<span class="token punctuation">,</span> <span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        count <span class="token operator">+=</span> <span class="token number">1</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Prob of changed'</span><span class="token punctuation">,</span> count<span class="token operator">/</span><span class="token number">10</span><span class="token operator">**</span><span class="token number">5</span><span class="token punctuation">)</span>
 
-# Strategy of always NOT changing doors   
-count = 0
-for i in range(10**5):
-    n_select = random.randint(1, 3)
-    if MontyHall(n_select, False):
-        count += 1
-print('Prob of not changed', count/10**5)
+<span class="token comment" spellcheck="true"># Strategy of always NOT changing doors   </span>
+count <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">10</span><span class="token operator">**</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n_select <span class="token operator">=</span> random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> MontyHall<span class="token punctuation">(</span>n_select<span class="token punctuation">,</span> <span class="token boolean">False</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        count <span class="token operator">+=</span> <span class="token number">1</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Prob of not changed'</span><span class="token punctuation">,</span> count<span class="token operator">/</span><span class="token number">10</span><span class="token operator">**</span><span class="token number">5</span><span class="token punctuation">)</span>
 </code></pre>
 <p><strong>R：</strong></p>
-<pre class=" language-lang-R"><code class="language-lang-R">monty <- function(n_selected, is_change) {
+<pre class=" language-R"><code class="language-R">monty <- function(n_selected, is_change) {
     n_car <- sample(3,1)
     if(is_change){
         if(n_car == n_selected){
@@ -525,7 +519,6 @@ rbinom(7,5,0.2) # 从分布中随机取样7个
 <p>&emsp;&emsp;超几何分布标识一般是这样$X\sim{HGeom(w,b,n)}$，不过也有是这样标识的$X\sim{G(n,M,N)}$，这两种标识正好代表了在R和在Python里的不同用法。（R是用第一个，而Python是第二个）</p>
 <p>&emsp;&emsp;先简单的说明一下，超几何分布其实就是不放回取样的成功数。而$X\sim{HGeom(w,b,n)}$里，$w$代表了所有样本中成功的样本数，$b$代表所有样本中失败的样本数，$n$代表取样的数目。而在标识$X\sim{G(n,M,N)}$里，$n$还是代表取样本数，而$M$代表所有样本数，$N$表示成功的样本数。</p>
 <p>&emsp;&emsp;的确有所区别，不过大同小异，Python的话记得import调包就完事了。</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -548,12 +541,10 @@ rbinom(7,5,0.2) # 从分布中随机取样7个
 </tr>
 </tbody>
 </table>
-</div>
 <h1 id="Chapter-04"><a href="#Chapter-04" class="headerlink" title="Chapter 04"></a>Chapter 04</h1><p>&emsp;&emsp;对应原文4.11内容。</p>
 <p>&emsp;&emsp;<strong>第四章总结：</strong></p>
 <p>&emsp;&emsp;第四章整的东西还挺多，把全部常用的离散型分布给讲完了，而且还挺多的，包括几何分布、第一次成功分布、负二项分布和泊松分布，还有诸如期望、方差的定义与性质。这一章最有意思的还是一个随机变量标识器（Indicator r.v.s）的思想，在分析的时候尤其是对期望分析的时候特别有用。</p>
 <h2 id="几何分布、负二项分布、泊松分布"><a href="#几何分布、负二项分布、泊松分布" class="headerlink" title="几何分布、负二项分布、泊松分布"></a>几何分布、负二项分布、泊松分布</h2><p>&emsp;&emsp;因为第一次成功分布（First Success Distribution)就是几何分布的随机变量加一，没什么好说的，就先把这三个简单罗列一下吧。Python同样使用的是Scipy.stats模块。</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -580,7 +571,6 @@ rbinom(7,5,0.2) # 从分布中随机取样7个
 </tr>
 </tbody>
 </table>
-</div>
 <h2 id="求期望"><a href="#求期望" class="headerlink" title="求期望"></a>求期望</h2><p>&emsp;&emsp;书上是直接用了第一章Matching Problem的例子来求期望。按道理这里的期望模拟得到会十分接近于 1，至于为什么有兴趣的各位请看书吧，在<strong>Example 4.4.4</strong>上利用了随机变量标识器来进行计算得到的。</p>
 <p><strong>Python:</strong></p>
 <pre><code>n = 100
@@ -611,7 +601,6 @@ mean(r)
 <p><img src="/2020/04/07/stat110/5-1.png" alt="fff"></p>
 <p>&emsp;&emsp;这一章比较重点的内容是：位置-刻度转换思想(Location-scale transformation)，均匀分布的普适性(Universality of the Uniform)</p>
 <h2 id="均匀分布、正态分布、指数分布等"><a href="#均匀分布、正态分布、指数分布等" class="headerlink" title="均匀分布、正态分布、指数分布等"></a>均匀分布、正态分布、指数分布等</h2><p>&emsp;&emsp;把这几个简单罗列一下吧。Python同样使用的是Scipy.stats模块。在命名上和上一次的超几何分布的参数上就可以看出来R语言很倾向数学上的命名法，不过暂时我没找到R写的Rayleigh分布。</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -648,7 +637,6 @@ mean(r)
 </tr>
 </tbody>
 </table>
-</div>
 <p>&emsp;&emsp;顺便在这里用正态分布表演一个location-scale变换。</p>
 <p>&emsp;&emsp;由$\frac{X-\mu}{\sigma}\sim{N(0,1)}$来获得$X\sim{N(\mu,\sigma^2)}$，此处$\mu=1$，$\sigma=2$。</p>
 <p><strong>Python:</strong></p>
